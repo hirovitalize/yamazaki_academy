@@ -1,0 +1,714 @@
+key,ja,en,zh
+ransack.all,全て,all,所有
+ransack.and,と,and,并且
+ransack.any,いずれか,any,任意
+ransack.asc,昇順,ascending,升序
+ransack.attribute,属性,attribute,属性
+ransack.combinator,組み合わせ,combinator,条件组合(combinator)
+ransack.condition,状態,condition,条件
+ransack.desc,降順,descending,降序
+ransack.or,あるいは,or,或者
+ransack.predicate,は以下である,predicate,基于(predicate)
+ransack.predicates.blank,は空である,is blank,为空
+ransack.predicates.cont,は以下を含む,contains,包含
+ransack.predicates.cont_all,は以下の全てを含む,contains all,包含所有值
+ransack.predicates.cont_any,はいずれかを含む,contains any,包含任意一个值
+ransack.predicates.does_not_match,は以下と合致していない,doesn't match,不符合
+ransack.predicates.does_not_match_all,は以下の全てに合致していない,doesn't match all,不符合所有条件
+ransack.predicates.does_not_match_any,は以下のいずれかに合致していない,doesn't match any,符合任意条件
+ransack.predicates.end,は以下で終わる,ends with,止于
+ransack.predicates.end_all,は以下の全てで終わる,ends with all,止于任意值
+ransack.predicates.end_any,は以下のいずれかで終わる,ends with any,止于任一值
+ransack.predicates.eq,は以下と等しい,equals,等于
+ransack.predicates.eq_all,は以下の全てに等しい,equals all,等于所有值
+ransack.predicates.eq_any,は以下のいずれかに等しい,equals any,等于任意值
+ransack.predicates.false,偽,is false,等于false
+ransack.predicates.gt,は以下より大きい,greater than,大于
+ransack.predicates.gt_all,は以下の全てより大きい,greater than all,大于所有值
+ransack.predicates.gt_any,は以下のいずれかより大きい,greater than any,大于任意一个值
+ransack.predicates.gteq,は以下より大きいか等しい,greater than or equal to,大于等于
+ransack.predicates.gteq_all,は以下の全てより大きいか等しい,greater than or equal to all,大于等于所有值
+ransack.predicates.gteq_any,は以下のいずれかより大きいか等しい,greater than or equal to any,大于等于任意一个值
+ransack.predicates.in,は以下の範囲内である,in,被包含
+ransack.predicates.in_all,は以下の全ての範囲内である,in all,被所有值包含
+ransack.predicates.in_any,は以下のいずれかの範囲内である,in any,被任意值包含
+ransack.predicates.lt,は以下よりも小さい,less than,小于
+ransack.predicates.lt_all,は以下の全てよりも小さい,less than all,小于所有值
+ransack.predicates.lt_any,は以下のいずれかより小さい,less than any,小于任意一个值
+ransack.predicates.lteq,は以下より小さいか等しい,less than or equal to,小于等于
+ransack.predicates.lteq_all,は以下の全てより小さいか等しい,less than or equal to all,小于等于所有值
+ransack.predicates.lteq_any,は以下のいずれかより小さいか等しい,less than or equal to any,小于等于任意一个值
+ransack.predicates.matches,は以下と合致している,matches,符合
+ransack.predicates.matches_all,は以下の全てと合致している,matches all,符合所有条件
+ransack.predicates.matches_any,は以下のいずれかと合致している,matches any,符合任意条件
+ransack.predicates.not_cont,は含まない,doesn't contain,不包含
+ransack.predicates.not_cont_all,は以下の全てを含まない,doesn't contain all,不包含所有值
+ransack.predicates.not_cont_any,は以下のいずれかを含まない,doesn't contain any,不包含任意一个值
+ransack.predicates.not_end,は以下のどれでも終わらない,doesn't end with,非止于
+ransack.predicates.not_end_all,は以下の全てで終わらない,doesn't end with all,非止于任意值
+ransack.predicates.not_end_any,は以下のいずれかで終わらない,doesn't end with any,非止于任一值
+ransack.predicates.not_eq,は以下と等しくない,not equal to,不等于
+ransack.predicates.not_eq_all,は以下の全てと等しくない,not equal to all,不等于所有值
+ransack.predicates.not_eq_any,は以下のいずれかに等しくない,not equal to any,不等于任意值
+ransack.predicates.not_in,は以下の範囲内でない,not in,不被包含
+ransack.predicates.not_in_all,は以下の全ての範囲内,not in all,不被所有值包含
+ransack.predicates.not_in_any,は以下のいずれかの範囲内でない,not in any,不被任意值包含
+ransack.predicates.not_null,は無効ではない,is not null,不是null
+ransack.predicates.not_start,は以下で始まらない,doesn't start with,非始于
+ransack.predicates.not_start_all,は以下の全てで始まらない,doesn't start with all,非始于任意值
+ransack.predicates.not_start_any,は以下のいずれかで始まらない,doesn't start with any,非始于任一值
+ransack.predicates.null,無効,is null,是null
+ransack.predicates.present,は存在する,is present,有值
+ransack.predicates.start,は以下で始まる,starts with,始于
+ransack.predicates.start_all,は以下の全てで始まる,starts with all,始于任意值
+ransack.predicates.start_any,は以下のどれかで始まる,starts with any,始于任一值
+ransack.predicates.true,真,is true,等于true
+ransack.search,検索,search,搜索
+ransack.sort,分類,sort,排序
+ransack.value,値,value,数值
+users.ical.ical_title,あなたの授業スケジュール,Your class schedule,你的上课日程
+users.ical.ical_description,外部のカレンダーアプリに講義情報を反映させるには、下記のURlを参照してください。,"To reflect the lecture information in the external calendar application, refer to URl below.",要在外部日历应用程序中反映讲座信息，请参阅下面的URl。
+users.passwords.edit.title,パスワード再入力,Confirm new password,再输入一遍密码
+users.passwords.new.title,初回のパスワードを設定される方 / パスワードを忘れた方,Forgot your password?,把密码忘记了
+users.registrations.edit.title,ユーザー設定,User settings,用户设定
+users.registrations.new.title,ユーザー登録,Sign up,用户登录
+users.sessions.destroy.title,ログアウト,Logout,退出登录
+users.sessions.new.title,ログイン,Sign in,登录
+users.index.unlock,ロック解除,unlock,开锁
+users.index.lock,ロック,Lock,锁
+users.index.unlock_confirm,ロックを解除します。よろしいですか？,Unlock it. Is it OK?,解锁它。你确定吗？
+users.index.lock_confirm,ロックします。よろしいですか？,Lock it Is it OK?,锁定它你确定吗？
+users.index.locked,ロック中,Locked,锁定
+users.search.locked,ロック中,Locked,锁定
+lectures.index.approval,承認します。よろしいですか？,approve. Is it OK?,我接受你确定吗？
+lectures.index.denial,否認します。よろしいですか？,I refuse. Is it OK?,我拒绝。你确定吗？
+lectures.index.passback,差戻します。よろしいですか？,Send back. Is it OK?,发回。你确定吗？
+lectures.show.cancel,予約を解除します。よろしいですか？,Cancel your reservation. Is it OK?,取消您的预订。你确定吗？
+lectures.show.approval,承認します。よろしいですか？,approve. Is it OK?,我接受你确定吗？
+lectures.show.denial,否認します。よろしいですか？,I refuse. Is it OK?,我拒绝。你确定吗？
+lectures.show.passback,差戻します。よろしいですか？,Send back. Is it OK?,发回。你确定吗？
+lectures.show.copy,コピー,copy,复制
+lectures.search.absent,担当不在,Not in charge,不负责
+lectures.search.bundle,一括,Bulk,体积
+lectures.search.bundle_duplication_in_a_week,翌週へ一括複製,Batch replication to the next week,批量复制到下周
+lectures.search.notyet_reservation,未予約,Not reserved,不保留
+lecture_staffs.show.yen,円,Circle,圈
+lecture_staffs.search.output_csv,CSV出力,CSV output,CSV输出
+rooms.index.seat,席,seat,座位
+rooms.search.bundle,一括,Bulk,体积
+rooms.show.seat,席,seat,座位
+students.button_create_vip_lecture.addition,追加,add to,加法
+courses.show.addition,追加,add to,加法
+courses.index.person,人,Man,人
+staff_wages.index.default,デフォルト,Default,默认
+staff_wages.index.balance,差額,difference,区别
+staff_wages.show.yen,円,Circle,圈
+klasses.search.in_action,実施中,In action,在行动中
+klasses.show.copy,コピー,copy,复制
+klasses.show.bundle_addition,一括追加,Bulk addition,批量添加
+reserves.calendar_search.search,検索,Search,取回
+reserves.calendar_search.start_date,開始日,start date,开始日期
+reserves.index.approval,承認します。よろしいですか？,approve. Is it OK?,我接受你确定吗？
+reserves.index.denial,否認します。よろしいですか？,I refuse. Is it OK?,我拒绝。你确定吗？
+reserves.index.passback,差戻します。よろしいですか？,Send back. Is it OK?,发回。你确定吗？
+reserves.show.approval,承認します。よろしいですか？,approve. Is it OK?,我接受你确定吗？
+reserves.show.denial,否認します。よろしいですか？,I refuse. Is it OK?,我拒绝。你确定吗？
+reserves.show.passback,差戻します。よろしいですか？,Send back. Is it OK?,发回。你确定吗？
+shared.model.history.update_history,更新履歴,Change log,更新历史记录
+shared.model.history.last_update,最終更新,Last updated,上次更新
+shared.model.history.ago,前,Previous,前
+shared.model.assoc.total,総件数：,The total number of cases:,总人数：
+shared.action.delete_button.delete,削除,Delete,删除
+shared.action.delete_button.are_you_sure,を削除します。よろしいですか？,Remove Is it OK?,删除。你确定吗？
+shared.action.edit_button.edit,編集,Edit,编辑
+shared.action.index_button.index,一覧,List,名单
+shared.action.show_button.show,閲覧,Browse,阅读
+shared.action.mine_button.mine,自分,myself,我自己
+shared.action.new_button.new,追加,add to,加法
+shared.form_submit.save,保存,Preservation,存储
+shared.js_hidden_text.reserve,予約する,Reserve,预订
+shared.js_hidden_text.delete,削除する,delete,要删除
+shared.js_hidden_text.alert,30分以上で作成してください,Please create in 30 minutes or more,请在30分钟或更长时间内创建
+shared.js_hidden_text.no_available_lecture,選択可能な講義がありません,There is no selectable lecture,没有可选择的讲座
+shared.js_hidden_text.select_lecture,講義を選択してください,Please select a lecture,请选择一个讲座
+shared.js_hidden_text.confirm,予約を削除しますか？,Do you want to delete the reservation?,要删除预订吗？
+shared.js_hidden_text.room_name,教室名,Class name,班级名称
+shared.js_hidden_text.capacity,定員,Capacity,容量
+activerecord.errors.messages.record_invalid,%{errors},%{errors},%{errors}
+activerecord.errors.messages.restrict_dependent_destroy.has_many,%{record}が存在しているので削除できません,"Since %{record} exists, it can not be deleted",由于%{record}存在，因此无法删除
+activerecord.errors.messages.restrict_dependent_destroy.has_one,%{record}が存在しているので削除できません,"Since %{record} exists, it can not be deleted",由于%{record}存在，因此无法删除
+activerecord.attributes.user.current_password,現在のパスワード,Current password,当前密码
+activerecord.attributes.user.email,メールアドレス,Email,电子邮箱
+activerecord.attributes.user.name,名前,name,名字
+activerecord.attributes.user.password,パスワード,Password,密码
+activerecord.attributes.user.password_confirmation,確認用パスワード,Password confirmation,密码确认
+activerecord.attributes.user.remember_me,次回から自動的にログイン,Remember me,记住登录信息
+activerecord.attributes.user.auth_token,アクセストークン,Access token,接近令牌
+activerecord.attributes.user.current_sign_in_at,最新ログイン日時,Last login date and time,最新登录时间
+activerecord.attributes.user.current_sign_in_ip,最新ログインIP,Latest Login IP,最新登录IP
+activerecord.attributes.user.encrypted_password,パスワード,password,密码
+activerecord.attributes.user.faicon,ban,ban,ban
+activerecord.attributes.user.failed_attempts,失敗回数,Number of failures,失败次数
+activerecord.attributes.user.last_sign_in_at,最終ログイン日時,Last login date and time,最新登录时间
+activerecord.attributes.user.last_sign_in_ip,最終ログインIP,Last Login IP,最新登录IP
+activerecord.attributes.user.locked_at,ロック日時,Lock date and time,锁定时间
+activerecord.attributes.user.remember_created_at,作成時間,Creation time,创作时间
+activerecord.attributes.user.reset_password_sent_at,リセットパスワード時間,Reset password time,重置密码时间
+activerecord.attributes.user.reset_password_token,リセットパスワードトークン,Reset password token,重置密码令牌
+activerecord.attributes.user.sign_in_count,ログイン回数,Number of logins,登录次数
+activerecord.attributes.user.staff,activerecord.models.staff,activerecord.models.staff,activerecord.models.staff
+activerecord.attributes.user.unlock_token,ロック解除トークン,Unlock token,解锁令牌
+activerecord.attributes.area.buildings,activerecord.models.building,activerecord.models.building,activerecord.models.building
+activerecord.attributes.area.faicon,globe,globe,globe
+activerecord.attributes.area.klasses,activerecord.models.klass,activerecord.models.klass,activerecord.models.klass
+activerecord.attributes.area.province,activerecord.models.province,activerecord.models.province,activerecord.models.province
+activerecord.attributes.building.address,アドレス,address,地址
+activerecord.attributes.building.area,activerecord.models.area,activerecord.models.area,activerecord.models.area
+activerecord.attributes.building.faicon,building,building,building
+activerecord.attributes.course.course_category,activerecord.models.course_category,activerecord.models.course_category,activerecord.models.course_category
+activerecord.attributes.course.faicon,code-fork,code-fork,code-fork
+activerecord.attributes.course.katei,activerecord.models.katei,activerecord.models.katei,activerecord.models.katei
+activerecord.attributes.course.klasses,activerecord.models.klass,activerecord.models.klass,activerecord.models.klass
+activerecord.attributes.course.students,activerecord.models.student,activerecord.models.student,activerecord.models.student
+activerecord.attributes.course.subjects,activerecord.models.subject,activerecord.models.subject,activerecord.models.subject
+activerecord.attributes.course_category.courses,activerecord.models.course,activerecord.models.course,activerecord.models.course
+activerecord.attributes.course_category.faicon,folder-open,folder-open,文件夹打开
+activerecord.attributes.equipment.faicon,legal,legal,legal
+activerecord.attributes.equipment/room_equipment.available,利用可能,Available,可以使用
+activerecord.attributes.equipment/room_equipment.equipment,activerecord.models.equipment,activerecord.models.equipment,activerecord.models.equipment
+activerecord.attributes.equipment/room_equipment.room,activerecord.models.room,activerecord.models.room,activerecord.models.room
+activerecord.attributes.katei.course_category,activerecord.models.course_category,activerecord.models.course_category,activerecord.models.course_category
+activerecord.attributes.katei.faicon,share-alt,share-alt,共享ALT
+activerecord.attributes.katei.price,値段,price,价格
+activerecord.attributes.klass.area,activerecord.models.area,activerecord.models.area,activerecord.models.area
+activerecord.attributes.klass.course,activerecord.models.course,activerecord.models.course,activerecord.models.course
+activerecord.attributes.klass.faicon,users,users,users
+activerecord.attributes.klass.finish_date,終了日,End date,结束日期
+activerecord.attributes.klass.start_date,開始日,start date,开始日期
+activerecord.attributes.klass.students,activerecord.models.student,activerecord.models.student,activerecord.models.student
+activerecord.attributes.klass_subject.faicon,book,book,book
+activerecord.attributes.klass_subject.hours,講義時間,Lecture time,讲座时间
+activerecord.attributes.klass_subject.klass,activerecord.models.klass,activerecord.models.klass,activerecord.models.klass
+activerecord.attributes.klass_subject.klass_unlimited,他クラス可,Other classes allowed,可以他班
+activerecord.attributes.klass_subject.lecture_num,講義回数,Times,次数
+activerecord.attributes.klass_subject.staff,主担任,Principal assignment,主担任
+activerecord.attributes.klass_subject.start_time,講義開始時間,Lecture start time,讲座开始时间
+activerecord.attributes.klass_subject.subject,activerecord.models.subject,activerecord.models.subject,activerecord.models.subject
+activerecord.attributes.klass_subject.total_hours,合計時間,total time,总时间
+activerecord.attributes.lecture.confirmed,承認/未/否認,Approval / denial,准许/未/否认
+activerecord.attributes.lecture.confirmer,承認者,Authorizer,批准人
+activerecord.attributes.lecture.faicon,graduation-cap,graduation-cap,graduation-cap
+activerecord.attributes.lecture.finish_time,終了時刻,End time,结束时刻
+activerecord.attributes.lecture.klass,activerecord.models.klass,activerecord.models.klass,activerecord.models.klass
+activerecord.attributes.lecture.klass_subject,activerecord.models.klass_subject,activerecord.models.klass_subject,activerecord.models.klass_subject
+activerecord.attributes.lecture.lecture_staffs,activerecord.models.lecture_staff,activerecord.models.lecture_staff,activerecord.models.lecture_staff
+activerecord.attributes.lecture.lecture_time,授業時間,class time,上课时间
+activerecord.attributes.lecture.reserve,activerecord.models.reserve,activerecord.models.reserve,activerecord.models.reserve
+activerecord.attributes.lecture.staffs,activerecord.models.staff,activerecord.models.staff,activerecord.models.staff
+activerecord.attributes.lecture.start_time,開始時刻,Start time,开始时刻
+activerecord.attributes.lecture.student,activerecord.models.student,activerecord.models.student,activerecord.models.student
+activerecord.attributes.lecture.students,activerecord.models.student,activerecord.models.student,activerecord.models.student
+activerecord.attributes.lecture.subject,activerecord.models.subject,activerecord.models.subject,activerecord.models.subject
+activerecord.attributes.lecture.subject_type,activerecord.models.subject_type,activerecord.models.subject_type,activerecord.models.subject_type
+activerecord.attributes.lecture.time_changeable,時間変更可,Time changeable,时间多变
+activerecord.attributes.lecture/lecture_staffs.staff,スタッフ,staff,员工
+activerecord.attributes.lecture/work_kinds.faicon,folder-open,folder-open,文件夹打开
+activerecord.attributes.lecture/work_kinds.name,業務種別,Business type,业务类型
+activerecord.attributes.lecture_staff.confirmed_salary,給料(承認済),Salary (approved),薪酬（已批准）
+activerecord.attributes.lecture_staff.extraction_month,抽出月,Extraction month,提取月份
+activerecord.attributes.lecture_staff.faicon,user-plus,user-plus,user-plus
+activerecord.attributes.lecture_staff.lecture,activerecord.models.lecture,activerecord.models.lecture,activerecord.models.lecture
+activerecord.attributes.lecture_staff.lecture_day,授業日,Class day,上课日
+activerecord.attributes.lecture_staff.staff,activerecord.models.staff,activerecord.models.staff,activerecord.models.staff
+activerecord.attributes.lecture_staff.work_kind,activerecord.models.work_kind,activerecord.models.work_kind,activerecord.models.work_kind
+activerecord.attributes.lecture_student.faicon,user,user,user
+activerecord.attributes.lecture_student.finished,終了の可否,Whether to terminate,结束可否
+activerecord.attributes.lecture_student.lecture,activerecord.models.lecture,activerecord.models.lecture,activerecord.models.lecture
+activerecord.attributes.lecture_student.student,activerecord.models.student,activerecord.models.student,activerecord.models.student
+activerecord.attributes.reserve.approved,承認/未/否認,Approval / denial,准许/未/否认
+activerecord.attributes.reserve.approver,承認者,Authorizer,批准人
+activerecord.attributes.reserve.building,activerecord.models.building,activerecord.models.building,activerecord.models.building
+activerecord.attributes.reserve.comment,概要,Overview,摘要
+activerecord.attributes.reserve.faicon,calendar,calendar,calendar
+activerecord.attributes.reserve.finish_time,終了時刻,End time,结束时刻
+activerecord.attributes.reserve.lecture,activerecord.models.lecture,activerecord.models.lecture,activerecord.models.lecture
+activerecord.attributes.reserve.lecture_time,授業時間,class time,课业时间
+activerecord.attributes.reserve.room,activerecord.models.room,activerecord.models.room,activerecord.models.room
+activerecord.attributes.reserve.start_time,開始時刻,Start time,开始时刻
+activerecord.attributes.role.faicon,lock,lock,lock
+activerecord.attributes.role.staffs,activerecord.models.staff,activerecord.models.staff,activerecord.models.staff
+activerecord.attributes.room.building,activerecord.models.building,activerecord.models.building,activerecord.models.building
+activerecord.attributes.room.equipments,activerecord.models.equipment,activerecord.models.equipment,activerecord.models.equipment
+activerecord.attributes.room.faicon,cube,cube,cube
+activerecord.attributes.room.room_equipments,備品,Fixtures,设备
+activerecord.attributes.room.room_groups,activerecord.models.room_group,activerecord.models.room_group,activerecord.models.room_group
+activerecord.attributes.room.seat_number,座席数,Number of seats,坐席数
+activerecord.attributes.room.seat_number_gteq,下限数,Lower limit number,下限数量
+activerecord.attributes.room.seat_number_lteq,上限数,Upper limit number,上限数量
+activerecord.attributes.room.wday_0_close_time,日曜日終了時刻,Sunday end time,星期天结束时间
+activerecord.attributes.room.wday_0_open_time,日曜日開始時刻,Sunday start time,星期天开始时间
+activerecord.attributes.room.wday_1_close_time,月曜日終了時刻,Monday end time,星期一结束时间
+activerecord.attributes.room.wday_1_open_time,月曜日開始時刻,Monday start time,星期一开始时间
+activerecord.attributes.room.wday_2_close_time,火曜日終了時刻,Tuesday end time,星期二结束时间
+activerecord.attributes.room.wday_2_open_time,火曜日開始時刻,Tuesday start time,星期二开始时间
+activerecord.attributes.room.wday_3_close_time,水曜日終了時刻,Wednesday end time,星期三结束时间
+activerecord.attributes.room.wday_3_open_time,水曜日開始時刻,Wednesday start time,星期三开始时间
+activerecord.attributes.room.wday_4_close_time,木曜日終了時刻,End time on Thursday,星期四结束时间
+activerecord.attributes.room.wday_4_open_time,木曜日開始時刻,Thursday start time,星期四开始时间
+activerecord.attributes.room.wday_5_close_time,金曜日終了時刻,Friday end time,星期五结束时间
+activerecord.attributes.room.wday_5_open_time,金曜日開始時刻,Friday start time,星期五开始时间
+activerecord.attributes.room.wday_6_close_time,土曜日終了時刻,Saturday end time,星期六结束时间
+activerecord.attributes.room.wday_6_open_time,土曜日開始時刻,Saturday start time,星期六开始时间
+activerecord.attributes.room.weekday_close_time,週初終了時刻,Week's initial ending time,周的最初结束时间
+activerecord.attributes.room.weekday_open_time,週初開始時刻,Weekly start time,每周开始时间
+activerecord.attributes.room.weekday_time,週初時刻,First week time,第一周的时间
+activerecord.attributes.room.weekend_close_time,週末終了時刻,Weekend end time,周末结束时间
+activerecord.attributes.room.weekend_open_time,週末開始時刻,Weekend start time,周末开始时间
+activerecord.attributes.room.weekend_time,週末時刻,Weekend time,周末时间
+activerecord.attributes.room/room_equipment.available,利用可能,Available,可以使用
+activerecord.attributes.room/room_equipment.equipment,activerecord.models.equipment,activerecord.models.equipment,activerecord.models.equipment
+activerecord.attributes.room/room_equipment.room,activerecord.models.room,activerecord.models.room,activerecord.models.room
+activerecord.attributes.room_equipment.available,利用可能,Available,可以使用
+activerecord.attributes.room_equipment.equipment,activerecord.models.equipment,activerecord.models.equipment,activerecord.models.equipment
+activerecord.attributes.room_equipment.room,activerecord.models.room,activerecord.models.room,activerecord.models.room
+activerecord.attributes.room_group.faicon,tag,tag,tag
+activerecord.attributes.room_group.rooms,activerecord.models.room,activerecord.models.room,activerecord.models.room
+activerecord.attributes.room_group.rules,ルール,rule,规则
+activerecord.attributes.staff.birthday,生年月日,Birthday,出生日期
+activerecord.attributes.staff.email,メールアドレス,mail address,电子邮箱
+activerecord.attributes.staff.faicon,user-o,user-o,user-o
+activerecord.attributes.staff.mentee,担当者,Person in charge,负责人
+activerecord.attributes.staff.name,氏名,Name,姓名
+activerecord.attributes.staff.roles,activerecord.models.role,activerecord.models.role,activerecord.models.role
+activerecord.attributes.staff.staff_wages,activerecord.models.staff_wage,activerecord.models.staff_wage,activerecord.models.staff_wage
+activerecord.attributes.staff.subjects,担当課目,Department in charge,主管部门
+activerecord.attributes.staff.tel,電話番号,phone number,电话号码
+activerecord.attributes.staff.user,activerecord.models.user,activerecord.models.user,activerecord.models.user
+activerecord.attributes.staff_wage.faicon,yen,yen,yen
+activerecord.attributes.staff_wage.staff,activerecord.models.staff,activerecord.models.staff,activerecord.models.staff
+activerecord.attributes.staff_wage.wage,時給額,Hourly wage,计时工资額
+activerecord.attributes.staff_wage.work_kind,activerecord.models.work_kind,activerecord.models.work_kind,activerecord.models.work_kind
+activerecord.attributes.student.application_number,アプリID,Application ID,程序ID
+activerecord.attributes.student.application_type,アプリ名,app name,程序名
+activerecord.attributes.student.courses,activerecord.models.course,activerecord.models.course,activerecord.models.course
+activerecord.attributes.student.faicon,user,user,user
+activerecord.attributes.student.klasses,activerecord.models.klass,activerecord.models.klass,activerecord.models.klass
+activerecord.attributes.student.lectures,activerecord.models.lecture,activerecord.models.lecture,activerecord.models.lecture
+activerecord.attributes.student.mentor,担当主任,Supervisor,首席
+activerecord.attributes.student.name,氏名,Name,姓名
+activerecord.attributes.student.code,学籍番号,Student number,学生号码
+activerecord.attributes.student.sex,性別,sex,性别
+activerecord.attributes.student.student_mentors,activerecord.models.student_mentor,activerecord.models.student_mentor,activerecord.models.student_mentor
+activerecord.attributes.student.student_point,activerecord.models.student_point,activerecord.models.student_point,activerecord.models.student_point
+activerecord.attributes.student.tel,電話番号,phone number,电话号码
+activerecord.attributes.student/student_mentor.staff,activerecord.models.staff,activerecord.models.staff,activerecord.models.staff
+activerecord.attributes.student_mentor.staff,activerecord.models.staff,activerecord.models.student,activerecord.models.staff
+activerecord.attributes.student_point.faicon,ticket,ticket,ticket
+activerecord.attributes.student_point.paid,支払済み,paid,付讫
+activerecord.attributes.student_point.reserved,使用予定,To be used,使用打算
+activerecord.attributes.student_point.student,activerecord.models.student,activerecord.models.student,activerecord.models.student
+activerecord.attributes.student_point.total,総計,Grand total,总计
+activerecord.attributes.student_point.used,使用済み,Already used,使用完
+activerecord.attributes.subject.courses,activerecord.models.course,activerecord.models.course,activerecord.models.course
+activerecord.attributes.subject.faicon,book,book,book
+activerecord.attributes.subject.lectures,activerecord.models.lecture,activerecord.models.lecture,activerecord.models.lecture
+activerecord.attributes.subject.personal,個人授業,Individual class,个人课
+activerecord.attributes.subject.staffs,担当講師,Instructor,教练
+activerecord.attributes.subject.subject_category,activerecord.models.subject_category,activerecord.models.subject_category,activerecord.models.subject_category
+activerecord.attributes.subject_category.faicon,folder-open,folder-open,folder-open
+activerecord.attributes.subject_type.available_room_groups,利用可能な部屋種別,Available room types,可以使用房型
+activerecord.attributes.subject_type.color,種類,type,类
+activerecord.attributes.subject_type.faicon,file,file,file
+activerecord.attributes.subject_type.room_groups,activerecord.models.subject_type_room_group,activerecord.models.subject_type_room_group,activerecord.models.subject_type_room_group
+activerecord.attributes.work_kind.faicon,folder-open,folder-open,folder-open
+activerecord.attributes.work_kind.name,業務種別,Business type,业务类别
+activerecord.attributes.student_billing.faicon,shopping-cart,shopping-cart,购物推车
+activerecord.attributes.student_billing.student,activerecord.models.student,activerecord.models.student,activerecord.models.student
+activerecord.attributes.student_billing.student_billing_details,activerecord.models.student_billing_detail,activerecord.models.student_billing_detail,activerecord.models.student_billing_detail
+activerecord.attributes.student_billing.total,総計,Grand total,总
+activerecord.attributes.student_billing_detail.student_billing,activerecord.models.student_billing,activerecord.models.student_billing,activerecord.models.student_billing
+activerecord.attributes.student_billing_detail.item,品目,Item,项目
+activerecord.attributes.student_billing_detail.unit_price,単価,unit price,单价
+activerecord.attributes.student_billing_detail.number,個数,Quantity,数
+activerecord.attributes.student_billing_detail.price,金額,Amount of money,的金额
+activerecord.attributes.student_billing_detail.final_price,金額,Amount of money,的金额
+activerecord.attributes.student_billing_detail.memo,備考,Remarks,备注
+activerecord.attributes.student_billing_detail.student_billing_detail_discount,activerecord.models.student_billing_detail_discount,activerecord.models.student_billing_detail_discount,activerecord.models.student_billing_detail_discount
+activerecord.attributes.student_billing_detail.discount,activerecord.models.student_billing_detail_discount,activerecord.models.student_billing_detail_discount,activerecord.models.student_billing_detail_discount
+activerecord.attributes.student_billing_detail_discount.student_billing_detail,activerecord.models.student_billing_detail,activerecord.models.student_billing_detail,activerecord.models.student_billing_detail
+activerecord.attributes.student_billing_detail_discount.discount_type,activerecord.models.discount_type,activerecord.models.discount_type,activerecord.models.discount_type
+activerecord.attributes.student_billing_detail_discount.price,値引き額,Discount amount,折扣金额
+activerecord.attributes.student_billing_detail_discount.discount_memo,その他理由,Other reasons,其他原因
+activerecord.attributes.student_payment.faicon,credit-card,credit-card,信用卡
+activerecord.attributes.student_payment.student,activerecord.models.student,activerecord.models.student,activerecord.models.student
+activerecord.attributes.student_payment.paymethod,activerecord.models.paymethod,activerecord.models.paymethod,activerecord.models.paymethod
+activerecord.attributes.student_payment.pay_date,支払日,Payment date,付款日期
+activerecord.attributes.student_payment.receiver,受領者,Recipient,接受者
+activerecord.attributes.student_payment.price,額,amount,前额
+activerecord.attributes.student_payment.gen,元,Original,起源
+activerecord.attributes.student_commission.faicon,gift,gift,礼品
+activerecord.attributes.student_commission.student,activerecord.models.student,activerecord.models.student,activerecord.models.student
+activerecord.attributes.student_commission.referral_type,紹介種別,Introduction type,介绍类型
+activerecord.attributes.student_commission.referral,紹介者,introducer,介绍人
+activerecord.attributes.student_commission.inflow_source,activerecord.models.inflow_source,activerecord.models.inflow_source,activerecord.models.inflow_source
+activerecord.attributes.student_commission.cache_back_type,activerecord.models.cache_back_type,activerecord.models.cache_back_type,activerecord.models.cache_back_type
+activerecord.attributes.student_commission.referral_fee,紹介料,Referral fee,推荐费
+activerecord.attributes.student_balance.faicon,balance-scale,balance-scale,资产负债规模
+activerecord.attributes.student_balance.student,activerecord.models.student,activerecord.models.student,activerecord.models.student
+activerecord.attributes.student_balance.billings_total,請求総額,Total amount billed,已开帐单总额
+activerecord.attributes.student_balance.payments_total,支払総額,Total to pay,付款总额
+activerecord.attributes.student_balance.price,残額,Balance,剩余量
+activerecord.attributes.discount_type.price,額,amount,前额
+activerecord.attributes.discount_type.rate,率,rate,率
+activerecord.attributes.vip_price.hours_min,最小時間,Minimum time,最短时间
+activerecord.attributes.vip_price.hours_max,最大時間,Maximum time,最长时间
+activerecord.attributes.vip_price.unit_price,時単価,Hourly rate,每小时费率
+activerecord.models.user,ユーザー,User,用户
+activerecord.models.area,エリア,area,场所
+activerecord.models.building,建物,building,建筑物
+activerecord.models.course,コース,course,课程
+activerecord.models.course_category,コースカテゴリー,Course category,课程类别
+activerecord.models.equipment,備品,Fixtures,设备
+activerecord.models.katei,課程（購買）,Course,课程
+activerecord.models.klass,クラス,Team,班
+activerecord.models.klass_subject,講座,Course,讲座
+activerecord.models.lecture,授業,Lesson,课业
+activerecord.models.lecture_staff,講師/給料,Lecturer,讲师
+activerecord.models.lecture_student,受講,Attendance,受训
+activerecord.models.province,空間,space,空间
+activerecord.models.reserve,予約,Reservation,预订
+activerecord.models.role,権限,Authority,权限
+activerecord.models.room,部屋,room,房间
+activerecord.models.room_group,部屋種別,Room type,房间类别
+activerecord.models.staff,スタッフ,staff,人员
+activerecord.models.staff_role,スタッフ権限,Staff authority,人员权限
+activerecord.models.staff_wage,時給,Hourly wage,计时工资
+activerecord.models.student,学生,A student,生徒
+activerecord.models.student_mentor,担当者,Person in charge,老師
+activerecord.models.student_point,ポイント,point,得分
+activerecord.models.student_point_log,ポイントログ,Point log,得分日志
+activerecord.models.student_balance,未払金,Unpaid,应付帐款
+activerecord.models.student_billing,購買,purchase,购买
+activerecord.models.student_billing_detail,内訳,Breakdown,击穿
+activerecord.models.student_billing_detail_discount,値引,discount,折扣
+activerecord.models.student_payment,支払,payment,付款
+activerecord.models.student_commission,出金,Withdrawal,提款
+activerecord.models.vip_price,VIP単価,VIP unit price,VIP单价
+activerecord.models.discount_type,値引き種別,Discount type,折扣类型
+activerecord.models.cache_back_type,キャッシュバック種別,Cash back type,现金返还类型
+activerecord.models.inflow_source,流入元,Inflow source,流入源
+activerecord.models.paymethod,入金種別,Payment type,付款方式
+activerecord.models.subject,科目,Subject,功课
+activerecord.models.subject_category,科目カテゴリー,Subject category,功课范畴
+activerecord.models.subject_type,科目種別,Course type,功课类别
+activerecord.models.subject_type_room_group,利用可能な部屋種別,Available room types,能使用的房间类别
+activerecord.models.work_kind,業務種別,Business type,业务类别
+errors.format,%{attribute}%{message},%{attribute}%{message},%{attribute}%{message}
+errors.messages.accepted,を受諾してください,Please accept,必须是可被接受的
+errors.messages.after,は %{restriction} より後を指定してください,Please specify after %{restriction},必须%{restriction}之后指定
+errors.messages.before,は %{restriction} より前を指定してください,Please specify before %{restriction},必须%{restriction}之前指定
+errors.messages.blank,を入力してください,Please enter,不能为空字符
+errors.messages.confirmation,と%{attribute}の入力が一致しません,And input of %{attribute} do not match,与 %{attribute} 不匹配
+errors.messages.empty,を入力してください,Please enter,不能留空
+errors.messages.equal_to,は%{count}にしてください,Please set it to %{count},必须等于 %{count}
+errors.messages.even,は偶数にしてください,Please set it to an even number,必须为双数
+errors.messages.exclusion,は予約されています,Is reserved,是保留关键字
+errors.messages.greater_than,は%{count}より大きい値にしてください,Should be greater than %{count},必须大于 %{count}
+errors.messages.greater_than_or_equal_to,は%{count}以上の値にしてください,Must be greater than or equal to %{count},必须大于或等于 %{count}
+errors.messages.inclusion,は不正な値です,Is an invalid value,不包含于列表中
+errors.messages.invalid,は不正な値です,Is an invalid value,是无效的
+errors.messages.invalid_date,は正しい形式で入力してください,Please enter in the correct format,必须正确的形式
+errors.messages.invalid_datetime,は正しい形式で入力してください,Please enter in the correct format,必须正确的形式
+errors.messages.invalid_time,は正しい形式で入力してください,Please enter in the correct format,必须正确的形式
+errors.messages.is_at,は %{restriction} である必要があります,Must be %{restriction},必须是%{restriction}
+errors.messages.less_than,は%{count}より小さい値にしてください,Should be smaller than %{count},必须小于 %{count}
+errors.messages.less_than_or_equal_to,は%{count}以下の値にしてください,Must be less than or equal to %{count},必须小于或等于 %{count}
+errors.messages.model_invalid,バリデーションに失敗しました: %{errors},Validation failed: %{errors},验证失败: %{errors}
+errors.messages.not_a_number,は数値で入力してください,Please enter with a numeric value,不是数字
+errors.messages.not_an_integer,は整数で入力してください,Please enter with an integer,必须是整数
+errors.messages.odd,は奇数にしてください,Please be odd,必须为单数
+errors.messages.on_or_after,は %{restriction} 以降を指定してください,Please specify %{restriction} or later,必须%{restriction}之后指定
+errors.messages.on_or_before,は %{restriction} 以前を指定してください,Please specify  %{restriction} or earlier,必须%{restriction}之前指定
+errors.messages.other_than,は%{count}以外の値にしてください,Must be a value other than %{count},长度非法（不可为 %{count} 个字符
+errors.messages.present,は入力しないでください,Please do not enter,必须是空白
+errors.messages.required,を入力してください,Please enter,必须存在
+errors.messages.taken,はすでに存在します,Already exists,已经被使用
+errors.messages.too_long,は%{count}文字以内で入力してください,Please enter within %{count} characters,过长（最长为 %{count} 个字符）
+errors.messages.too_short,は%{count}文字以上で入力してください,Please enter with %{count} or more characters,过短（最短为 %{count} 个字符）
+errors.messages.wrong_length,は%{count}文字で入力してください,Please enter with %{count} characters,长度非法（必须为 %{count} 个字符）
+errors.messages.already_confirmed,は既に登録済みです。ログインしてください。,"was already confirmed, please try signing in",已经确认，请重新登录。
+errors.messages.confirmation_period_expired,の期限が切れました。%{period} までに確認する必要があります。 新しくリクエストしてください。,"needs to be confirmed within %{period}, please request a new one",注册帐号后须在%{period}以内确认。请重新注册。
+errors.messages.expired,の有効期限が切れました。新しくリクエストしてください。,"has expired, please request a new one",邮件确认已过期，请重新注册。
+errors.messages.not_found,は見つかりませんでした。,not found,找不到。
+errors.messages.not_locked,はロックされていません。,was not locked,未锁定。
+errors.messages.not_saved.one,エラーが発生したため %{resource} は保存されませんでした:,1 error prohibited this %{resource} from being saved:,
+errors.messages.not_saved.other,%{count} 件のエラーが発生したため %{resource} は保存されませんでした:,%{count} errors prohibited this %{resource} from being saved:,发生%{count}个错误，导致%{resource}保存失败：
+errors.template.body,次の項目を確認してください,Please check the following items,请检查以下项目
+errors.template.header.one,%{model}にエラーが発生しました,An error occurred in %{model},%{model}发生错误
+errors.template.header.other,%{model}に%{count}個のエラーが発生しました,%{count} 1 error occurred in %{model},%{count}在%{model}中发生1错误
+validates_timeliness.error_value_formats.date,%Y/%m/%d,%Y /%m /%d,％Y /％m /％d
+validates_timeliness.error_value_formats.datetime,%Y/%m/%d %H:%M,%Y /%m /%d %H:%M,％Y /％m /％d％H：％M
+validates_timeliness.error_value_formats.time,%H:%M,%H:%M,％H：％M
+cocoon.defaults.add,追加,add to,削除
+cocoon.defaults.remove,削除,Delete,删除
+helpers.button.clear,クリア,clear,清除
+helpers.button.save,保存,Preservation,保存
+helpers.button.search,検索,Search,检索
+helpers.flash.assign,%{model}を割り当てました,I assigned %{model},分配%{model}
+helpers.flash.update,更新しました,Has been updated,更新
+helpers.header.locales.en,英語,English,英语
+helpers.header.locales.ja,日本語,Japanese,日语
+helpers.header.locales.zh,中国語,Chinese,中文
+helpers.header.translation,言語切替,Language Switching,语言切换
+helpers.select.prompt,選択してください,Please select,请选择
+helpers.sidebar.course,コース/クラス/科目,Course / class / subject,课程/班/功课
+helpers.sidebar.home,ホーム,home,主
+helpers.sidebar.lecture_reserve,授業/予約,Class / reservation,课业/预订
+helpers.sidebar.master,マスタ管理,Master Admin,万能管理
+helpers.sidebar.money,売上,Sales,收益
+helpers.sidebar.room,教室,Classroom,教室
+helpers.sidebar.system,システム,system,系统
+helpers.sidebar.user,ユーザー,user,用户
+helpers.sidebar.room_reserve,部屋予約,Room reservation,房间预订
+helpers.submit.confirm,保存します。よろしいですか？,you save. Is it OK?,保存它。这样好吗？
+helpers.submit.create,保存,Save,保存
+helpers.submit.edit,編集,Edit,编辑
+helpers.submit.reset,リセット,reset,重置
+helpers.submit.search,検索,Search,检索
+helpers.submit.send,送信,Send,发送
+helpers.submit.sign_in,ログイン,Login,登陆
+helpers.submit.sign_up,登録,Registration,登记
+helpers.submit.submit,保存,Save,保存
+helpers.submit.update,更新,update,更新
+helpers.title.edit,"%{model}の編集
+%{name}","Edit %{model}
+%{name}","编辑%{model}
+%{name}"
+helpers.title.new,%{model}の追加,Added %{model},追加%{model}
+helpers.title.show,"%{model}
+%{name}","%{model}
+%{name}","%{model}
+%{name}"
+helpers.page_entries_info.more_pages.display_entries,<p class= m-0 ><b>%{first} - %{last}</b> / <b> %{total} </b>件</p>,<p class= m-0 ><b>%{first} - %{last}</b> / <b> %{total} </b>件</p>,<p class= m-0 ><b>%{first} - %{last}</b> / <b> %{total} </b>件</p>
+helpers.page_entries_info.one_page.display_entries.one,<p class= m-0>全<b> %{count} </b>件</p>,<p class= m-0>全<b> %{count} </b>件</p>,<p class= m-0>全<b> %{count} </b>件</p>
+helpers.page_entries_info.one_page.display_entries.other,<p class= m-0>全<b> %{count} </b>件</p>,<p class= m-0>全<b> %{count} </b>件</p>,<p class= m-0>全<b> %{count} </b>件</p>
+helpers.page_entries_info.one_page.display_entries.zero,%{entry_name}が見つかりませんでした,%{entry_name} could not be found,找不到%{entry_name}
+flash.actions.create.notice,%{resource_name}が作成されました,%{resource_name} created with success,%{resource_name}做好的
+flash.actions.destroy.alert,%{resource_name}が削除できませんでした,Delete of %{resource_name} failed,删除%{resource_name}失败
+flash.actions.destroy.notice,%{resource_name}が削除されました,%{resource_name} has been deleted,%{resource_name}已被删除
+flash.actions.update.notice,%{resource_name}が更新されました,%{resource_name} has been updated,%{resource_name}已更新
+devise.confirmations.new.resend_confirmation_instructions,アカウント認証メール再送,Resend confirmation instructions,重新发送确认邮件
+devise.confirmations.new.send,送信,Send,发报
+devise.confirmations.confirmed,アカウントを登録しました。,Your email address has been successfully confirmed.,成功验证您的帐号。您现已登录。
+devise.confirmations.send_instructions,アカウントの有効化について数分以内にメールでご連絡します。,You will receive an email with instructions for how to confirm your email address in a few minutes.,您的电子邮箱将在几分钟后收到一封帐号确认邮件。
+devise.confirmations.send_paranoid_instructions,あなたのメールアドレスが登録済みの場合、本人確認用のメールが数分以内に送信されます。,"If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes.",如果您的邮箱存在于我们的数据库中，您将收到一封确认帐号的邮件。
+devise.mailer.confirmation_instructions.action,アカウント認証,Confirm my account,确认我的帐户
+devise.mailer.confirmation_instructions.greeting,ようこそ、%{recipient}さん!,Welcome %{recipient}!,欢迎 %{recipient}!
+devise.mailer.confirmation_instructions.instruction,次のリンクでメールアドレスの認証が完了します:,You can confirm your account email through the link below:,您可以通过下面的链接确认您的帐户的电子邮件:
+devise.mailer.confirmation_instructions.subject,[行知学園ITシステム]アカウントの認証,Confirmation instructions,帐户确认信息
+devise.mailer.reset_password_instructions.action,パスワード変更,Change my password,更改我的密码
+devise.mailer.reset_password_instructions.greeting,こんにちは、%{recipient}さん!,Hello %{recipient}!,你好 %{recipient}!
+devise.mailer.reset_password_instructions.instruction,誰かがパスワードの再設定を希望しました。次のリンクでパスワードの再設定が出来ます。,"Someone has requested a link to change your password, and you can do this through the link below.",有人要求更改密码的链接，您可以通过下面的链接更改密码：
+devise.mailer.reset_password_instructions.instruction_2,あなたが希望したのではないのなら、このメールは無視してください。,"If you didn't request this, please ignore this email.",如果您没有要求请求更改密码，请忽略此电子邮件。
+devise.mailer.reset_password_instructions.instruction_3,上のリンクにアクセスして新しいパスワードを設定するまで、パスワードは変更されません。,Your password won't change until you access the link above and create a new one.,如果你没有访问上面的链接并更改密码，你的密码就不会被改变。
+devise.mailer.reset_password_instructions.subject,[行知学園ITシステム]パスワードの再設定,Reset password instructions,重置密码信息
+devise.mailer.unlock_instructions.action,アカウントのロック解除,Unlock my account,帐户解锁
+devise.mailer.unlock_instructions.greeting,こんにちは、%{recipient}さん!,Hello %{recipient}!,你好 %{recipient}!
+devise.mailer.unlock_instructions.instruction,アカウントのロックを解除するには下のリンクをクリックしてください。,Click the link below to unlock your account:,点击下面的链接到您的帐户解锁:
+devise.mailer.unlock_instructions.message,ログイン失敗が繰り返されたため、アカウントはロックされています。,Your account has been locked due to an excessive amount of unsuccessful sign in attempts.,由于多次的不成功的登入尝试，您的帐户已被锁定。
+devise.mailer.unlock_instructions.subject,[行知学園ITシステム]アカウントのロック解除,Unlock instructions,帐户解锁信息
+devise.mailer.email_changed.subject,[行知学園ITシステム]メールアドレスの変更,Email Changed,电邮已被修改
+devise.mailer.password_change.subject,[行知学園ITシステム]パスワード変更,Password Changed,密码已被重置
+devise.passwords.edit.change_my_password,パスワードを変更する,Change my password,更改我的密码
+devise.passwords.edit.change_your_password,パスワード変更,Change your password,更改您的密码
+devise.passwords.edit.confirm_new_password,確認用新しいパスワード,Confirm new password,确认新密码
+devise.passwords.edit.new_password,新しいパスワード,New password,新密码
+devise.passwords.new.forgot_your_password,パスワードを忘れましたか?,Forgot your password?,忘记密码？
+devise.passwords.new.send_me_reset_password_instructions,パスワードの再設定方法を送信する,Send me reset password instructions,请给我发送重设密码的邮件
+devise.passwords.no_token,このページにはアクセスできません。パスワード再設定メールのリンクからアクセスされた場合には、URL をご確認ください。,"You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided.",无重置邮件不可访问密码重置页面。如果您是从重置邮件来到了这个页面，请确保您输入的URL完整的。
+devise.passwords.send_instructions,パスワードの再設定について数分以内にメールでご連絡いたします。,You will receive an email with instructions on how to reset your password in a few minutes.,几分钟后，您将收到重置密码的电子邮件。
+devise.passwords.send_paranoid_instructions,あなたのメールアドレスが登録済みの場合、パスワード再設定用のメールが数分以内に送信されます。,"If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes.",如果您的邮箱存在于我们的数据库中，您将收到一封找回密码的邮件。
+devise.passwords.updated,パスワードが正しく変更されました。,Your password has been changed successfully. You are now signed in.,您的密码已修改成功，您现在已登录。
+devise.passwords.updated_not_active,パスワードが正しく変更されました。,Your password has been changed successfully.,您的密码已修改成功。
+devise.registrations.edit.are_you_sure,本当に良いですか?,Are you sure?,你确定吗？
+devise.registrations.edit.cancel_my_account,アカウント削除,Cancel my account,取消我的帐户
+devise.registrations.edit.currently_waiting_confirmation_for_email,認証待ちメールアドレス：,Currently waiting confirmation for: %{email},等待 %{email} 的确认
+devise.registrations.edit.leave_blank_if_you_don_t_want_to_change_it,空欄のままなら変更しません,leave blank if you don't want to change it,你不想去改变它，不需要填写
+devise.registrations.edit.title,%{resource}編集,Edit %{resource},修改 %{resource}
+devise.registrations.edit.unhappy,気に入りません,Unhappy,不喜欢
+devise.registrations.edit.unneed,パスワード変更をしない場合は、入力の必要はありません。,leave blank if you don't need to change it,你不想去改变它，不需要填写
+devise.registrations.edit.update,更新,Update,更新
+devise.registrations.edit.we_need_your_current_password_to_confirm_your_changes,変更を反映するには現在のパスワードを入力してください,we need your current password to confirm your changes,我们需要您的当前密码以确认您的更改
+devise.registrations.new.sign_up,アカウント登録,Sign up,注册
+devise.registrations.destroyed,アカウントを削除しました。,Bye! Your account has been successfully cancelled. We hope to see you again soon.,再见！您的帐户已成功注销。我们希望很快可以再见到您。
+devise.registrations.signed_up,アカウント登録が完了しました。,Welcome! You have signed up successfully.,欢迎！您已注册成功。
+devise.registrations.signed_up_but_inactive,ログインするためには、アカウントを有効化してください。,"You have signed up successfully. However, we could not sign you in because your account is not yet activated.",您已注册，但尚未激活帐号。
+devise.registrations.signed_up_but_locked,アカウントがロックされているためログインできません。,"You have signed up successfully. However, we could not sign you in because your account is locked.",您已注册，但帐号被锁定了。
+devise.registrations.signed_up_but_unconfirmed,本人確認用のメールを送信しました。メール内のリンクからアカウントを有効化させてください。,A message with a confirmation link has been sent to your email address. Please follow the link to activate your account.,一封带有确认链接的邮件已经发送至您的邮箱，请检查邮箱（包括垃圾邮箱），并点击该链接激活您的帐号。
+devise.registrations.update_needs_confirmation,アカウント情報を変更しました。変更されたメールアドレスの本人確認のため、本人確認用メールより確認処理をおこなってください。,"You updated your account successfully, but we need to verify your new email address. Please check your email and follow the confirm link to confirm your new email address.",信息更新成功，但我们需要验证您的新电子邮件地址，请检查邮箱（包括垃圾邮箱），并点击该链接激活您的帐号。
+devise.registrations.updated,アカウント情報を変更しました。,Your account has been updated successfully.,帐号资料更新成功。
+devise.sessions.destroy.sign_out,ログアウト,Logout,注销
+devise.sessions.new.sign_in,ログイン,Sign in,登录
+devise.sessions.already_signed_out,既にログアウト済みです。,Signed out successfully.,已经退出成功。
+devise.sessions.signed_in,ログインしました。,Signed in successfully.,登录成功。
+devise.sessions.signed_out,ログアウトしました。,Signed out successfully.,退出成功。
+devise.shared.links.back,戻る,Back,返回
+devise.shared.links.didn_t_receive_confirmation_instructions,アカウント確認のメールを受け取っていませんか?,Didn't receive confirmation instructions?,没有收到确认邮件？
+devise.shared.links.didn_t_receive_unlock_instructions,アカウントのロック解除方法のメールを受け取っていませんか?,Didn't receive unlock instructions?,没有收到解锁邮件？
+devise.shared.links.forgot_your_password,パスワードを忘れましたか?,Forgot your password?,忘记密码？
+devise.shared.links.sign_in,ログイン,Sign in,登录
+devise.shared.links.sign_in_with_provider,%{provider}でログイン,Sign in with %{provider},用 %{provider} 登录
+devise.shared.links.sign_up,アカウント登録,Sign up,注册
+devise.unlocks.new.resend_unlock_instructions,アカウントのロック解除メールを再送,Resend unlock instructions,重发解锁邮件
+devise.unlocks.send_instructions,アカウントのロック解除方法を数分以内にメールでご連絡します。,You will receive an email with instructions for how to unlock your account in a few minutes.,几分钟后，您将收到一封解锁帐号的邮件。
+devise.unlocks.send_paranoid_instructions,アカウントが見つかった場合、アカウントのロック解除方法を数分以内にメールでご連絡します。,"If your account exists, you will receive an email with instructions for how to unlock it in a few minutes.",如果您的邮箱存在于我们的数据库中，您将收到一封解锁帐号的邮件。
+devise.unlocks.unlocked,アカウントをロック解除しました。,Your account has been unlocked successfully. Please sign in to continue.,您的帐号已成功解锁，您现在已登录。
+devise.failure.already_authenticated,すでにログインしています。,You are already signed in.,您已经登录。
+devise.failure.inactive,アカウントが有効化されていません。メールに記載された手順にしたがって、アカウントを有効化してください。,Your account is not activated yet.,您还没有激活帐户。
+devise.failure.invalid,%{authentication_keys}もしくはパスワードが不正です。,Invalid %{authentication_keys} or password.,邮箱或密码错误。
+devise.failure.last_attempt,あなたのアカウントがロックされる前に、複数回の操作がおこなわれています。,You have one more attempt before your account is locked.,您还有最后一次尝试机会，再次失败您的帐号将被锁定。
+devise.failure.locked,あなたのアカウントはロックされています。,Your account is locked.,您的帐号已被锁定。
+devise.failure.not_found_in_database,%{authentication_keys}もしくはパスワードが不正です。,Invalid %{authentication_keys} or password.,邮箱或密码错误。
+devise.failure.timeout,セッションがタイムアウトしました。もう一度ログインしてください。,Your session expired. Please sign in again to continue.,您已登录超时，请重新登录。
+devise.failure.unauthenticated,アカウント登録もしくはログインしてください。,You need to sign in or sign up before continuing.,继续操作前请注册或者登录。
+devise.failure.unconfirmed,メールアドレスの本人確認が必要です。,You have to confirm your email address before continuing.,继续操作前请先确认您的帐号。
+devise.omniauth_callbacks.failure,%{kind} アカウントによる認証に失敗しました。理由：（%{reason}）,"Could not authenticate you from %{kind} because ""%{reason}"".",由于%{reason}，无法从%{kind}获得授权。
+devise.omniauth_callbacks.success,%{kind} アカウントによる認証に成功しました。,Successfully authenticated from %{kind} account.,成功地从%{kind}获得授权。
+views.pagination.first,&laquo; 最初,&laquo; first,&laquo; 第一页
+views.pagination.last,最後 &raquo;,Last &raquo;,最后一页 &raquo;
+views.pagination.next,次 &rsaquo;,Next &rsaquo;,下一页 &rsaquo;
+views.pagination.previous,&lsaquo; 前,&lsaquo; front,&lsaquo; 上一页
+views.pagination.truncate,&hellip;,&hellip;,&hellip;
+enums.lecture.confirmed.approved,承認,Approval,准许
+enums.lecture.confirmed.notyet,未,Not yet,未
+enums.lecture.confirmed.unapproved,否認,Denial,否认
+enums.paper_trail.version.event.create,作成,Create,创建
+enums.paper_trail.version.event.destroy,削除,Delete,删除
+enums.paper_trail.version.event.update,更新,update,更新
+enums.reserve.approved.approved,承認,Approval,准许
+enums.reserve.approved.notyet,未,Not yet,未
+enums.reserve.approved.unapproved,否認,Denial,否认
+enums.student.application_type.other,他,other,其他
+enums.student.application_type.qq,QQ,QQ,QQ
+enums.student.application_type.wechat,WeChat,WeChat,微信
+enums.student.sex.female,女,woman,女
+enums.student.sex.male,男,Man,男
+enums.student.sex.other,他,other,其他
+enums.student_commission.referral_type.person,個人,Individual,个人
+enums.student_commission.referral_type.cache_back,返金,Refund,还款
+enums.student_commission.referral_type.inflow,法人,Corporation,公司
+attributes.code,コード,code,代码
+attributes.created_at,作成日,Created date,建立日期
+attributes.creator,作成者,Author,实现者
+attributes.creator_id,作成者ID,Author,实现者
+attributes.deleted_at,削除日,Deleted date,删除日期
+attributes.deleter,削除者,Deleted person,删除者
+attributes.deleter_id,削除者,Deleted person,删除者
+attributes.description,備考,Remarks,备考
+attributes.faicon,bolt,bolt,bolt
+attributes.id,ID,ID,ID
+attributes.name,名称,name,名称
+attributes.updated_at,更新日,Update date,更新日期
+attributes.updater,更新者,changer,更新
+attributes.updater_id,更新者,changer,更新
+attributes.version_comment,変更意図,Change intention,改变意图
+simple_form.error_notification.default_message,以下の対応が必要です,The following actions are required,请确认以下错误
+simple_form.no,いいえ,No,取消
+simple_form.required.html,"<span class=""badge badge-danger ml-1"">必須</span>","<span class=""badge badge-danger ml-1"">Required</span>","<span class=""badge badge-danger ml-1"">必须</span>"
+simple_form.yes,はい,Yes,确认
+credit_types,"[""Visa"", ""Mastercard"", ""Amex"", ""Diners"", ""Jcb"", ""Solo"", ""Switch"", ""Maestro"", ""Unionpay"", ""Dankort"", ""Rupay"", ""Hipercard"", ""Elo"", ""Mir"", ""Discover""]","[""Visa"", ""Mastercard"", ""Amex"", ""Diners"", ""Jcb"", ""Solo"", ""Switch"", ""Maestro"", ""Unionpay"", ""Dankort"", ""Rupay"", ""Hipercard"", ""Elo"", ""Mir"", ""Discover""]","[""签证"", ""万事达卡"", ""美国运通"", ""食客"", ""JCB"", ""独奏"", ""开关"", ""大师"", ""银联"", ""Dankort"", ""Rupay"", ""Hipercard"", ""ELO"", ""米尔"", ""发现""]"
+date.abbr_day_names,"[""日"", ""月"", ""火"", ""水"", ""木"", ""金"", ""土""]","[""Day"", ""Moon"", ""fire"", ""water"", ""wood"", ""Money"", ""soil""]","[""周日"", ""周一"", ""周二"", ""周三"", ""周四"", ""周五"", ""周六""]"
+date.abbr_month_names,"[nil, ""1月"", ""2月"", ""3月"", ""4月"", ""5月"", ""6月"", ""7月"", ""8月"", ""9月"", ""10月"", ""11月"", ""12月""]","[nil, ""January"", ""February"", ""In March"", ""April"", ""May"", ""June"", ""July"", ""August"", ""September"", ""October"", ""November"", ""December""]","[nil, ""一月"", ""二月"", ""三月"", ""四月"", ""五月"", ""六月"", ""七月"", ""八月"", ""九月"", ""十月"", ""十一月"", ""十二月""]"
+date.day_names,"[""日曜日"", ""月曜日"", ""火曜日"", ""水曜日"", ""木曜日"", ""金曜日"", ""土曜日""]","[""Sunday"", ""Monday"", ""Tuesday"", ""Wednesday"", ""Thursday"", ""Friday"", ""Saturday""]","[""星期天"", ""星期一"", ""星期二"", ""星期三"", ""星期四"", ""星期五"", ""星期六""]"
+date.formats.default,%Y/%m/%d(%a),%Y /%m /%d (%a),%Y /%m /%d（%a）
+date.formats.long,%Y年%m月%d日(%a),%Y year%m month%d day (%a),%Y年%月份%d天（%a）
+date.formats.short,%m/%d,%m /%d,%m /%d
+date.month_names,"[nil, ""1月"", ""2月"", ""3月"", ""4月"", ""5月"", ""6月"", ""7月"", ""8月"", ""9月"", ""10月"", ""11月"", ""12月""]","[nil, ""January"", ""February"", ""In March"", ""April"", ""May"", ""June"", ""July"", ""August"", ""September"", ""October"", ""November"", ""December""]","[nil, ""一月"", ""二月"", ""三月"", ""四月"", ""五月"", ""六月"", ""七月"", ""八月"", ""九月"", ""十月"", ""十一月"", ""十二月""]"
+date.order,"[:year, :month, :day]","[:year, :month, :day]","[:year, :month, :day]"
+datetime.distance_in_words.about_x_hours.one,約1時間,About 1 hour,大约1个小时
+datetime.distance_in_words.about_x_hours.other,約%{count}時間,About %{count} hours,大约 %{count} 小时
+datetime.distance_in_words.about_x_months.one,約1ヶ月,About 1 month,大约1个月
+datetime.distance_in_words.about_x_months.other,約%{count}ヶ月,About %{count} 0 month,大约 %{count} 个月
+datetime.distance_in_words.about_x_years.one,約1年,About 1 year,大约1年
+datetime.distance_in_words.about_x_years.other,約%{count}年,About %{count} 0 years,大约 %{count} 年
+datetime.distance_in_words.almost_x_years.one,1年弱,1 year or less,接近 1年
+datetime.distance_in_words.almost_x_years.other,%{count}年弱,%{count},接近 %{count} 年
+datetime.distance_in_words.half_a_minute,30秒前後,Around 30 seconds,半分钟
+datetime.distance_in_words.less_than_x_minutes.one,1分以内,Within 1 minute,不到1分钟
+datetime.distance_in_words.less_than_x_minutes.other,%{count}分以内,within %{count} minutes,不到 %{count} 分钟
+datetime.distance_in_words.less_than_x_seconds.one,1秒以内,Within 1 second,不到1秒
+datetime.distance_in_words.less_than_x_seconds.other,%{count}秒以内,within %{count} seconds,不到 %{count} 秒
+datetime.distance_in_words.over_x_years.one,1年以上,over 1 year,1超过年
+datetime.distance_in_words.over_x_years.other,%{count}年以上,More than %{count} years,%{count} 年多
+datetime.distance_in_words.x_days.one,1日,1 day,1天
+datetime.distance_in_words.x_days.other,%{count}日,%{count} day,%{count}天
+datetime.distance_in_words.x_minutes.one,1分,1 minute,1分钟
+datetime.distance_in_words.x_minutes.other,%{count}分,%{count}min,%{count} 分钟
+datetime.distance_in_words.x_months.one,1ヶ月,1 month,1个月
+datetime.distance_in_words.x_months.other,%{count}ヶ月,%{count}month,%{count} 个月
+datetime.distance_in_words.x_seconds.one,1秒,1 second,1秒
+datetime.distance_in_words.x_seconds.other,%{count}秒,%{count}sec,%{count} 秒
+datetime.distance_in_words.x_years.one,1年,1 year,1年
+datetime.distance_in_words.x_years.other,%{count}年,%{count}years,%{count} 年
+datetime.prompts.day,日,Day,日
+datetime.prompts.hour,時,Time,时
+datetime.prompts.minute,分,Minute,分
+datetime.prompts.month,月,Moon,月
+datetime.prompts.second,秒,Seconds,秒
+datetime.prompts.year,年,Year,年
+number.currency.format.delimiter,",",",",，
+number.currency.format.format,%n%u,%n%u,%n%u
+number.currency.format.precision,0,0,0
+number.currency.format.separator,.,.,。
+number.currency.format.significant,false,false,false
+number.currency.format.strip_insignificant_zeros,false,false,false
+number.currency.format.unit,円,Circle,圈
+number.format.delimiter,",",",",，
+number.format.precision,3,3,3
+number.format.separator,.,.,。
+number.format.significant,false,false,false
+number.format.strip_insignificant_zeros,false,false,false
+number.human.decimal_units.format,%n %u,%n%u,%n %u
+number.human.decimal_units.units.billion,十億,a billion,十亿
+number.human.decimal_units.units.million,百万,million,百万
+number.human.decimal_units.units.quadrillion,千兆,A thousand trillion,千万亿
+number.human.decimal_units.units.thousand,千,thousand,一千
+number.human.decimal_units.units.trillion,兆,Trillion,兆
+number.human.decimal_units.units.unit,名,Name,一个名字
+number.human.format.delimiter,"","",""
+number.human.format.precision,3,3,3
+number.human.format.significant,true,true,true
+number.human.format.strip_insignificant_zeros,true,true,true
+number.human.storage_units.format,%n%u,%n%u,%n%u
+number.human.storage_units.units.byte,バイト,Part-Time Job,字节
+number.human.storage_units.units.gb,GB,GB,GB
+number.human.storage_units.units.kb,KB,KB,KB
+number.human.storage_units.units.mb,MB,MB,MB
+number.human.storage_units.units.tb,TB,TB,TB
+number.percentage.format.delimiter,"","",""
+number.percentage.format.format,%n%,%n%,%n%
+number.precision.format.delimiter,"","",""
+support.array.last_word_connector,、,",",，
+support.array.two_words_connector,、,",",，
+support.array.words_connector,、,",",，
+time.am,午前,a.m.,上午
+time.formats.default,%Y/%m/%d %H:%M:%S,%Y /%m /%d% H:%M:%S,%Y /%m /%d%H：%M：%S
+time.formats.long,%Y年%m月%d日(%a) %H時%M分%S秒 %z,%Y year%m month%d day (%a)% H hour%M minute%S second%z,%Y年%m月%d天（%a）%H小时%M分钟%S秒%z
+time.formats.short,%y/%m/%d %H:%M,%y /%m /%d%H:%M,%y /%m /%d%H：%M
+time.pm,午後,afternoon,下午
+controllers.users.lock.flash.notice,ロックしました。,I locked it.,我锁定了它。
+controllers.users.unlock.flash.notice,ロックを解除しました。,Unlocked.,的“VE解锁。
+controllers.headers.redirect_default(keyword).flash.alert,では社員・学生が見つかりませんでした,No employees / students were found,没有找到员工/学生
+controllers.lectures.approve.flash.notice,承認しました。,approved.,它被批准。
+controllers.lectures.approve.flash.alert,承認に失敗しました。,Authorization failed.,授权失败。
+controllers.lectures.unapprove.flash.notice,否認しました。,I denied it.,我否认了。
+controllers.lectures.unapprove.flash.alert,否認に失敗しました。,It failed in denial.,它没有否认。
+controllers.lectures.back_confirmed.flash.notice,差戻しました。,I sent it back.,我寄回去了。
+controllers.lectures.back_confirmed.flash.alert,差戻に失敗しました。,Failed to send back.,无法发回。
+controllers.reserves.approve.flash.notice,承認しました。,approved.,它被批准。
+controllers.reserves.approve.flash.alert,承認に失敗しました。,Authorization failed.,授权失败。
+controllers.reserves.unapprove.flash.notice,否認しました。,I denied it.,我否认了。
+controllers.reserves.unapprove.flash.alert,否認に失敗しました。,It failed in denial.,它没有否认。
+controllers.reserves.back_approved.flash.notice,差戻しました。,I sent it back.,我寄回去了。
+controllers.reserves.back_approved.flash.alert,差戻に失敗しました。,Failed to send back.,无法发回。
+controllers.klasses.bulk_klass_subjects.flash.alert,の生成に失敗しました,Failed to generate,无法生成

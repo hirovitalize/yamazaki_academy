@@ -1,0 +1,44 @@
+- model = @student
+- similar_models = @similar_students
+- provide :title, t_iconed_model(model, :show)
+
+= render 'shared/validation_messages', model: model
+
+.row
+  .col-md-6
+    = simple_form_for model,
+      html: { class: 'form-horizontal' },
+      defaults: simple_form_display_defaults do |f|
+        .card
+          .card-header
+            = "未マージ学生"
+          .card-body
+            table.table.table-striped.table-sm.table-borderless.m-0
+              tbody
+                =<> render 'shared/action/delete_button',
+                            path: change_normalized_student_path(model),
+                            options: { \
+                            title: 'マスター',
+                              icon: :check,
+                              method: :post,
+                             data: {confirm: 'これをマスター情報にしますか？', commit: 'はい' } \
+                            }
+                = f.input :code
+                = f.input :name
+
+  .col-md-6
+      .card
+        .card-header
+          = "類似した学生候補"
+        .card-body
+          - similar_models.each do |similar_model|
+            tr[class="#{'bg-secondndary' if model.deleted?}"]
+              td.action-column
+                = link_to compare_merging_student_path(model, target_student_id: similar_model.id), class: 'btn btn-outline-primary btn-sm', target: ['_blank']
+                  = fa_icon 'exchange'
+              td = link_object similar_model
+            br
+            br
+
+.button-container
+  =<> render 'shared/action/index_button', path: model

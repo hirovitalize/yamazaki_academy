@@ -1,0 +1,36 @@
+- provide :title, t_iconed_model(:student_billing)
+
+- models = @student_billings
+- q = @q
+
+= render 'shared/search_form', q: q
+
+.button-container
+  = render 'shared/action/new_button', path: StudentBilling, options: { target: '_blank' }
+
+.pagination-container
+  = page_entries_info(@student_billings)
+  = paginate @student_billings
+
+table.table.table-condensed.table-filterable.table-hover
+  thead
+    tr
+      th.filter-false.sorter-false.resizable-false
+      th.sorter-false
+        = sort_link q, :student_id, t_field(:student_billing, :student)
+      th.sorter-false
+        = sort_link q, :total, t_field(:student_billing, :total)
+      th.sorter-false
+        = sort_link q, :description, t_field(:student_billing, :description)
+
+  tbody
+    - models.each do |model|
+      tr[class="#{'bg-secondndary' if model.deleted?}"]
+        td.action-column
+          =<> render 'shared/action/show_button', path: model, options: { target: ['_blank'] }
+        td = link_object model.student
+        td = number_to_currency model.total
+        td = truncated_text(model.description)
+
+.pagination-container
+  = paginate @student_billings

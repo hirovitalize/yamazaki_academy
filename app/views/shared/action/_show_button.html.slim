@@ -1,0 +1,14 @@
+ruby:
+  options ||= {}
+  default_options = {
+    class: 'btn btn-outline-info btn-sm',
+    data: { toggle: 'tooltip' },
+    title: t(".show")
+  }
+  label ||= false
+  model ||= path if path.is_a? ActiveRecord::Base
+- if policy? model, :show
+  = link_to path, default_options.deep_merge(options)
+    = fa_icon options[:icon] || "angle-double-right fw"
+    - if label
+      = label.is_a?(String) ? label : default_options[:title]

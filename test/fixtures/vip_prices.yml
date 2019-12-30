@@ -1,0 +1,13 @@
+one:
+  id: 1
+  name: '基本'
+  hours_min: 0
+  hours_max: 119
+  unit_price: 12000
+
+two:
+  id: 2
+  name: '120-'
+  hours_min: 120
+  hours_max: 179
+  unit_price: 11500

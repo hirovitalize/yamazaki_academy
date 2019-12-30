@@ -1,0 +1,44 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+# old: user_user
+# TODO: device
+# TODO: reset old-password
+create_table 'users', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC', force: :cascade do |t|
+  t.string 'email', default: '', null: false
+  t.string 'encrypted_password', default: '', null: false
+  t.string 'reset_password_token'
+  t.datetime 'reset_password_sent_at'
+  t.datetime 'remember_created_at'
+
+  # devise tracable
+  t.integer 'sign_in_count', default: 0, null: false
+  t.datetime 'current_sign_in_at'
+  t.datetime 'last_sign_in_at'
+  t.string 'current_sign_in_ip'
+  t.string 'last_sign_in_ip'
+
+  # devise confirmable
+  t.string   :confirmation_token
+  t.datetime :confirmed_at
+  t.datetime :confirmation_sent_at
+  t.string   :unconfirmed_email
+
+  # devise lockable
+  t.integer  :failed_attempts, default: 0, null: false
+  t.string   :unlock_token
+  t.datetime :locked_at
+
+  t.string 'auth_token', collation: 'utf8_bin'
+
+  t.integer 'creator_id'
+  t.integer 'updater_id'
+  t.integer 'deleter_id'
+  t.datetime 'created_at'
+  t.datetime 'updated_at'
+  t.datetime 'deleted_at', null: true
+
+  t.index ['auth_token'], name: 'index_users_on_auth_token', unique: true
+  t.index ['deleted_at'], name: 'index_users_on_deleted_at'
+  t.index ['email', 'deleted_at'], name: 'index_users_on_email_deleted_at', unique: true
+  t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
+end

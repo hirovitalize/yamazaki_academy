@@ -1,0 +1,12 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+create_table "klass_template_subjects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  t.references "klass_template", null: false
+  t.references "subject", null: false
+  t.integer "creator_id"
+  t.integer "updater_id"
+  t.integer "deleter_id"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+  t.datetime "deleted_at", null: true
+end

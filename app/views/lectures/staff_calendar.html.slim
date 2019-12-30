@@ -1,0 +1,9 @@
+- provide :title, t_iconed_model(:staff) + 'カレンダー'
+
+= render 'shared/js_hidden_text'
+
+= render 'staff_calendar_search'
+
+.row
+  div.js-staff-calendar[data-staff_ids=@staff_ids]
+    #calendar

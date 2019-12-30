@@ -1,0 +1,6 @@
+.col-md-4
+  = f.input :name_cont_all, label: t_field(SubjectType, :name)
+  = f.input :subject_type_room_groups_room_group_id_in, label: t_field(Room, :room_groups),
+    as: :select,
+    collection: RoomGroup.all.pluck(:name, :id),
+    input_html: { multiple: true }

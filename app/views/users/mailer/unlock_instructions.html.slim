@@ -1,0 +1,13 @@
+p
+  = @resource.name
+  | 様
+  br
+  br
+  | 行知学園ITシステムです。
+  br
+p
+  | ログインの失敗が規定回数を超えました。
+p
+  | 以下のリンクをクリックしてロックを解除してください。
+p
+  = link_to 'ロック解除', unlock_url(@resource, unlock_token: @token)

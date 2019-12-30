@@ -1,0 +1,7 @@
+one:
+  id: 1
+  student_id: 1
+  total: 2000
+  paid: 2000
+  reserved: 2000
+  used: 1000

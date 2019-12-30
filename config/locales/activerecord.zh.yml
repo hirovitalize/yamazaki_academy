@@ -1,0 +1,385 @@
+---
+zh:
+  activerecord:
+    attributes:
+      area:
+        buildings: :activerecord.models.building
+        faicon: globe
+        klasses: :activerecord.models.klass
+        province: :activerecord.models.province
+      book:
+        course_category: :activerecord.models.course_category
+        faicon: book
+        price: 金额
+      building:
+        address: 地址
+        area: :activerecord.models.area
+        faicon: building
+      course:
+        course_category: :activerecord.models.course_category
+        faicon: code-fork
+        klass_templates: :activerecord.models.klass_template
+        price: 价格
+      course_category:
+        courses: :activerecord.models.course
+        faicon: 文件夹打开
+      discount_type:
+        price: 金额
+        rate: 率
+      equipment:
+        faicon: legal
+      equipment/room_equipment:
+        available: 可以使用
+        equipment: :activerecord.models.equipment
+        room: :activerecord.models.room
+      klass:
+        area: :activerecord.models.area
+        faicon: users
+        finish_date: 结束日期
+        hours: 讲座时间
+        klass_subjects: :activerecord.models.klass_subject
+        klass_template: :activerecord.models.klass_template
+        lecture_num: 次数
+        sharing_klass_subject: :activerecord.models.shared_klass_klass_subject
+        start_date: 开始日期
+        students: :activerecord.models.student
+        total_hours: 总时间
+      klass_subject:
+        faicon: book
+        fixed: 确认一下
+        fixed_icon: 检查
+        hours: 讲座时间
+        klass: :activerecord.models.klass
+        lecture_num: 次数
+        sharing_klasses: :activerecord.models.shared_klass_klass_subject
+        staff: 主要负责人
+        start_time: 讲座开始时间
+        subject: :activerecord.models.subject
+        total_hours: 总时间
+      klass_template:
+        course: :activerecord.models.course
+        course_category: :activerecord.models.course_category
+        courses: :activerecord.models.course
+        faicon: id-card
+        hours: 讲座时间
+        klasses: :activerecord.models.klass
+        lecture_num: 次数
+        students: :activerecord.models.student
+        subjects: :activerecord.models.subject
+        total_hours: 总时间
+      lecture:
+        canceled_status: 取消状态
+        confirmed: 准许/未/否认
+        confirmer: 批准人
+        faicon: graduation-cap
+        finish_time: 结束时刻
+        fix:
+          faicon: 检查
+        klass: :activerecord.models.klass
+        klass_subject: :activerecord.models.klass_subject
+        lecture_attend_log: :activerecord.models.lecture_attend_log
+        lecture_staffs: :activerecord.models.lecture_staff
+        lecture_students: :activerecord.models.lecture_student
+        lecture_time: 上课时间
+        reserve: :activerecord.models.reserve
+        staffs: :activerecord.models.staff
+        start_time: 开始时刻
+        student: :activerecord.models.student
+        students: :activerecord.models.student
+        subject: :activerecord.models.subject
+        subject_type: :activerecord.models.subject_type
+        tag_list: :activerecord.models.tag
+        tags: :activerecord.models.tag
+        time_changeable: 时间可变
+      lecture/lecture_staffs:
+        finish_time: :activerecord.attributes.lecture_staff.finish_time
+        staff: 员工
+        start_time: :activerecord.attributes.lecture_staff.start_time
+        work_kind: :activerecord.models.work_kind
+      lecture/work_kind:
+        faicon: folder_open
+        name: 业务类型
+      lecture/work_kinds:
+        faicon: folder_open
+        name: 业务类型
+      lecture_attend_log:
+        faicon: database
+        ip: IP地址
+        lecture: :activerecord.models.lecture
+        prev_cookie_student_ids: 上次登录的学生证
+        qr_made_at: QR创建日期
+        student: :activerecord.models.student
+        ua: 设备信息
+        validation_note: 日志详细信息
+      lecture_staff:
+        confirmed_salary: 薪酬（已批准）
+        confirmed_staff_hours: 授课时间（已批准）
+        faicon: user-plus
+        finish_time: 结束时间
+        lecture: :activerecord.models.lecture
+        lecture_day: 上课日
+        staff: :activerecord.models.staff
+        start_time: 开始时间
+        work_kind: :activerecord.models.work_kind
+      lecture_student:
+        confirmed_point: VIP时间(它被用来)
+        faicon: user
+        finished: 结束可否
+        lecture: :activerecord.models.lecture
+        mentor: 首席
+        student: :activerecord.models.student
+      province:
+        faicon: globe
+      reserve:
+        building: :activerecord.models.building
+        comment: 摘要
+        faicon: calendar
+        finish_time: 结束时刻
+        lecture: :activerecord.models.lecture
+        lecture_time: 课业时间
+        room: :activerecord.models.room
+        start_time: 开始时刻
+        time: 时间
+      role:
+        code: 代码
+        faicon: lock
+        staffs: :activerecord.models.staff
+      room:
+        area: :activerecord.models.area
+        building: :activerecord.models.building
+        equipments: :activerecord.models.equipment
+        faicon: cube
+        room_equipments: 设备
+        room_groups: :activerecord.models.room_group
+        seat_number: 坐席数
+        seat_number_gteq: 下限数量
+        seat_number_lteq: 上限数量
+        wday_0_close_time: 星期天结束时间
+        wday_0_open_time: 星期天开始时间
+        wday_1_close_time: 星期一结束时间
+        wday_1_open_time: 星期一开始时间
+        wday_2_close_time: 星期二结束时间
+        wday_2_open_time: 星期二开始时间
+        wday_3_close_time: 星期三结束时间
+        wday_3_open_time: 星期三开始时间
+        wday_4_close_time: 星期四结束时间
+        wday_4_open_time: 星期四开始时间
+        wday_5_close_time: 星期五结束时间
+        wday_5_open_time: 星期五开始时间
+        wday_6_close_time: 星期六结束时间
+        wday_6_open_time: 星期六开始时间
+      room/room_equipments:
+        equipment: :activerecord.attributes.room_equipment.equipment
+      room_equipment:
+        available: 可以使用
+        equipment: :activerecord.models.equipment
+        room: :activerecord.models.room
+      room_group:
+        faicon: tag
+        rooms: :activerecord.models.room
+        rules: 规则
+      shared_klass_klass_subject:
+        faicon: hare-alt
+        klass: :activerecord.models.klass
+        klass_subject: :activerecord.models.klass_subject
+      staff:
+        birthday: 出生日期
+        code: 员工人数
+        email: 电子邮箱
+        faicon: user-o
+        mentee: 负责人
+        name: 姓名
+        roles: :activerecord.models.role
+        subjects: 担当科目
+        tel: 电话号码
+        user: :activerecord.models.user
+      student:
+        area: :activerecord.models.area
+        birthday: 生日
+        code: 学生号码
+        contracted_at: 合约日期
+        courses: :activerecord.models.course
+        faicon: user
+        klasses: :activerecord.models.klass
+        lectures: :activerecord.models.lecture
+        mentor: 首席
+        mentors: :activerecord.models.student_mentor
+        name: 姓名
+        name_mei: 名
+        name_sei: 先生
+        normalized: 名称整理
+        qq: QQ
+        seller: 销售代表
+        sex: 性别
+        student_balance: :activerecord.models.student_balance
+        student_mentors: :activerecord.models.student_mentor
+        student_point: :activerecord.models.student_point
+        tel: 电话号码
+        visa_type: 签证
+        wechat: Wechat
+        yomi: 全名
+        yomi_mei: 名字
+        yomi_sei: 姓氏
+      student/student_mentor:
+        staff: :activerecord.models.staff
+      student_balance:
+        billings_total: 请求总额
+        faicon: balance-scale
+        payments_total: 付款总额
+        price: 剩余款
+        student: :activerecord.models.student
+      student_billing:
+        faicon: shopping-cart
+        student: :activerecord.models.student
+        student_billing_details: :activerecord.models.student_billing_detail
+        total: 总计
+      student_billing_detail:
+        discount: :activerecord.models.student_billing_detail_discount
+        final_price: 的金额
+        item: 项目
+        memo: 备注
+        number: 数
+        price: 的金额
+        student_billing: :activerecord.models.student_billing
+        student_billing_detail_discount: :activerecord.models.student_billing_detail_discount
+        unit_price: 单价
+      student_billing_detail_discount:
+        discount_memo: 其他原因
+        discount_type: :activerecord.models.discount_type
+        price: 折扣金额
+        student_billing_detail: :activerecord.models.student_billing_detail
+      student_commission:
+        cache_back_type: :activerecord.models.cache_back_type
+        commission_type: 提款方式
+        faicon: gift
+        inflow_source: :activerecord.models.inflow_source
+        payed_at: 付款日期
+        price: 金额
+        referral: 介绍人
+        referral_fee: 介绍费
+        referral_type: 介绍类型
+        student: :activerecord.models.student
+      student_mentor:
+        staff: :activerecord.models.staff
+      student_payment:
+        faicon: credit-card
+        gen: 元
+        pay_date: 付款日期
+        paymethod: :activerecord.models.paymethod
+        price: 金额
+        receiver: 接受者
+        settlement_price: 结算金额
+        student: :activerecord.models.student
+      student_point:
+        faicon: ticket
+        paid: 已支付
+        reserved: 使用打算
+        student: :activerecord.models.student
+        total: 总计
+        used: 使用完
+      subject:
+        faicon: book
+        klass_template: :activerecord.models.klass_template
+        klass_templates: :activerecord.models.klass_template
+        lectures: :activerecord.models.lecture
+        personal: 一对一授课
+        staffs: 担当老师
+        subject_category: :activerecord.models.subject_category
+      subject_category:
+        faicon: folder-open
+      subject_type:
+        available_room_groups: 可以使用的房型
+        color: 类别
+        faicon: file
+        room_groups: :activerecord.models.subject_type_room_group
+      tag:
+        faicon: tag
+        severity: 重要性
+      user:
+        auth_token: 访问令牌
+        current_sign_in_at: 最新登录时间
+        current_sign_in_ip: 最新登录IP
+        encrypted_password: 密码
+        faicon: ban
+        failed_attempts: 失败次数
+        last_sign_in_at: 最后登录时间
+        last_sign_in_ip: 最后登录IP
+        locked_at: 锁定时间
+        remember_created_at: 创作时间
+        reset_password_sent_at: 重置密码时间
+        reset_password_token: 重置密码令牌
+        sign_in_count: 登录次数
+        staff: :activerecord.models.staff
+        unlock_token: 解锁令牌
+      vip:
+        course_category: :activerecord.models.course_category
+        faicon: star
+      vip_price:
+        hours_max: 最长时间
+        hours_min: 最短时间
+        unit_price: 时间单价
+      work_kind:
+        faicon: folder-open
+        name: 业务类别
+    models:
+      area: 场所
+      book: 书
+      building: 建筑物
+      cache_back_type: 现金返还类型
+      course: 课程
+      course_category: 课程类别
+      discount_type: 折扣类型
+      equipment: 设备
+      inflow_source: 流入源
+      klass: 班
+      klass_subject: 讲座
+      klass_template: 班类型
+      lecture: 课程
+      lecture_attend_log: 出勤记录
+      lecture_staff: 讲师
+      lecture_student: 上课
+      paymethod: 付款方式
+      province: 空间
+      reserve: 预订
+      role: 权限
+      room: 房间
+      room_equipment: 设备设备
+      room_group: 房间类别
+      shared_klass_klass_subject: 联合课程
+      staff: 工作人员
+      staff_role: 工作人员权限
+      student: 学生
+      student_balance: 未支付
+      student_billing: 购买
+      student_billing_detail: 细项
+      student_billing_detail_discount: 折扣
+      student_commission: 提款
+      student_mentor: 老師
+      student_payment: 付款
+      student_point: 得分
+      student_point_log: 得分日志
+      subject: 科目
+      subject_category: 科目归属
+      subject_type: 科目种类
+      subject_type_room_group: 能使用的房间类别
+      tag: 标签
+      vip: VIP
+      vip_price: VIP单价
+      work_kind: 业务类别
+  attributes:
+    code: 代码
+    created_at: 建立日期
+    creator: 实现者
+    creator_id: 实现者
+    deleted_at: 删除日期
+    deleter: 删除者
+    deleter_id: 删除者
+    description: 备考
+    faicon: bolt
+    id: ID
+    isbn: ISBN
+    name: 名称
+    updated_at: 更新日期
+    updater: 更新
+    updater_id: 更新
+    version_comment: 改变意图

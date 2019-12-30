@@ -1,0 +1,394 @@
+---
+ja:
+  activerecord:
+    attributes:
+      tag:
+        faicon: tag
+        severity: 重要度
+      area:
+        buildings: :activerecord.models.building
+        faicon: globe
+        klasses: :activerecord.models.klass
+        province: :activerecord.models.province
+      book:
+        faicon: book
+        price: 金額
+        course_category: :activerecord.models.course_category
+      building:
+        address: アドレス
+        area: :activerecord.models.area
+        faicon: building
+      klass_template:
+        courses: :activerecord.models.course
+        course_category: :activerecord.models.course_category
+        faicon: id-card
+        hours: 講義時間
+        klasses: :activerecord.models.klass
+        lecture_num: 講義回数
+        subjects: :activerecord.models.subject
+        total_hours: 合計時間
+      course_category:
+        courses: :activerecord.models.course
+        faicon: folder-open
+      equipment:
+        faicon: legal
+      equipment/room_equipment:
+        available: 利用可能
+        equipment: :activerecord.models.equipment
+        room: :activerecord.models.room
+      course:
+        course_category: :activerecord.models.course_category
+        klass_templates: :activerecord.models.klass_template
+        faicon: code-fork
+        price: 値段
+      klass:
+        area: :activerecord.models.area
+        faicon: users
+        finish_date: 終了日
+        hours: 講義時間
+        klass_subjects: :activerecord.models.klass_subject
+        klass_template: :activerecord.models.klass_template
+        sharing_klass_subject: :activerecord.models.shared_klass_klass_subject
+        lecture_num: 講義回数
+        start_date: 開始日
+        students: :activerecord.models.student
+        total_hours: 合計時間
+      klass_subject:
+        faicon: book
+        hours: 講義時間
+        klass: :activerecord.models.klass
+        sharing_klasses: :activerecord.models.shared_klass_klass_subject
+        lecture_num: 講義回数
+        staff: 主担任
+        start_time: 講義開始時間
+        subject: :activerecord.models.subject
+        total_hours: 合計時間
+        fixed: 確定
+        fixed_icon: check
+      shared_klass_klass_subject:
+        faicon: share-alt
+        klass: :activerecord.models.klass
+        klass_subject: :activerecord.models.klass_subject
+      lecture:
+        canceled_status: キャンセル
+        confirmed: 承認/未/否認
+        confirmer: 承認者
+        faicon: graduation-cap
+        finish_time: 終了時刻
+        fix:
+          faicon: check
+        klass: :activerecord.models.klass
+        lecture_attend_log: :activerecord.models.lecture_attend_log
+        klass_subject: :activerecord.models.klass_subject
+        lecture_staffs: 講師/時間
+        lecture_time: 授業時間
+        reserve: :activerecord.models.reserve
+        staffs: :activerecord.models.staff
+        start_time: 開始時刻
+        student: :activerecord.models.student
+        students: :activerecord.models.student
+        subject: :activerecord.models.subject
+        subject_type: :activerecord.models.subject_type
+        tags: :activerecord.models.tag
+        tag_list: :activerecord.models.tag
+        time_changeable: 時間変更可
+      lecture/lecture_staffs:
+        finish_time: :activerecord.attributes.lecture_staff.finish_time
+        staff: :activerecord.attributes.lecture_staff.staff
+        start_time: :activerecord.attributes.lecture_staff.start_time
+        work_kind: :activerecord.models.work_kind
+      lecture/work_kinds:
+        faicon: folder-open
+        name: 業務種別
+      lecture_staff:
+        confirmed_staff_hours: 講師時間数(承認済)
+        faicon: upload
+        finish_time: 終了時刻
+        lecture: :activerecord.models.lecture
+        lecture_day: 授業日
+        staff: :activerecord.models.staff
+        start_time: 開始時刻
+        work_kind: :activerecord.models.work_kind
+      lecture_student:
+        confirmed_point: VIP時間(使用済)
+        faicon: user
+        finished: 終了の可否
+        lecture: :activerecord.models.lecture
+        mentor: 担当者
+        student: :activerecord.models.student
+      lecture_attend_log:
+        faicon: database
+        lecture: :activerecord.models.lecture
+        student: :activerecord.models.student
+        staff: :activerecord.models.staff
+        ip: IPアドレス
+        ua: デバイス情報
+        prev_cookie_student_ids: 前回ログイン学生ID
+        validation_note: ログ詳細
+        qr_made_at: QR作成日
+      province:
+        faicon: globe
+      reserve:
+        building: :activerecord.models.building
+        comment: 概要
+        faicon: calendar
+        finish_time: 終了時刻
+        lecture: :activerecord.models.lecture
+        lecture_time: 授業時間
+        room: :activerecord.models.room
+        start_time: 開始時刻
+        time: 時間
+      role:
+        faicon: lock
+        staffs: :activerecord.models.staff
+      room:
+        area: :activerecord.models.area
+        building: :activerecord.models.building
+        equipments: :activerecord.models.equipment
+        faicon: cube
+        room_equipments: 備品
+        room_groups: :activerecord.models.room_group
+        seat_number: 座席数
+        seat_number_gteq: 下限数
+        seat_number_lteq: 上限数
+        wday_0_close_time: 日曜日終了時刻
+        wday_0_open_time: 日曜日開始時刻
+        wday_1_close_time: 月曜日終了時刻
+        wday_1_open_time: 月曜日開始時刻
+        wday_2_close_time: 火曜日終了時刻
+        wday_2_open_time: 火曜日開始時刻
+        wday_3_close_time: 水曜日終了時刻
+        wday_3_open_time: 水曜日開始時刻
+        wday_4_close_time: 木曜日終了時刻
+        wday_4_open_time: 木曜日開始時刻
+        wday_5_close_time: 金曜日終了時刻
+        wday_5_open_time: 金曜日開始時刻
+        wday_6_close_time: 土曜日終了時刻
+        wday_6_open_time: 土曜日開始時刻
+      room/room_equipments:
+        equipment: :activerecord.attributes.room_equipment.equipment
+      room_equipment:
+        available: 利用可能
+        equipment: :activerecord.models.equipment
+        room: :activerecord.models.room
+      room_group:
+        faicon: tag
+        rooms: :activerecord.models.room
+        rules: ルール
+      staff:
+        birthday: 生年月日
+        code: 社員番号
+        email: メールアドレス
+        faicon: user-o
+        mentees: 担当学生
+        name: 氏名
+        roles: :activerecord.models.role
+        subjects: 担当課目
+        tel: 電話番号
+        user: :activerecord.models.user
+      student:
+        area: :activerecord.models.area
+        contracted_at: 契約日
+        course_categories: :activerecord.models.course_category
+        email: メールアドレス
+        qq: QQ
+        wechat: Wechat
+        faicon: user
+        klasses: :activerecord.models.klass
+        lectures: :activerecord.models.lecture
+        mentors: :activerecord.models.student_mentor
+        name: 氏名
+        name_sei: 氏
+        name_mei: 名
+        normalized: 名寄せ済み
+        yomi: full name
+        yomi_sei: family name
+        yomi_mei: given name
+        code: 学籍番号
+        seller: 営業担当
+        sex: 性別
+        student_mentors: :activerecord.models.student_mentor
+        student_point: :activerecord.models.student_point
+        student_balance: :activerecord.models.student_balance
+        tel: 電話番号
+        birthday: 誕生日
+        visa_type: ビザ
+      student/student_mentor:
+        staff: :activerecord.models.staff
+      student_mentor:
+        faicon: handshake-o
+        staff: :activerecord.models.staff
+        student: :activerecord.models.student
+        staff_type: 担当種別
+      student_point:
+        faicon: ticket
+        paid: 支払済み
+        reserved: 使用予定
+        student: :activerecord.models.student
+        total: 総計
+        used: 使用済み
+      subject:
+        klass_templates: :activerecord.models.klass_template
+        faicon: book
+        lectures: :activerecord.models.lecture
+        personal: 個人授業
+        staffs: 担当講師
+        subject_category: :activerecord.models.subject_category
+      subject_category:
+        faicon: folder-open
+      subject_type:
+        available_room_groups: 利用可能な部屋種別
+        color: 種類
+        faicon: file
+        room_groups: :activerecord.models.subject_type_room_group
+      user:
+        auth_token: アクセストークン
+        current_sign_in_at: 最新ログイン日時
+        current_sign_in_ip: 最新ログインIP
+        encrypted_password: パスワード
+        faicon: ban
+        failed_attempts: 失敗回数
+        last_sign_in_at: 最終ログイン日時
+        last_sign_in_ip: 最終ログインIP
+        locked_at: ロック日時
+        remember_created_at: 作成時間
+        reset_password_sent_at: リセットパスワード時間
+        reset_password_token: リセットパスワードトークン
+        sign_in_count: ログイン回数
+        staff: :activerecord.models.staff
+        unlock_token: ロック解除トークン
+      work_kind:
+        name: 業務種別
+      student_billing:
+        faicon: shopping-cart
+        student: :activerecord.models.student
+        student_billing_details:  :activerecord.models.student_billing_detail
+        total: 総計
+      student_billing_detail:
+        student_billing: :activerecord.models.student_billing
+        item: 品目
+        unit_price: 単価
+        number: 個数
+        price: 金額
+        final_price: 金額
+        memo: 備考
+        student_billing_detail_discount: :activerecord.models.student_billing_detail_discount
+        discount: :activerecord.models.student_billing_detail_discount
+      student_billing_detail_discount:
+        student_billing_detail:  :activerecord.models.student_billing_detail
+        discount_type: :activerecord.models.discount_type
+        price: 値引き額
+        discount_memo: その他理由
+      student_payment:
+        faicon: credit-card
+        student: :activerecord.models.student
+        paymethod: :activerecord.models.paymethod
+        pay_date: 支払日
+        receiver: 受領者
+        price: 円
+        gen: 元
+        settlement_price: 清算額
+      student_commission:
+        faicon: gift
+        student: :activerecord.models.student
+        commission_type: 出金種別
+        referral: 紹介者
+        inflow_source: :activerecord.models.inflow_source
+        cache_back_type: :activerecord.models.cache_back_type
+        price: 金額
+        payed_at: 支払日
+      student_balance:
+        faicon: balance-scale
+        student: :activerecord.models.student
+        billings_total: 請求総額
+        payments_total: 支払総額
+        price: 残額
+      student_mycoach:
+        auth_token: アクセストークン
+        current_sign_in_at: 最新ログイン日時
+        current_sign_in_ip: 最新ログインIP
+        encrypted_password: パスワード
+        email: メールアドレス
+        faicon: mobile
+        failed_attempts: 失敗回数
+        last_sign_in_at: 最終ログイン日時
+        last_sign_in_ip: 最終ログインIP
+        locked_at: ロック日時
+        remember_created_at: 作成時間
+        reset_password_sent_at: リセットパスワード時間
+        reset_password_token: リセットパスワードトークン
+        sign_in_count: ログイン回数
+        student: :activerecord.models.student
+        unlock_token: ロック解除トークン
+      discount_type:
+        price: 額
+        rate: 率
+      vip:
+        course_category: :activerecord.models.course_category
+        faicon: star
+      vip_price:
+        hours_min: 最小時間
+        hours_max: 最大時間
+        unit_price: 時単価
+    models:
+      area: エリア
+      book: 書籍
+      building: 建物
+      course: コース
+      course_category: コースカテゴリー
+      equipment: 備品
+      klass_template: クラステンプレート
+      klass: クラス
+      klass_subject: カリキュラム
+      lecture: 授業
+      lecture_staff: 給料CSV
+      lecture_student: 受講
+      lecture_attend_log: 出席ログ
+      province: 地域
+      reserve: 予約
+      role: 権限
+      room: 部屋
+      room_equipment: 備品
+      room_group: 部屋種別
+      staff: スタッフ
+      staff_role: スタッフ権限
+      student: 学生
+      student_mentor: 担当
+      student_point: VIP時間数
+      student_point_log: VIP時間数ログ(旧)
+      student_balance: 未払金
+      student_billing: 購買
+      student_billing_detail: 内訳
+      student_billing_detail_discount: 値引
+      student_mycoach: 学生マイページ
+      student_payment: 支払
+      student_commission: 出金
+      vip: VIP
+      vip_price: VIP単価
+      discount_type: 値引き種別
+      cache_back_type: キャッシュバック種別
+      inflow_source: 流入元
+      paymethod: 入金種別
+      shared_klass_klass_subject: 共同カリキュラム
+      subject: 科目
+      subject_category: 科目カテゴリー
+      subject_type: 科目種別
+      subject_type_room_group: 利用可能な部屋種別
+      work_kind: 業務種別
+      tag: タグ
+  attributes:
+    code: コード
+    created_at: 作成日
+    creator: 作成者
+    creator_id: 作成者ID
+    deleted_at: 削除日
+    deleter: 削除者
+    deleter_id: 削除者
+    description: 備考
+    id: ID
+    isbn: ISBN
+    name: 名称
+    updated_at: 更新日
+    updater: 更新者
+    updater_id: 更新者
+    version_comment: 変更意図

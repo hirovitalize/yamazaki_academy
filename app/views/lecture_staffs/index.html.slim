@@ -1,0 +1,40 @@
+- provide :title, t_iconed_model(:lecture_staff)
+
+- models = @lecture_staffs
+- q = @q
+
+= render 'shared/search_form', q: q
+
+.pagination-container
+  = page_entries_info(@lecture_staffs)
+  = paginate @lecture_staffs
+
+table.table.table-sm.table-borderless.table-filterable.table-hover
+  thead
+    tr
+      th.filter-false.sorter-false.resizable-false
+      th.sorter-false
+        = sort_link q, :staff_id, t_field(:lecture_staff, :staff)
+      th.sorter-false
+        = sort_link q, :lecture_id, t_field(:lecture_staff, :lecture)
+      th.sorter-false
+        = sort_link q, :work_kind_id, t_field(:lecture_staff, :work_kind)
+      th.sorter-false
+        = sort_link q, :lecture_id, t_field(:lecture_staff, :lecture_day)
+      th.sorter-false
+        = sort_link q, :confirmed_staff_hours, t_field(:lecture_staff, :confirmed_staff_hours)
+
+  tbody
+    - models.each do |model|
+      tr[class="#{'bg-secondndary' if model.deleted?}"]
+        td.action-column
+          =<> render 'shared/action/show_button', path: model, options: { target: ['_blank'] }
+        td = link_object model.staff
+        td = link_object model.lecture, format: ->(lect) { "#{lect.to_label}" }
+        td = link_object model.work_kind
+        td = model.start_time&.to_date
+        td
+          = model.lecture&.confirmed_i18n
+
+.pagination-container
+  = paginate @lecture_staffs

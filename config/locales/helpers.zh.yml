@@ -1,0 +1,57 @@
+---
+zh:
+  helpers:
+    button:
+      clear: 清除
+      save: 保存
+      search: 检索
+    common:
+      room_calender: 房间日历
+    flash:
+      assign: 分配%{model}
+      update: 更新
+    header:
+      locales:
+        en: 英语
+        ja: 日语
+        zh: 中文
+      translation: 语言切换
+    select:
+      prompt: 请选择
+    sidebar:
+      buying_information: 购买
+      calendar: 行事历
+      course: 班/功课
+      home: 主页
+      lecture: 课程
+      lecture_master: 课长
+      lecture_reserve: 课业/预订
+      master: 管理员管理
+      money: 营业额
+      non_lecture_reservation: 非课程预订
+      reserve: 订座
+      room: 教室
+      room_reserve: 房间预订
+      staff: 员工
+      student: 学生
+      system: 系统
+      user: 用户
+    submit:
+      confirm: 保存吗？
+      create: 保存
+      edit: 编辑
+      reset: 重置
+      search: 检索
+      send: 发送
+      sign_in: 登陆
+      sign_up: 登记
+      submit: 保存
+      update: 更新
+    title:
+      edit: |-
+        编辑%{model}
+        %{name}
+      new: 追加%{model}
+      show: |-
+        %{model}
+        %{name}

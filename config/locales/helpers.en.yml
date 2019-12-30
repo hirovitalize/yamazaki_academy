@@ -1,0 +1,57 @@
+---
+en:
+  helpers:
+    button:
+      clear: Clear
+      save: Preservation
+      search: Search
+    common:
+      room_calender: Room calender
+    flash:
+      assign: I assigned %{model}
+      update: Has been updated
+    header:
+      locales:
+        en: English
+        ja: Japanese
+        zh: Chinese
+      translation: Language switching
+    select:
+      prompt: Please select
+    sidebar:
+      buying_information: Buying information
+      calendar: calendar
+      course: Class / Subject
+      home: Home
+      lecture: Lecture
+      lecture_master: Lesson master
+      lecture_reserve: Class / Reservation
+      master: Master admin
+      money: Sales
+      non_lecture_reservation: Non-class reservation
+      reserve: Reservation
+      room: Classroom
+      room_reserve: Room reservation
+      staff: staff
+      student: Student
+      system: System
+      user: User
+    submit:
+      confirm: You save. Is it OK?
+      create: Save
+      edit: Edit
+      reset: Reset
+      search: Search
+      send: Send
+      sign_in: Login
+      sign_up: Registration
+      submit: Save
+      update: Update
+    title:
+      edit: |-
+        Edit %{model}
+        %{name}
+      new: Added %{model}
+      show: |-
+        %{model}
+        %{name}

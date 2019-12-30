@@ -1,0 +1,6 @@
+one:
+  id: 1
+  course_category_id: 1
+  description: 東大受験用
+  name: 数学
+  interval: 30

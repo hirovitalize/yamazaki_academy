@@ -1,0 +1,26 @@
+.nested-fields
+  .row
+    .col-md-8.js-detail
+      = f.association :item,
+        as: :autocomplete,
+        collection: Book.without_deleted,
+        input_html: {data: {models: 'books', placeholder: '名称を入力（1文字以上）', minimum_input_length: 1 }},
+        required: true
+      = f.hidden_field :item_type, value: 'Book'
+      = f.hidden_field :memo, vallue: ''
+
+      = f.input :unit_price, value: 0, readonly: true
+      = f.input :number
+      = f.input :price, readonly: true
+
+    .col-md-4.js-discount
+      = f.simple_fields_for :student_billing_detail_discount,
+        f.object.discount.presence || f.object.build_student_billing_detail_discount,
+        required: false do |fd|
+        = fd.association :discount_type, required: false
+        = fd.input :price, required: false, readonly: true
+
+    .col-md-2
+      = link_to_remove_association f,
+        class: 'btn btn-sm btn-outline-danger js-children-delete'
+         => fa_icon 'minus-square'

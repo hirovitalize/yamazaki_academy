@@ -1,0 +1,9 @@
+---
+ja:
+  simple_form:
+    error_notification:
+      default_message: 以下の対応が必要です
+    'no': いいえ
+    required:
+      html: <span class="badge badge-danger ml-1">必須</span>
+    'yes': はい

@@ -1,0 +1,21 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+# old: Nyukin
+create_table 'student_payments', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC', force: :cascade do |t|
+  t.references 'student', null: false
+  t.references 'paymethod', null: false
+
+  t.date 'pay_date', null: false
+  t.bigint 'receiver_id', null: false
+  t.integer 'price', null: false, default: 0
+  t.integer 'gen', null: false, default: 0
+  t.integer 'settlement_price', null: false, default: 0
+
+  t.text 'description'
+  t.integer 'creator_id'
+  t.integer 'updater_id'
+  t.integer 'deleter_id'
+  t.datetime 'created_at'
+  t.datetime 'updated_at'
+  t.datetime 'deleted_at', null: true
+end

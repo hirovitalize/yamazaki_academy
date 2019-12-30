@@ -1,0 +1,26 @@
+= render 'shared/validation_messages', model: model
+
+
+= simple_form_for(@subject) do |f|
+  .row
+    .col-md-6
+      = f.association :subject_category
+      = f.input :code, placeholder: '例：B01'
+      = f.input :name
+      = f.association :klass_templates,
+                      as: :autocomplete,
+                      collection: f.object.klass_templates,
+                      input_html: {multiple: true, data: {models: 'klass_templates'}}
+      = f.input :description
+      = f.input :personal
+      .pull-right
+        = render 'shared/action/mine_button', options: { data: { staff_target: '#subject_staff_ids' } }
+      = f.association :staffs,
+                      as: :autocomplete,
+                      collection: f.object.staffs,
+                      input_html: { \
+                        multiple: true,
+                      data: {models: 'staffs', mainquery: 'name_or_code_start'} \
+                      }
+
+  =<> render 'shared/form_submit', form: f, with_comment: true

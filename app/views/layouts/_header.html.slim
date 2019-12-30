@@ -1,0 +1,44 @@
+header.app-header.navbar
+  button.navbar-toggler.sidebar-toggler.d-lg-none.mr-auto[type="button" data-toggle="sidebar-show"]
+    span.navbar-toggler-icon
+  = link_to root_path, class: 'navbar-brand' do
+    | 山﨑学園
+
+  button.navbar-toggler.sidebar-toggler.d-md-down-none[type="button" data-toggle="sidebar-lg-show"]
+    span.navbar-toggler-icon
+
+  .ml-4
+    h4
+      = yield(:title)
+
+  .nav.navbar-nav.ml-auto
+    = form_tag(header_search_path, method: :get) do
+      .input-group
+        = text_field_tag :keyword,
+          '', { class: 'form-control', autocomplete: 'off', placeholder: 'Name・Tel・Email' }
+        .input-group-append
+          = button_tag class: 'btn btn-outline-primary'
+            = fa_icon :search
+    .dropdown
+      button#dropdownMenu.btn.btn-outline-secondary.dropdown-toggle[type="button" data-toggle="dropdown" area-haspopup="true"]
+        =<> fa_icon :qrcode
+      .dropdown-menu.dropdown-menu-right[area-labelledby="dropdownMenu"]
+        canvas#js-url
+
+    - if current_user.present?
+      .dropdown
+        button#dropdownMenu.btn.btn-outline-secondary.dropdown-toggle[type="button" data-toggle="dropdown" area-haspopup="true"]
+          = fa_icon :user
+        .dropdown-menu.dropdown-menu-right[area-labelledby="dropdownMenu"]
+          ul
+            = "#{current_user.name}"
+            li.nav-item.mr-4
+              = link_to users_sign_out_path do
+                =<> fa_icon 'sign-out'
+                | #{I18n.t 'users.sessions.destroy.title'}
+          ul
+            = t 'helpers.header.translation'
+            - I18n.available_locales.each do |locale|
+              li.nav-item.mr-4
+                = link_to root_path(locale: locale) do
+                  = t "helpers.header.locales.#{locale}"

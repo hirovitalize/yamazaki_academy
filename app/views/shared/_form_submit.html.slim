@@ -1,0 +1,21 @@
+ruby:
+  options ||= {}
+  default_options = {
+    class: 'js-form-save-button btn btn-primary btn-lg',
+    title: t(".save")
+  }
+  icon ||= :database
+  opts = default_options.deep_merge(options)
+  with_comment ||= false
+.form-inline
+  =<> button_tag class: opts[:class]
+    =<> fa_icon icon
+    =<> opts[:title]
+  - if with_comment
+    .form-group.form-inline.ml-3
+      .input-group
+        .input-group-prepend
+          .input-group-text
+            =<> tooltip '変更意図' do
+              =<> fa_icon :comment
+        =<> text_field '', :version_comment, class: 'form-control string'

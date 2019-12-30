@@ -1,0 +1,27 @@
+- label = "VIP#{t_model :lecture}#{t('.reserve')}"
+
+- unless model.student_point&.total_hours_minus_used_hours&.positive?
+  a.btn.btn-outline-secondary.btn-sm[disabled="disabled"]
+    = fa_icon 'plus fw'
+      = label
+  p.text-danger
+    =<> "#{t_model(:student_point)}がないため追加できません。#{t_model(:student_billing)}してください"
+- else
+  - path = new_lecture_path(lecture: { \
+    student_ids: [model.id],
+    subject_id: Subject::VIP,
+    lecture_staffs_attributes: { '1' => { staff_id: current_user&.staff&.id, work_kind_id: 1 } },
+    name: "VIP[#{model.name}]",
+    start_time: Time.zone.now.beginning_of_hour + 7.days,
+    finish_time: Time.zone.now.beginning_of_hour + 7.days + 1.hours,
+    time_changeable: false,
+    \
+    })
+  =<> render 'shared/action/new_button',
+    path: path,
+    model: Lecture,
+    label: label,
+    options: { \
+      title: "VIP#{t_model :lecture}追加",
+      data: { toggle: :childwindow, url: path, reload_parent_on_close: true } \
+    }

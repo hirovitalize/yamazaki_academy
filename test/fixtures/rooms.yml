@@ -1,0 +1,19 @@
+one:
+  id: 1
+  building_id: 1
+  name: '301'
+  wday_0_open_time: '10:00'
+  wday_0_close_time: '22:00'
+  wday_1_open_time: '10:00'
+  wday_1_close_time: '22:00'
+  wday_2_open_time: '10:00'
+  wday_2_close_time: '22:00'
+  wday_3_open_time: '10:00'
+  wday_3_close_time: '22:00'
+  wday_4_open_time: '10:00'
+  wday_4_close_time: '22:00'
+  wday_5_open_time: '10:00'
+  wday_5_close_time: '22:00'
+  wday_6_open_time: '10:00'
+  wday_6_close_time: '22:00'
+  seat_number: 40

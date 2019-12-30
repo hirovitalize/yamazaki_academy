@@ -1,0 +1,37 @@
+.nested-fields
+  .row
+    .col-md-8.js-detail
+      = f.input :course_fake,
+        label: t_model(:course_category),
+        as: :fake_select,
+        collection: CourseCategory.without_deleted,
+        selected: f.object.item&.course_category_id,
+        required: true
+      = f.association :item,
+        collection: Course.without_deleted,
+        required: true,
+        as: :drilldown,
+        input_html: {data: {\
+          parent: 'select[name="course_fake"]',
+          models: 'courses',
+          reference_column: 'course_category_id' \
+        }}
+      = f.hidden_field :item_type, value: 'Course'
+      = f.hidden_field :memo, vallue: ''
+
+      = f.input :price, readonly: true
+      / 自動的に内部再計算させる
+      = f.hidden_field :unit_price, value: 0
+      = f.hidden_field :number, value: 1
+
+    .col-md-4.js-discount
+      = f.simple_fields_for :student_billing_detail_discount,
+        f.object.discount.presence || f.object.build_student_billing_detail_discount,
+        required: false do |fd|
+        = fd.association :discount_type, required: false
+        = fd.input :price, required: false, readonly: true
+
+    .col-md-2
+      = link_to_remove_association f,
+        class: 'btn btn-sm btn-outline-danger js-children-delete'
+         => fa_icon 'minus-square'

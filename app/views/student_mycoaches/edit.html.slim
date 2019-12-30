@@ -1,0 +1,8 @@
+- model = @student_mycoach
+- provide :title, t_iconed_model(model, :edit)
+
+== render 'form', model: model
+
+.button-container
+  =<> render 'shared/action/show_button', path: model
+  =<> render 'shared/action/index_button', path: model

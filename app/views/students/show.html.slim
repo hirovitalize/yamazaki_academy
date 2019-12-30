@@ -1,0 +1,83 @@
+- model = @student
+- provide :title, t_iconed_model(model, :show)
+
+= render 'shared/validation_messages', model: model
+
+= simple_form_for model,
+  html: { class: 'form-horizontal' },
+  defaults: simple_form_display_defaults do |f|
+  .row
+    .col-md-6
+      .card
+        .card-body
+          table.table.table-striped.table-sm.table-borderless.m-0
+            tbody
+              = f.input :id
+              = f.input :code
+              = f.input :name
+              = f.input :yomi
+              = f.input :sex
+              - if current_user.role?('STUDENT_PRIVACY_ACCESSIBLE')
+                = f.input :birthday
+                = f.simple_fields_for :student_mycoach do |g|
+                  = g.input :email do
+                    a[href="mailto:#{g.object.email}" target="_blank"]
+                      =<> fa_icon :envelope
+                      = g.object.email
+                = f.input :tel do
+                  - if model.tel.present?
+                    a[href="tel:#{model.tel}"]
+                      =<> fa_icon :phone
+                      = model.tel
+                = f.input :qq do
+                  - if model.qq.present?
+                    a[href="mqqwpa://im/chat?chat_type=wpa&uin=#{model.qq}&version=1&src_type=web"]
+                      =<> fa_icon :qq
+                      = model.qq
+                = f.input :wechat do
+                  - if model.wechat.present?
+                    a[href="weixin://dl/chat?#{model.wechat}"]
+                      =<> fa_icon :weixin
+                      = model.wechat
+
+              = f.input :visa_type
+              = f.input :contracted_at
+              = f.input :seller
+              = f.input :course_categories do
+                = model.course_categories.map(&:name).join(',')
+
+              = f.input :area do
+                = model.area.name
+              = f.input :klasses
+              = f.input :student_point
+              = f.input :mentors
+              = f.input :normalized
+
+    .col-md-6
+      .card
+        .card-body
+          =<> render 'button_create_vip_lecture', model: model
+          =<> render 'button_create_first_vip_lecture', model: model
+          =<> render 'button_create_coaching_vip_lecture', model: model
+          = render('shared/model/assoc',
+                   assoc: model.lectures.order(start_time: :desc).includes(:lecture_staffs, :staffs, :confirmer),
+                   path: lectures_path(q: { students_id_in: model.id }),
+                   max_count: 20,
+                   title: t_iconed_model(Lecture)) do |rel|
+            - rel = rel.decorate
+            td = link_object rel
+            td = rel.view_time_range
+            td = link_objects rel.staffs
+            td = rel.view_tags_approved.first&.html_safe
+
+      - if current_user.role?('PAYMENT') || current_user.role?('PAYMENT_ADMIN') || current_user.role?('STUDENT_PRIVACY_ACCESSIBLE')
+        =<> render 'billings_and_payments', model: model
+
+.row
+  .col-md-6
+    = render 'shared/model/history', model: model
+
+.button-container
+  =<> render 'shared/action/index_button', path: model
+  =<> render 'shared/action/edit_button', path: model
+  =<> render 'shared/action/delete_button', path: model

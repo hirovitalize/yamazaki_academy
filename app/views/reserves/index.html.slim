@@ -1,0 +1,41 @@
+- provide :title, t_iconed_model(:reserve)
+
+- models = @reserves
+- q = @q
+
+= render 'shared/search_form', q: q
+
+.button-container
+  = render 'shared/action/new_button', path: Reserve, options: { target: '_blank' }
+
+.pagination-container
+  = page_entries_info(@reserves)
+  = paginate @reserves
+
+table.table.table-sm.table-borderless.table-filterable.table-hover
+  thead
+    tr
+      th.filter-false.sorter-false.resizable-false
+      th.sorter-false
+        = sort_link q, :room_id, t_field(:reserve, :room)
+      th.sorter-false
+        = sort_link q, :lecture_id, t_field(:reserve, :lecture)
+      th.sorter-false
+        = sort_link q, :comment, t_field(:reserve, :comment)
+      th.sorter-false
+        = sort_link q, :start_time, t_field(:reserve, :time)
+
+  tbody
+    - models.each do |model|
+      tr[class="#{'bg-secondndary' if model.deleted?}"]
+        td.action-column
+          =<> render 'shared/action/show_button', path: model, options: { target: ['_blank'] }
+        td = link_object model.room
+        td = link_object model.lecture
+        td = truncated_text(model.comment)
+        td
+          = render 'button_show_index_calendar', reserve: model,
+            title: "#{model.start_time} - #{model.finish_time.to_s(:time)}"
+
+.pagination-container
+  = paginate @reserves

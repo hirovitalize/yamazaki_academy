@@ -1,0 +1,6 @@
+---
+en:
+  cocoon:
+    defaults:
+      add: add to
+      remove: Delete

@@ -1,0 +1,20 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+# old: Commit / CommissionLog
+create_table 'student_commissions', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC', force: :cascade do |t|
+  t.references 'student', null: false
+
+  t.string 'referral'
+  t.references 'cache_back_type', null: true
+  t.references 'inflow_source', null: true
+  t.integer 'price', null: false, default: 0
+  t.datetime 'payed_at'
+  t.text 'description'
+
+  t.integer 'creator_id'
+  t.integer 'updater_id'
+  t.integer 'deleter_id'
+  t.datetime 'created_at'
+  t.datetime 'updated_at'
+  t.datetime 'deleted_at', null: true
+end

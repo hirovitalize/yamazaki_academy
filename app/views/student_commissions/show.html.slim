@@ -1,0 +1,34 @@
+- model = @student_commission
+- provide :title, t_iconed_model(model, :show)
+
+= render 'shared/validation_messages', model: model
+
+= simple_form_for model,
+  html: { class: 'form-horizontal' },
+  defaults: simple_form_display_defaults do |f|
+  .row
+    .col-md-6
+      .card
+        .card-body
+          table.table.table-striped.table-bordered.m-0
+            tbody
+              = f.input :student
+              - if model.commission_type_referral_person?
+                = f.input :referral
+              - if model.commission_type_cache_back?
+                = f.input :cache_back_type
+              - if model.commission_type_referral_inflow?
+                = f.input :inflow_source
+              = f.input :price, append: '円'
+              = f.input :payed_at
+              = f.input :description
+                =<> truncated_text(f.object.description)
+
+.row
+  .col-md-6
+    = render 'shared/model/history', model: model
+
+.button-container
+  =<> render 'shared/action/index_button', path: model
+  =<> render 'shared/action/edit_button', path: model
+  =<> render 'shared/action/delete_button', path: model

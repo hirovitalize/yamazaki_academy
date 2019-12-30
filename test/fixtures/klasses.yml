@@ -1,0 +1,10 @@
+one:
+  id: 1
+  code: 'WC0101'
+  name: 文科8
+  description: 東大受験用
+  klass_template_id: 1
+  area_id: 1
+  interval: 30
+  start_date: '2020/01/01'
+  finish_date: '2020/01/02'

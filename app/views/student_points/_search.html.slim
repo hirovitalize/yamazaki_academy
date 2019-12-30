@@ -1,0 +1,5 @@
+.col-md-4
+  = f.input :student_id_in, label: t_field(StudentPoint, :student),
+    as: :autocomplete,
+    collection: Student.where(id: f.object.student_id_in),
+    input_html: { multiple: true, data: { models: 'students', mainquery: 'name_or_code_start' }}

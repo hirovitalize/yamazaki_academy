@@ -1,0 +1,15 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+create_table "student_mentors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  t.references "staff", null: false
+  t.references "student", null: false
+  t.string 'staff_type'
+  t.integer "creator_id"
+  t.integer "updater_id"
+  t.integer "deleter_id"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+  t.datetime "deleted_at", null: true
+
+  t.index ['staff_id', 'student_id','staff_type', 'deleted_at'], name: 'index_student_mentors_on_staff_student_staff_type_deleted_at', unique: true
+end

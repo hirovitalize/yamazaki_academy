@@ -1,0 +1,59 @@
+.card
+  .card-header
+    =<> fa_icon :calendar
+    =<> t 'users.ical.ical_title', model: t_model(:lecture)
+    =<> link_to '担当生徒一覧', student_mentors_url(q: { staff_id_in: current_user.staff.id }), class: 'btn btn-outline-primary btn-sm'
+
+  .card-body
+    .calendar#calendar[data-staff_id="#{current_user.try(:staff).try(:id)}"]
+    =<> t 'users.ical.ical_description', model: t_model(:lecture)
+    br
+    =<> fa_icon :link
+    =<> link_to icalendar_lectures_url(staff_id: current_user.staff.id, auth: StaffAuth.create_auth_param(current_user.staff))
+
+.row
+  .col-md-6
+    .card
+      .card-header
+        = Time.zone.now.beginning_of_month + 4.days >= Time.zone.now ? Time.zone.now.prev_month.month.to_s + '月授業時間（未確定）' : Time.zone.now.prev_month.month.to_s + '月授業時間（確定）'
+      .card-body
+        table.table.table-striped.table-sm.table-borderless.m-0
+          tbody
+            tr
+              td
+                = I18n.t('activerecord.models.vip')
+              td
+                = @lecture_time['last']['vip'] + 'h'
+            tr
+              td
+                = '初回面談'
+              td
+                = @lecture_time['last']['first_vip'] + 'h'
+            tr
+              td
+                = '集団授業'
+              td
+                = @lecture_time['last']['group'] + 'h'
+
+  .col-md-6
+    .card
+      .card-header
+        = Time.zone.now.month.to_s + '月授業時間（未確定）'
+      .card-body
+        table.table.table-striped.table-sm.table-borderless.m-0
+          tbody
+            tr
+              td
+                = 'VIP'
+              td
+                = @lecture_time['this']['vip'] + 'h'
+            tr
+              td
+                = '初回面談'
+              td
+                = @lecture_time['this']['first_vip'] + 'h'
+            tr
+              td
+                = '集団授業'
+              td
+                = @lecture_time['this']['group'] + 'h'

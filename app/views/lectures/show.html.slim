@@ -1,0 +1,267 @@
+- model = @lecture.decorate
+- provide :title, t_iconed_model(model, :show)
+
+= render 'shared/validation_messages', model: model
+
+= simple_form_for model,
+  html: { class: 'form-horizontal' },
+  defaults: simple_form_display_defaults do |f|
+  .row
+    .col-md-6
+      .card
+        .card-body
+          table.table.table-striped.table-sm.table-borderless.m-0
+            tbody
+              = f.input :name do
+                = model.to_label
+              = f.input :subject do
+                = model.subject&.name
+              = f.input :klass_subject
+              = f.input :start_time
+              = f.input :finish_time
+              = f.input :time_changeable
+              = f.input :tags do
+                - model.view_tags.each do |tag|
+                  =<> tag.html_safe
+              = f.input :description
+                =<> truncated_text(f.object.description)
+              = f.input :reserve do
+                - if model.reserve.present?
+                  = link_object model.reserve, format: ->(reserve) { reserve.room&.name }
+                  =<> render 'shared/action/delete_button',
+                      path: model.reserve,
+                      options: { \
+                        target: ['_blank'],
+                        title: '予約解除',
+                        data: { confirm: t(".cancel"), commit: '解除' },
+                        class: 'btn btn-outline-danger btn-sm' \
+                      }
+                - elsif model.canceled_status.blank? && (model.start_time.to_date >= Time.zone.today)
+                  =<> '未'
+                  =<> render 'shared/action/new_button',
+                      model: :reserve,
+                      path: reserve_by_lecture_lecture_path(model),
+                      options: { \
+                        target: ['_blank'],
+                        icon: t_field(:reserve, :faicon),
+                        class: 'btn-warning btn-sm' \
+                      }
+                - else
+
+              - if Time.zone.now >= model.finish_time
+                = f.input :confirmed do
+                  .inline
+                    - model.view_tags_approved.each do |tag|
+                      = tag.html_safe
+                  .pull-right
+                    - if policy? model, :approve
+                      =<> render 'shared/action/delete_button',
+                          model: model,
+                          path: approve_lecture_path(model),
+                          options: { \
+                            method: :post,
+                            title: '承認',
+                            data: { confirm: t(".approval"), commit: '承認' },
+                            icon: 'thumbs-up',
+                            class: 'btn btn-outline-warning btn-sm' \
+                          }
+                    - if policy? model, :unapprove
+                      =<> render 'shared/action/delete_button',
+                          model: model,
+                          path: unapprove_lecture_path(model),
+                          options: { \
+                            method: :post,
+                            title: '否認',
+                            data: { confirm: t(".denial"), commit: '否認' },
+                            icon: 'thumbs-down',
+                            class: 'btn btn-outline-warning btn-sm' \
+                          }
+                    - if policy? model, :back_confirmed
+                      =<> render 'shared/action/delete_button',
+                          model: model,
+                          path: back_confirmed_lecture_path(model),
+                          options: { \
+                            method: :post,
+                            title: '差戻',
+                            data: { confirm: t(".passback"), commit: '差戻' },
+                            icon: 'undo',
+                            class: 'btn btn-outline-warning btn-sm' \
+                          }
+
+                = f.input :lecture_attend_log do
+                  - if model.lecture_attend_logs.present? && model.lecture_attend_logs.map(&:validation_note).any?
+                    =<> fa_icon 'times'
+                  - elsif model.lecture_attend_logs.present? && model.lecture_attend_logs.map(&:validation_note).none?
+                    =<> fa_icon 'circle-thin'
+                  - else
+                    =<> '-'
+
+    .col-md-6
+      .card
+        .card-body
+          = render('shared/model/assoc',
+                   assoc: model.lecture_staffs,
+                   path: staffs_path(q: { lectures_id_in: model.id }),
+                   title: t_iconed_model(Staff)) do |rel|
+            td
+              = link_object rel.staff
+            td
+              = rel.work_kind.name
+            td
+              = rel.start_time
+              '-
+              = rel.finish_time&.to_s(:time)
+
+          br
+
+          = render 'shared/model/assoc',
+                   assoc: model.students,
+                   path: students_path(q: { lectures_id_in: model.id }),
+                   title: t_iconed_model(Student)
+
+      - if policy? model, :change_request_for_vip
+        .card
+          .card-body
+            .row
+              - if model.tag_list.include?("時間変更中")
+                .col-md-6
+                  - email = model&.lecture_staffs.includes(:staff).map(&:staff).map(&:email).join(',')
+                  =<> fa_icon 'envelope-o'
+                  = mail_to email, "【学生管理部】授業時間変更メールを送る",
+                  :cc => 'vip@koyo-mail.com',
+                  :subject => '【行知学园VIP中心】关于调整上课时间的请求',
+                  :body => "老师：\n\t您好。\
+                            \n\t非常抱歉，您预约的这节VIP课程目前已经没有可以利用的教室了。\
+                            \n\t\n\t========\
+                            \n\t【VIP课程URL】\
+                            \n\thttp://rooms.coach-ac.info/lectures/#{model.id}?locale=ja\
+                            \n\t========\
+                            \n\t\n\t请您参考教室使用情况，和学生重新商定上课的时间，进行再次预约。\
+                            \n\t\n\t========\
+                            \n\t【教室使用情况URL】\
+                            \n\thttp://rooms.coach-ac.info/reserves/index_calendar\
+                            \n\t========\
+                            \n\t\n\t※本封邮件是自动发送的，无法接收回信，敬请谅解！如有疑问，请通过以下方式联系VIP中心。\
+                            \n\t\n\t【VIP中心】\
+                            \n\tEmail: vip@koyo-mail.com\
+                            \n\tTEL: 03-6908-9863（紧急情况请电话联络）\
+                            \n\t运营时间：平日  12：30~21：00，周末  9：30~21：00\
+                            \n\n行知学园VIP中心"
+                .col-md-6
+                  - email = model&.lecture_staffs.includes(:staff).map(&:staff).map(&:email).join(',')
+                  =<> fa_icon 'envelope-o'
+                  = mail_to email, "【美術部】授業時間変更メールを送る",
+                  :cc => 'art@koyo-mail.com',
+                  :subject => '【予約内容変更のお願い】美術VIP授業',
+                  :body => "\n\ #{model&.lecture_staffs.includes(:staff).map(&:staff).map(&:name).join('先生,　')}先生\
+                            \n\
+                            \n\お疲れ様です。\
+                            \n\美術　教務支援課です。\
+                            \n\
+                            \n\申請頂いたＶＩＰ授業は、下記の理由により授業の予約が出来なくなっております。\
+                            \n\
+                            \n\・使用できる教室がありません。\
+                            \n\・通訳の手配が出来ない日時です。\
+                            \n\
+                            \n\ご確認頂き、予約内容の変更をお願いいたします。\
+                            \n\※何かありましたら、art@koyo-mail.com　までお知らせください。\
+                            \n\
+                            \n\どうぞ宜しくお願いいたします。"
+              - else
+                =<> fa_icon :exchange
+                = link_to '授業時間変更申請', change_request_for_vip_lecture_path(model), method: :post,title: '授業時間変更申請', data: {confirm: '授業時間変更申請を申請しますか？<br> 申請後は講師へメールをお送りください', commit: '申請'}
+
+      - if policy? model, :change_request_for_group
+        .card
+          .card-body
+            - default_email =  %w(luyang@koyo-mail.com hejie@koyo-mail.com chenwansi@koyo-mail.com jipan@koyo-mail.com liufei@koyo-mail.com)
+            - staffs_email = model&.lecture_staffs.includes(:staff).map(&:staff).map(&:email)
+            - email = (default_email + staffs_email).join(',')
+            =<> fa_icon 'envelope-o'
+            = mail_to email, 'スケジュール変更メールを送る',
+            :cc => 'liuhaifeng@koyo-mail.com, wangshuang@koyo-mail.com, dongweiwei@koyo-mail.com, xiaoxiao@koyo-mail.com, limengzhu@koyo-mail.com',
+            :subject => "【スケジュール変更のご連絡】#{model&.klass&.name}",
+            :body => "各位\
+                      \n\お疲れ様です。\
+                      \n\教務支援課の肖です。\
+                      \n\
+                      \n\諸事情により、下記クラスのスケジュールは一部変更になりました。\
+                      \n\ご確認の程、宜しくお願い致します。\
+                      \n\
+                      \n\---------------------------------------------------------------- \
+                      \n\クラス名：#{model&.klass&.name}\
+                      \n\カリキュラム名：#{model&.klass_subject&.name}\
+                      \n\---------------------------------------------------------------- \
+                      \n\
+                      \n\
+                      \n\詳細、下記の通り。\
+                      \n\-------------------------------- \
+                      \n\【変更前】\
+                      \n\校舎：\
+                      \n\担当講師：\
+                      \n\授業時間：\
+                      \n\
+                      \n\
+                      \n\【変更後】\
+                      \n\校舎：#{model&.reserve&.room&.name}\
+                      \n\担当講師：#{model&.lecture_staffs.includes(:staff).map(&:staff).map(&:name).join(',')}\
+                      \n\授業時間：#{model.start_time}-#{model.finish_time}\
+                      \n\
+                      \n\備考：\
+                      \n\-------------------------------- \
+                      \n\
+                      \n\宜しくお願い致します。\
+                      \n\教務支援課　肖"
+
+.row
+  .col-md-6
+    = render 'shared/model/history', model: model
+
+.button-container
+  - if (model.finish_time - 15.minutes  <= Time.zone.now && Time.zone.now <= model.finish_time + 1.hours ) && model.subject_id == Subject::VIP
+    =<> render 'shared/action/new_button',
+                 path: attends_path(id: model.id),
+                 model: model,
+                 options: { icon: 'qrcode fw', title: t(".qr") }
+  =<> render 'shared/action/index_button', path: model
+
+  - unless model.confirmed_approved?
+    =<> render 'shared/action/edit_button', path: model
+  -if policy? model, :duplicate
+    =<> render 'shared/action/new_button',
+              path: duplicate_lecture_path(model),
+              model: model,
+              options: { icon: 'files-o fw', title: t(".copy") }
+
+  - unless model.confirmed_approved?
+    =<> render 'shared/action/delete_button', path: model
+
+  - if policy? model, :cancel
+    =<> render 'shared/action/delete_button',
+               path: cancel_lecture_path(model, canceled_status: 'cancel'),
+               options: { \
+                title: t('.cancel_until_yesterday'),
+                 icon: 'battery fw',
+                 method: :post,
+                data: {confirm: '当日前キャンセルしますか？', commit: 'はい' } \
+               }
+
+  -if policy? model, :cancel
+    =<> render 'shared/action/delete_button',
+               path: cancel_lecture_path(model, canceled_status: 'cancel_today_contact'),
+               options: { \
+                title: t('.cancel_today'),
+                 icon: 'battery-half fw',
+                 method: :post,
+                data: {confirm: '当日キャンセルしますか？', commit: 'はい' } \
+               }
+
+  - if policy? model, :cancel
+    =<> render 'shared/action/delete_button',
+               path: cancel_lecture_path(model, canceled_status: 'cancel_no_contact'),
+               options: { \
+                title: t('.cancel_no_contact'),
+                 icon: 'battery-empty fw',
+                 method: :post,
+                data: {confirm: '無断キャンセルしますか', commit: 'はい' } \
+               }

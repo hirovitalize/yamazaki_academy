@@ -1,0 +1,12 @@
+.col-md-4
+
+.col-md-4
+  /= f.input :lecture_confirmed_in, label: t_field(Lecture, :confirmed),
+    collection: ransack_enum_collection(Lecture, :confirmed),
+    input_html: { multiple: true }
+
+.col-md-4.d-flex.flex-column
+  .mt-auto
+    button.btn.btn-success.btn-rounded.pull-right.m-r-lg[type='submit' name='export_csv']
+      => fa_icon :file
+      | #{t(".output_csv")}

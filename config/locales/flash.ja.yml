@@ -1,0 +1,54 @@
+ja:
+  controllers:
+    users:
+      lock:
+        flash:
+          notice: ロックしました。
+      unlock:
+        flash:
+          notice: ロックを解除しました。
+    headers:
+      redirect_default(keyword):
+        flash:
+          alert: では社員・学生が見つかりませんでした
+    lectures:
+      approve:
+        flash:
+          notice: 承認しました。
+          alert: 承認に失敗しました。
+      cancel:
+        flash:
+          alert: 日付の条件により、キャンセルできませんでした。
+          notice: キャンセルしました。
+      unapprove:
+        flash:
+          notice: 否認しました。
+          alert: 否認に失敗しました。
+      back_confirmed:
+        flash:
+          notice: 差戻しました。
+          alert: 差戻に失敗しました。
+    klasses:
+      bulk_klass_subjects:
+        flash:
+          alert: の生成に失敗しました。
+    klass_subjects:
+      delete_lectures:
+        flash:
+          notice: 一括削除しました。
+          alert: 一括削除に失敗しました。
+      fix:
+        flash:
+          notice: 確定しました。
+          alert: 確定に失敗しました。
+      unfix:
+        flash:
+          notice: 確定解除しました。
+          alert: 確定解除に失敗しました。
+    student_mycoaches:
+      lock:
+        flash:
+          notice: ロックしました。
+      unlock:
+        flash:
+          notice: ロックを解除しました。

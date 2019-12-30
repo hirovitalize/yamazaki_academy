@@ -1,0 +1,35 @@
+- model = model.blank? ? master_model : model
+= simple_form_for model,
+  defaults: simple_form_display_defaults do |f|
+
+      = f.input :code
+      = f.input :name
+      = f.input :yomi
+      = f.input :sex
+      = f.input :birthday
+      = f.input :tel do
+        - if model.tel.present?
+          a[href="tel:#{model.tel}"]
+            =<> fa_icon :phone
+            = model.tel
+      = f.input :qq do
+        - if model.qq.present?
+          a[href="mqqwpa://im/chat?chat_type=wpa&uin=#{model.qq}&version=1&src_type=web"]
+            =<> fa_icon :qq
+            = model.qq
+      = f.input :wechat do
+        - if model.wechat.present?
+          a[href="weixin://dl/chat?#{model.wechat}"]
+            =<> fa_icon :weixin
+            = model.wechat
+
+      = f.input :visa_type
+      = f.input :contracted_at
+      = f.input :seller
+
+      = f.input :area
+       = f.input :course_categories, label: t_model(:course_category) do
+         = link_objects model.course_categories
+      = f.input :klasses
+      = f.input :student_point
+      = f.input :mentors

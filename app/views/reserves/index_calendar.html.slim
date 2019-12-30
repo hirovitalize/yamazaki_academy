@@ -1,0 +1,9 @@
+- provide :title, t('helpers.common.room_calender')
+
+= render 'shared/js_hidden_text'
+
+= render 'index_calendar_search'
+
+.row
+  div.js-reserve-calendar[data-room_ids=@room_ids]
+    #calendar

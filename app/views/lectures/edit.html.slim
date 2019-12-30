@@ -1,0 +1,6 @@
+- provide :title, t_iconed_model(@lecture, :edit)
+== render 'form', model: @lecture
+
+.button-container
+  =<> render 'shared/action/show_button', path: @lecture
+  =<> render 'shared/action/index_button', path: @lecture

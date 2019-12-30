@@ -1,0 +1,113 @@
+- if current_user.present?
+  .sidebar
+    nav.sidebar-nav
+      ul.nav
+        li.nav-item
+          a
+          = link_to "/", class: 'nav-link'
+            =<> fa_icon :home, class: 'fa-fw'
+            =<> t 'helpers.sidebar.home'
+        li.nav-item.nav-dropdown
+          a.nav-link.nav-dropdown-toggle[href="#"]
+            =<> fa_icon 'pencil', class: 'fa-fw'
+            =<> t 'helpers.sidebar.lecture'
+          ul.nav-dropdown-items
+            = render 'layouts/nav_li_model', model: :lecture
+            = render 'layouts/nav_li_model', model: :klass
+        - if policy?(:reserve, :edit)
+          li.nav-item.nav-dropdown
+            a.nav-link.nav-dropdown-toggle[href="#"]
+              =<> fa_icon 'calendar-plus-o', class: 'fa-fw'
+              =<> t 'helpers.sidebar.reserve'
+            ul.nav-dropdown-items
+              = link_to "/reserves/calendar", class: 'nav-link'
+                =<> t_icon :reserve, 'fw'
+                =<> t 'helpers.sidebar.room_reserve'
+              = link_to "/reserves", class: 'nav-link'
+                =<> fa_icon 'handshake-o', class: 'fa-fw'
+                =<> t 'helpers.sidebar.non_lecture_reservation'
+        li.nav-item.nav-dropdown
+          a.nav-link.nav-dropdown-toggle[href="#"]
+            =<> t_icon :reserve, 'fw'
+            =<> t 'helpers.sidebar.calendar'
+          ul.nav-dropdown-items
+            = link_to "/reserves/index_calendar", class: 'nav-link'
+              =<> t_icon :reserve, 'fw'
+              =<> t 'helpers.common.room_calender'
+            - if policy?(:lecture, :klass_calendar)
+              = link_to "/lectures/klass_calendar", class: 'nav-link'
+                  =<> t_icon :reserve, 'fw'
+                  =<> 'クラスカレンダー'
+            - if policy?(:lecture, :staff_calendar)
+              = link_to "/lectures/staff_calendar", class: 'nav-link'
+                  =<> t_icon :reserve, 'fw'
+                  =<> 'スタッフカレンダー'
+        - if current_user.role?('MASTER_CONTROL')
+          li.nav-item.nav-dropdown
+            a.nav-link.nav-dropdown-toggle[href="#"]
+              =<> fa_icon :th, class: 'fa-fw'
+              =<> t 'helpers.sidebar.master'
+            ul.nav-dropdown-items
+              li.nav-item.nav-dropdown
+                a.nav-link.nav-dropdown-toggle[href="#"]
+                  =<> fa_icon 'map-marker', class: 'fa-fw'
+                  =<> t 'helpers.sidebar.room'
+                ul.nav-dropdown-items
+                  - %i[room building].each do |model|
+                    = render 'layouts/nav_li_model', model: model
+              li.nav-item.nav-dropdown
+                a.nav-link.nav-dropdown-toggle[href="#"]
+                  =<> fa_icon :book, class: 'fa-fw'
+                  =<> t 'helpers.sidebar.lecture_master'
+                ul.nav-dropdown-items
+                  - %i[subject klass_template].each do |model|
+                    = render 'layouts/nav_li_model', model: model
+              li.nav-item.nav-dropdown
+                a.nav-link.nav-dropdown-toggle[href="#"]
+                  =<> fa_icon :child, class: 'fa-fw'
+                  =<> t 'helpers.sidebar.buying_information'
+                ul.nav-dropdown-items
+                  - %i[course vip book].each do |model|
+                    = render 'layouts/nav_li_model', model: model
+        li.nav-item.nav-dropdown
+          a.nav-link.nav-dropdown-toggle[href="#"]
+            =<> fa_icon :users, class: 'fa-fw'
+            =<> t 'helpers.sidebar.staff'
+          ul.nav-dropdown-items
+            li.nav-item.nav-dropdown
+              = render 'layouts/nav_li_model', model: :staff
+              - if current_user.role?('STAFF_ADMIN' )|| current_user.role?('STUDENT_ADMIN')
+                = render 'layouts/nav_li_model', model: :student_mentor
+                = render 'layouts/nav_li_model', model: :lecture_staff
+        li.nav-item.nav-dropdown
+          a.nav-link.nav-dropdown-toggle[href="#"]
+            =<> fa_icon 'graduation-cap', class: 'fa-fw'
+            =<> t 'helpers.sidebar.student'
+          ul.nav-dropdown-items
+            li.nav-item.nav-dropdown
+              = render 'layouts/nav_li_model', model: :student
+              - if current_user.role?('STUDENT_ADMIN')
+                = render 'layouts/nav_li_model', model: :lecture_attend_log
+        - if current_user.role?('PAYMENT' )|| current_user.role?('PAYMENT_ADMIN')
+          li.nav-item.nav-dropdown
+            a.nav-link.nav-dropdown-toggle[href="#"]
+              =<> fa_icon :money, class: 'fa-fw'
+              =<> t 'helpers.sidebar.money'
+            ul.nav-dropdown-items
+              li.nav-item.nav-dropdown
+                = render 'layouts/nav_li_model', model: :student_balance
+                = render 'layouts/nav_li_model', model: :student_billing
+                = render 'layouts/nav_li_model', model: :student_payment
+                = render 'layouts/nav_li_model', model: :student_commission
+        - if current_user.role?('ROLE_CONTROL') || current_user.role?('STAFF_ADMIN')
+          li.nav-item.nav-dropdown
+            a.nav-link.nav-dropdown-toggle[href="#"]
+              =<> fa_icon :desktop, class: 'fa-fw'
+              =<> t 'helpers.sidebar.system'
+            ul.nav-dropdown-items
+              li.nav-item.nav-dropdown
+                = render 'layouts/nav_li_model', model: :user
+                = render 'layouts/nav_li_model', model: :role
+                = render 'layouts/nav_li_model', model: :student_mycoach
+
+    button.sidebar-minimizer.brand-minimizer[type="button"]

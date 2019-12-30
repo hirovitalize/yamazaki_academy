@@ -1,0 +1,11 @@
+---
+en:
+  flash:
+    actions:
+      create:
+        notice: "%{resource_name} created with success"
+      destroy:
+        alert: Delete of %{resource_name} failed
+        notice: "%{resource_name} has been deleted"
+      update:
+        notice: "%{resource_name} has been updated"

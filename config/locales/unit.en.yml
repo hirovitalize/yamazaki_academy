@@ -1,0 +1,175 @@
+---
+en:
+  credit_types:
+  - Visa
+  - Mastercard
+  - Amex
+  - Diners
+  - Jcb
+  - Solo
+  - Switch
+  - Maestro
+  - Unionpay
+  - Dankort
+  - Rupay
+  - Hipercard
+  - Elo
+  - Mir
+  - Discover
+  date:
+    abbr_day_names:
+    - Day
+    - Moon
+    - fire
+    - water
+    - wood
+    - Money
+    - soil
+    abbr_month_names:
+    - 
+    - January
+    - February
+    - In March
+    - April
+    - May
+    - June
+    - July
+    - August
+    - September
+    - October
+    - November
+    - December
+    day_names:
+    - Sunday
+    - Monday
+    - Tuesday
+    - Wednesday
+    - Thursday
+    - Friday
+    - Saturday
+    formats:
+      default: "%Y /%m /%d (%a)"
+      long: "%Y year%m month%d day (%a)"
+      short: "%m /%d"
+    month_names:
+    - 
+    - January
+    - February
+    - In March
+    - April
+    - May
+    - June
+    - July
+    - August
+    - September
+    - October
+    - November
+    - December
+    order:
+    - :year
+    - :month
+    - :day
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: About 1 hour
+        other: About %{count} hours
+      about_x_months:
+        one: About 1 month
+        other: About %{count} 0 month
+      about_x_years:
+        one: About 1 year
+        other: About %{count} 0 years
+      almost_x_years:
+        one: 1 year or less
+        other: "%{count}"
+      half_a_minute: Around 30 seconds
+      less_than_x_minutes:
+        one: Within 1 minute
+        other: within %{count} minutes
+      less_than_x_seconds:
+        one: Within 1 second
+        other: within %{count} seconds
+      over_x_years:
+        one: over 1 year
+        other: More than %{count} years
+      x_days:
+        one: 1 day
+        other: "%{count} day"
+      x_minutes:
+        one: 1 minute
+        other: "%{count}min"
+      x_months:
+        one: 1 month
+        other: "%{count}month"
+      x_seconds:
+        one: 1 second
+        other: "%{count}sec"
+      x_years:
+        one: 1 year
+        other: "%{count}years"
+    prompts:
+      day: Day
+      hour: Time
+      minute: Minute
+      month: Moon
+      second: Seconds
+      year: Year
+  number:
+    currency:
+      format:
+        delimiter: ","
+        format: "%n%u"
+        precision: 0
+        separator: "."
+        significant: false
+        strip_insignificant_zeros: false
+        unit: Circle
+    format:
+      delimiter: ","
+      precision: 3
+      separator: "."
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: "%n%u"
+        units:
+          billion: a billion
+          million: million
+          quadrillion: A thousand trillion
+          thousand: thousand
+          trillion: Trillion
+          unit: Name
+      format:
+        delimiter: ''
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: "%n%u"
+        units:
+          byte: Part-Time Job
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
+    percentage:
+      format:
+        delimiter: ''
+        format: "%n%"
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: ","
+      two_words_connector: ","
+      words_connector: ","
+  time:
+    am: a.m.
+    formats:
+      default: "%Y /%m /%d% H:%M:%S"
+      long: "%Y year%m month%d day (%a)% H hour%M minute%S second%z"
+      short: "%y /%m /%d%H:%M"
+    pm: afternoon

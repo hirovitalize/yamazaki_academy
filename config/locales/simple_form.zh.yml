@@ -1,0 +1,9 @@
+---
+zh:
+  simple_form:
+    error_notification:
+      default_message: 请确认以下错误
+    'no': 取消
+    required:
+      html: <span class="badge badge-danger ml-1">必须</span>
+    'yes': 确认

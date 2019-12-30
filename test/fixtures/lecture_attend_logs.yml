@@ -1,0 +1,9 @@
+one:
+  id: 1
+  lecture_id: 1
+  student_id: 1
+  ip: 1
+  ua: 1
+  prev_cookie_student_ids: 1
+  validation_note: 1
+  qr_made_at: '2019/03/01 10:00'

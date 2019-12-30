@@ -1,0 +1,51 @@
+---
+ja:
+  helpers:
+    button:
+      clear: クリア
+      save: 保存
+      search: 検索
+    flash:
+      assign: "%{model}を割り当てました"
+      update: 更新しました
+    header:
+      locales:
+        en: 英語
+        ja: 日本語
+        zh: 中国語
+      translation: 言語切替
+    select:
+      prompt: 選択してください
+    common:
+      room_calender: 部屋カレンダー
+    sidebar:
+      buying_information: 購買
+      lecture_master: 授業マスタ
+      home: ホーム
+      lecture: 授業
+      calendar: カレンダー
+      master: マスタ管理
+      money: 売上
+      non_lecture_reservation: その他予約
+      room: 教室
+      staff: スタッフ
+      student: 学生
+      system: システム
+      user: ユーザー
+      reserve: 予約
+      room_reserve: 授業部屋予約
+    submit:
+      confirm: 保存します。よろしいですか？
+      create: 保存
+      edit: 編集
+      reset: リセット
+      search: 検索
+      send: 送信
+      sign_in: ログイン
+      sign_up: 登録
+      submit: 保存
+      update: 更新
+    title:
+      edit: "%{model}の編集 \n%{name}"
+      new: "%{model}の追加"
+      show: "%{model} \n%{name}"

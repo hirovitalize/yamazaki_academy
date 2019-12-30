@@ -1,0 +1,41 @@
+= render 'shared/validation_messages', model: model
+
+
+= simple_form_for(@student_payment) do |f|
+  = f.input :settlement_price, as: :hidden
+
+  .row
+    .col-md-6
+      - if model.student.present?
+        = f.association :student, as: :hidden
+      - else
+        = f.association :student,
+                        as: :autocomplete,
+                            collection: [f.object.student].compact,
+                        input_html: { \
+                          multiple: false,
+                          data: {models: 'students', mainquery: 'name_or_yomi_or_code_cont'} \
+                        }
+      - if model.paymethod.present?
+        = f.association :paymethod, as: :hidden
+      - else
+        = f.association :paymethod,
+          collection: Paymethod.without_deleted.where.not(id: [Paymethod::IN_CHINA, Paymethod::IN_JAPANESE_SCHOOL])
+      = f.input :pay_date
+
+      .pull-right
+        = render 'shared/action/mine_button', options: { data: { \
+          staff_target: '#student_payment_receiver_id' \
+        } }
+      = f.association :receiver,
+                      as: :autocomplete,
+                      input_html: { \
+                        multiple: false,
+                        data: { placeholder: "氏名・コードを入力（1文字以上）", minimum_input_length: 1, limit: 20, models: 'staffs', mainquery: 'name_or_code_cont'} \
+                      }
+      - unless model.new_record?
+        = f.input :settlement_price
+      = f.input :price
+      = f.input :gen
+      = f.input :description
+  =<> render 'shared/form_submit', form: f, with_comment: true

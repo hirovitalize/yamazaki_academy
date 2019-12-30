@@ -1,0 +1,39 @@
+[data-widget=loading] {
+  position: relative;
+
+  &::before {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, .5);
+    content: '';
+  }
+
+  &::after {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 20;
+    font-family: 'FontAwesome';
+    font-size: 500%;
+    color: #fff;
+    transform: translate(-50%, -50%);
+    content: '\f110';
+    animation: spinner 1.5s linear infinite;
+  }
+}
+
+@keyframes spinner {
+  from {
+    transform:rotate(0deg);
+  }
+
+  to {
+    transform:rotate(360deg);
+  }
+}

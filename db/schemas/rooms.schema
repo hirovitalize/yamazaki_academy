@@ -1,0 +1,29 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+# old: classroom_info
+create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  t.string "name", null: false
+  t.text "description"
+  t.references "building"
+  t.time "wday_0_open_time"
+  t.time "wday_0_close_time"
+  t.time "wday_1_open_time"
+  t.time "wday_1_close_time"
+  t.time "wday_2_open_time"
+  t.time "wday_2_close_time"
+  t.time "wday_3_open_time"
+  t.time "wday_3_close_time"
+  t.time "wday_4_open_time"
+  t.time "wday_4_close_time"
+  t.time "wday_5_open_time"
+  t.time "wday_5_close_time"
+  t.time "wday_6_open_time"
+  t.time "wday_6_close_time"
+  t.integer "seat_number"
+  t.integer "creator_id"
+  t.integer "updater_id"
+  t.integer "deleter_id"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+  t.datetime "deleted_at", null: true
+end

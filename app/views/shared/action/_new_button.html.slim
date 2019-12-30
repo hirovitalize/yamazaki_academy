@@ -1,0 +1,16 @@
+ruby:
+  options ||= {}
+  default_options = {
+    class: 'btn btn-outline-info btn-sm',
+    data: { toggle: 'tooltip' },
+    title: t(".new")
+  }
+  label ||= false
+  model ||= path if path.is_a?(Class) || path.is_a?(ActiveRecord::Base)
+  path = polymorphic_path(path.new, action: :new) if path.is_a? Class
+  path = polymorphic_path(path, action: :new) if path.is_a? ActiveRecord::Base
+- if policy? model, :new
+  = link_to path, default_options.deep_merge(options)
+    = fa_icon options[:icon] || 'plus fw'
+    - if label
+      = label.is_a?(String) ? label : default_options[:title]

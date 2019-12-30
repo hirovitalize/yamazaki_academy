@@ -1,0 +1,9 @@
+one:
+  id: 1
+  course_id: 1
+  klass_template_id: 1
+
+two:
+  id: 2
+  course_id: 2
+  klass_template_id: 1

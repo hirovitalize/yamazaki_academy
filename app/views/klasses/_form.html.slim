@@ -1,0 +1,35 @@
+= render 'shared/validation_messages', model: model
+
+
+= simple_form_for(@klass) do |f|
+  .row
+    .col-md-6
+      = f.input :code, placeholder: '例：WC0101'
+      = f.input :name
+      = f.association :klass_template,
+                      as: :autocomplete,
+                      collection: [f.object.klass_template].compact,
+                      input_html: {data: {models: 'klass_templates'}}
+      = f.association :area
+      = f.association :students,
+                      as: :autocomplete,
+                      collection: f.object.students,
+                      input_html: { \
+                        multiple: true,
+                        data: {models: 'students', mainquery: 'name_or_yomi_or_code_cont'} \
+                      }
+
+      = f.input :lecture_num
+      = f.input :hours
+      = f.input :start_date,
+        input_html: { data: { \
+          toggle: 'autofill_date',
+          autofill: { \
+            to: '#klass_finish_date',
+            added_days: 90,
+            date_format: 'YYYY-MM-DD'\
+          } \
+        } }
+      = f.input :finish_date
+      = f.input :description
+  =<> render 'shared/form_submit', form: f

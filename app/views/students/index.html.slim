@@ -1,0 +1,106 @@
+- provide :title, t_iconed_model(:student)
+
+- models = @students
+- q = @q
+
+= render 'shared/search_form', q: q
+
+.button-container
+
+.row
+  .col-1
+    = render 'shared/action/new_button', path: Student, options: { target: '_blank' }
+
+  .col-6
+    - if current_user.role? 'PAYMENT_ADMIN'
+      .col-8[id="accordion_import" role="tablist"]
+        .card
+          .card-header[id="search-heading_import" role="tab"]
+            a[data-toggle="collapse" href="#search_import" aria-expanded="true" aria-controls="search_import"]
+              =<> '学生一括インポート'
+          .collapse[id="search_import" role="tabpanel" aria-labelledby="search-heading_import" data-parent="#accordion_import"]
+            .card-body
+              = form_tag import_students_path, multipart: true, method: :post, title: '学生一括インポート', data: { confirm: '学生を一括で追加します。よろしいですか？'} do
+                .row
+                  = file_field_tag :csv_file
+                .row
+                  button.btn.btn-outline-primary.bottom[type='submit' name='import_students']
+                    =<> fa_icon :upload
+                    |　インポート
+
+  .col-5
+    - if current_user.role? 'STUDENT_ADMIN'
+      - if Student.all.where(normalized: false).count != 0
+        .card
+          .card-header
+            = "残りの未マージ件数"
+          .card-body
+            = Student.all.where(normalized: false).count.to_s + '人'
+
+.pagination-container
+  = page_entries_info(@students)
+  = paginate @students
+
+table.table.table-sm.table-borderless.table-filterable.table-hover
+  thead
+    tr
+      th.filter-false.sorter-false.resizable-false
+      th.sorter-false
+        = sort_link q, :code, t_field(:student, :code)
+      th.sorter-false
+        = sort_link q, :name, t_field(:student, :name)
+      th.sorter-false.filter-select.resizable-false
+        = sort_link q, :sex, t_field(:student, :sex)
+      - if current_user.role?('STUDENT_PRIVACY_ACCESSIBLE')
+        th.sorter-false
+          = sort_link q, :birthday, t_field(:student, :birthday)
+        th.sorter-false
+          = t_field(:student, :email)
+        th.sorter-false
+          = sort_link q, :tel, t_field(:student, :tel)
+      th.sorter-false
+        = sort_link q, :course_categories, t_field(:student, :course_categories)
+      - if current_user.role?('STUDENT_ADMIN')
+        th
+          = sort_link q, :normalized, t_field(:student, :normalized)
+  tbody
+    - models.each do |model|
+      tr[class="#{'bg-secondndary' if model.deleted?}"]
+        td.action-column
+          =<> render 'shared/action/show_button', path: model, options: { target: ['_blank'] }
+        td = model.code
+        td = model.name
+        td = model.sex_i18n
+        - if current_user.role?('STUDENT_PRIVACY_ACCESSIBLE')
+          td = model.birthday
+          td
+            - if model&.student_mycoach&.email.present?
+              a[href="mailto:#{model&.student_mycoach&.email}" target="_blank"]
+                =<> fa_icon :envelope
+                = model&.student_mycoach&.email
+          td
+            - if model.tel.present?
+              a[href="tel:#{model.tel}"]
+                =<> fa_icon :phone
+                = model.tel
+            - if model.qq.present?
+              br
+              a[href="mqqwpa://im/chat?chat_type=wpa&uin=#{model.qq}&version=1&src_type=web"]
+                =<> fa_icon :qq
+                = model.qq
+            - if model.wechat.present?
+              br
+              a[href="weixin://dl/chat?#{model.wechat}"]
+                =<> fa_icon :weixin
+                = model.wechat
+        td = link_objects model.course_categories
+        - if current_user.role?('STUDENT_ADMIN')
+          td
+            - if model.normalized.present?
+              = '済'
+            - else
+              = link_to choose_merging_student_path(model), class: 'btn btn-outline-primary btn-sm', target: ['_blank']
+                = fa_icon 'pencil fw'
+
+.pagination-container
+  = paginate @students

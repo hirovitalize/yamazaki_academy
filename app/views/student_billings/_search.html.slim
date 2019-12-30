@@ -1,0 +1,18 @@
+.col-md-4
+  = f.input :student_id_in, label: t_field(StudentBilling, :student),
+    as: :autocomplete,
+    collection: Student.where(id: f.object.student_id_in),
+    input_html: { multiple: true, data: { models: 'students', mainquery: 'name_or_code_start' }}
+
+.col-md-4
+  - provide :search_delete do
+    - klass = 'btn btn-outline-secondary col-md-6'
+    = f.label :with_deleted, class: klass
+      = f.check_box :with_deleted, include_hidden: false
+      | 削除含む
+    = f.label :only_deleted, class: klass
+      = f.check_box :only_deleted, include_hidden: false
+      | 削除のみ
+  = f.input :delete, label: '削除',
+    as: :custom_content,
+    content: yield(:search_delete)

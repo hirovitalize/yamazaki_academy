@@ -1,0 +1,14 @@
+ul.m-0.p-3
+  - if controller_name != 'sessions'
+    li.mt-1
+      = link_to t('users.sessions.new.title'), new_session_path(resource_name)
+  - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
+    li.mt-1
+      = link_to t('users.passwords.new.title'), new_password_path(resource_name)
+  - if devise_mapping.confirmable? && controller_name != 'confirmations'
+    li.mt-1
+      = link_to t('devise.shared.links.didn_t_receive_confirmation_instructions'), new_confirmation_path(resource_name)
+  - if devise_mapping.omniauthable?
+    - resource_class.omniauth_providers.each do |provider|
+      li.mt-1
+        = link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider)

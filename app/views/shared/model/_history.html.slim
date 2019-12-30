@@ -1,0 +1,43 @@
+ruby:
+  full ||= true
+
+  histories = []
+  if full && model.respond_to?(:versions)
+    model.versions.each do |version|
+      histories << [version.created_at, version.event_i18n, version.user, version.comment]
+    end
+  else
+    histories << [model.created_at, '新規作成', model.creator, ''] if model.created_at.present?
+    histories << [model.updated_at, '最終更新', model.updater, ''] if model.updated_at.present?
+    histories << [model.deleted_at, '削除', model.deleter, ''] if model.deleted_at.present?
+  end
+  histories.sort! { |a, b| a[0] <=> b[0] }
+
+#accordion_history[role="tablist"]
+  .card
+    .card-header#search-heading_history[role="tab"]
+      a[data-toggle="collapse" href="#search_history" aria-expanded="true" aria-controls="search_history"]
+        = fa_icon 'clock-o fw'
+        =<> t('.update_history')
+        small.pull-right
+          = "（#{t('.last_update')}：#{model.updated_at.to_s(:date)}）"
+
+    .collapse#search_history[role="tabpanel" aria-labelledby="search-heading_history" data-parent="#accordion_history"]
+      .card-body
+        table.table.table-striped.table-sm.table-borderless.m-0
+          tbody
+            - histories.reverse.each do |time, event, user, comment|
+              tr
+                td
+                  - if comment.present?
+                    = tooltip(comment)
+                      = event
+                  - else
+                    = event
+                td
+                  = tooltip(time)
+                    = fa_icon 'clock-o', class: 'fa-fw'
+                    = "#{time_ago_in_words(time)}#{t('.ago')}"
+                td
+                  - if user.present?
+                    =<> link_object user.staff

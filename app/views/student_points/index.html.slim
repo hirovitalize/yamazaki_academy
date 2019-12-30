@@ -1,0 +1,38 @@
+- provide :title, t_iconed_model(:student_point)
+
+- models = @student_points
+- q = @q
+
+= render 'shared/search_form', q: q
+
+.pagination-container
+  = page_entries_info(@student_points)
+  = paginate @student_points
+
+table.table.table-sm.table-borderless.table-filterable.table-hover
+  thead
+    tr
+      th.filter-false.sorter-false.resizable-false
+      th.sorter-false
+        = sort_link q, :student_id, t_field(:student_point, :student)
+      th.sorter-false
+        = sort_link q, :total, t_field(:student_point, :total)
+      th.sorter-false
+        = sort_link q, :paid, t_field(:student_point, :paid)
+      th.sorter-false
+        = sort_link q, :used, t_field(:student_point, :used)
+      th.sorter-false
+        = sort_link q, :reserved, t_field(:student_point, :reserved)
+  tbody
+    - models.each do |model|
+      tr[class="#{'bg-secondndary' if model.deleted?}"]
+        td.action-column
+          =<> render 'shared/action/show_button', path: model, options: { target: ['_blank'] }
+        td = link_object model.student
+        td = model.total_hours.to_s + 'h'
+        td = model.paid_hours.to_s + 'h'
+        td = model.used_hours.to_s + 'h'
+        td = model.reserved_hours.to_s + 'h'
+
+.pagination-container
+  = paginate @student_points

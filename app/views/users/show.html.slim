@@ -1,0 +1,28 @@
+- model = @user
+- provide :title, t_iconed_model(model, :show)
+
+= render 'shared/validation_messages', model: model
+
+= simple_form_for model,
+  html: { class: 'form-horizontal' },
+  defaults: simple_form_display_defaults do |f|
+  .row
+    .col-md-6
+      .card
+        .card-body
+          table.table.table-striped.table-sm.table-borderless.m-0
+            tbody
+              = f.input :email
+              = f.input :staff
+              = f.input :sign_in_count
+              = f.input :current_sign_in_at
+              = f.input :last_sign_in_at
+              = f.input :current_sign_in_ip
+              = f.input :last_sign_in_ip
+
+.row
+  .col-md-6
+    = render 'shared/model/history', model: model
+
+.button-container
+  =<> render 'shared/action/index_button', path: model

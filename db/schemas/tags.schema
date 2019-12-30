@@ -1,0 +1,10 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+create_table 'tags', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC', force: :cascade do |t|
+  # NOTE: https://github.com/mbleigh/acts-as-taggable-on/issues/623
+  t.string 'name' #, charset: 'utf8', collation: 'utf8_bin'
+  t.integer 'taggings_count', default: 0
+  t.string 'severity', null: false, default: 'info'
+
+  t.index ['name'], name: 'index_tags_on_name'
+end

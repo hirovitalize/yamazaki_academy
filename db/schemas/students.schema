@@ -1,0 +1,39 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+create_table 'students', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC', force: :cascade do |t|
+  t.string 'code', null: false, limit: 10, renamed_from: 'school_student_number'
+  t.string 'name', null: false
+  t.string 'name_sei', null: false
+  t.string 'name_mei', null: false
+  t.string 'yomi', null: true
+  t.string 'yomi_sei'
+  t.string 'yomi_mei'
+  t.date 'birthday'
+  t.text 'description'
+  t.integer 'sex', limit: 1
+  t.references 'area'
+  t.string 'tel'
+  t.string 'qq'
+  t.string 'wechat'
+  t.string 'visa_type'
+  t.references 'seller'
+
+  t.boolean 'normalized', null: false, default: false # 名寄せ未/済
+  t.string 'merged_codes' # 名寄せして取りこんだコード
+  t.references 'normalized_student' # マージ元に、マージ先IDを格納する
+
+  t.date 'contracted_at'
+
+  t.integer 'lock_version'
+
+  t.integer 'creator_id'
+  t.integer 'updater_id'
+  t.integer 'deleter_id'
+  t.datetime 'created_at'
+  t.datetime 'updated_at'
+  t.datetime 'deleted_at', null: true
+
+  t.index ['code'], name: 'code', unique: true
+  t.index ['name'], name: 'name'
+  t.index ['yomi'], name: 'yomi'
+end

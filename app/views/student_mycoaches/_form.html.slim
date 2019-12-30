@@ -1,0 +1,17 @@
+= render 'shared/validation_messages', model: model
+
+
+= simple_form_for(@student_mycoach) do |f|
+  .row
+    .col-md-6
+      = f.input :email
+      = f.input :encrypted_password
+      = f.input :password_salt
+      = f.input :remember_created_at
+      = f.input :sign_in_count
+      = f.input :current_sign_in_at
+      = f.input :last_sign_in_at
+      = f.input :current_sign_in_ip
+      = f.input :last_sign_in_ip
+      = f.input :auth_token
+  =<> render 'shared/form_submit', form: f

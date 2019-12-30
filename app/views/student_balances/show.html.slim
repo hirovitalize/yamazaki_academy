@@ -1,0 +1,26 @@
+- model = @student_balance
+- provide :title, t_iconed_model(model, :show)
+
+= render 'shared/validation_messages', model: model
+
+= simple_form_for model,
+  html: { class: 'form-horizontal' },
+  defaults: simple_form_display_defaults do |f|
+  .row
+    .col-md-6
+      .card
+        .card-body
+          table.table.table-striped.table-sm.table-borderless.m-0
+            tbody
+              = f.input :student
+              = f.input :billings_total
+              = f.input :payments_total
+              = f.input :price
+
+      = render 'shared/model/history', model: model
+
+    .col-md-6
+      =<> render 'students/billings_and_payments', model: model.student
+
+.button-container
+  =<> render 'shared/action/index_button', path: model

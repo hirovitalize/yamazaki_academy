@@ -1,0 +1,134 @@
+---
+zh:
+  courses:
+    index:
+      person: 人
+    show:
+      addition: 加法
+  klasses:
+    curriculum:
+      day_of_week: 星期几
+      duration: 期间
+      katei: 课程设置
+      klass_name: 类名
+      number_of_class: 时报
+      number_of_class_hours: 营业时间
+      staff_in_charge: 讲师
+    search:
+      fixed: 不确定的
+      in_action: 执行中
+    show:
+      bundle_addition: 批量添加
+      copy: 复制
+  lecture_staffs:
+    search:
+      lecture_duration_time: 持续时间/小时
+      output_csv: CSV输出
+    show:
+      time: 时间
+      yen: 圈
+  lecture_students:
+    show:
+      time: 分钟
+  lectures:
+    button_create_first_vip_lecture:
+      reserve: 订座
+    button_create_vip_lecture:
+      addition: 加法
+    index:
+      approval: 你同意吗？
+      denial: 你拒绝吗？
+      passback: 发回。你确定吗？
+    search:
+      absent: 负责人不在
+      bundle: 一并
+      bundle_duplication_in_a_week: 批量复制到下周
+      double_checking: 重複
+      lecture_duration_time: 持续时间/小时
+      notyet_reservation: 未预约
+    show:
+      approval: 你同意吗？
+      cancel: 取消您的预订。你确定吗？
+      cancel_no_contact: 取消，恕不另行
+      cancel_today: 当天取消
+      cancel_until_yesterday: 前一天取消了
+      copy: 复制
+      denial: 你拒绝吗？
+      passback: 发回。你确定吗？
+      qr: QR
+  rooms:
+    index:
+      seat: 座位
+    search:
+      bundle: 一并
+    show:
+      seat: 座位
+  shared:
+    action:
+      delete_button:
+        are_you_sure: 删除。你确定吗？
+        delete: 删除
+      edit_button:
+        edit: 编辑
+      index_button:
+        index: 名单
+      mine_button:
+        mine: 我自己
+      new_button:
+        new: 加法
+      show_button:
+        show: 阅读
+    form_submit:
+      save: 存储
+    js_hidden_text:
+      alert: 请在30分钟或更长时间内创建
+      capacity: 定员
+      confirm: 要删除预订吗？
+      delete: 删除
+      no_available_lecture: 没有可选择的讲座
+      reserve: 预订
+      room_name: 班级名称
+      select_lecture: 请选择一个讲座
+    model:
+      assoc:
+        total: 总件数
+      history:
+        ago: 前
+        last_update: 最终更新
+        update_history: 更新履历
+  student_balances:
+    search:
+      output_csv: CSV输出
+  students:
+    button_create_first_vip_lecture:
+      reserve: 订座
+    button_create_vip_lecture:
+      addition: 加法
+      reserve: 订座
+  users:
+    ical:
+      ical_description: 要在外部日历应用程序中反映讲座信息，请参阅下面的URl。
+      ical_title: 你的课表
+    index:
+      lock: 锁
+      lock_confirm: 锁定它你确定吗？
+      locked: 锁定
+      unlock: 开锁
+      unlock_confirm: 解锁它。你确定吗？
+    passwords:
+      edit:
+        title: 再输入一遍密码
+      new:
+        title: 把密码忘记了
+    registrations:
+      edit:
+        title: 用户设定
+      new:
+        title: 用户登录
+    search:
+      locked: 锁定
+    sessions:
+      destroy:
+        title: 退出登录
+      new:
+        title: 登录

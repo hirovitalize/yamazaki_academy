@@ -1,0 +1,61 @@
+= render 'shared/validation_messages', model: model
+
+= simple_form_for(@lecture) do |f|
+  .row
+    .col-md-6
+      = f.input :name
+      - if model.subject_id == Subject::VIP
+        = f.association :subject, as: :hidden
+      -elsif (model.subject_id == Subject::FACULTY_VIP) || (model.subject_id == Subject::MASTER_VIP) || (model.subject_id == Subject::ART_VIP)
+        = f.association :subject,
+                        collection: Subject.where(id: [Subject::ART_VIP, Subject::FACULTY_VIP, Subject::MASTER_VIP])
+      -elsif (model.subject_id == Subject::RESEARCH_PLAN_VIP) || (model.subject_id == Subject::DESIRED_REASON_VIP) || (model.subject_id == Subject::DESIRED_REASON_COACH_VIP) || (model.subject_id == Subject::SHAM_INTERVIEW_COACH_VIP) || (model.subject_id == Subject::SHAM_INTERVIEW_VIP) || (model.subject_id == Subject::SHORT_ESSAY_VIP)
+        = f.association :subject,
+                        collection: Subject.where(id: [Subject::RESEARCH_PLAN_VIP, Subject::DESIRED_REASON_VIP, Subject::DESIRED_REASON_COACH_VIP,Subject::SHAM_INTERVIEW_COACH_VIP, Subject::SHAM_INTERVIEW_VIP, Subject::SHORT_ESSAY_VIP])
+      -else
+        = f.association :subject,
+                        collection: Subject.where.not(id: Subject::VIP).where.not(id: Subject::ART_VIP).where.not(id: Subject::FACULTY_VIP).where.not(id: Subject::MASTER_VIP)
+        - unless model.klass_subject.blank?
+          = f.association :klass_subject,
+                          as: :drilldown,
+                          collection: [f.object.klass_subject].compact,
+                          input_html: {data: {\
+                             parent: '#lecture_subject_id',
+                             models: 'klass_subjects',
+                             view_column: "ifnull(klasses.name, 'クラスなし')",
+                             mainquery: 'subject_id_in',
+                          queries: { klass_finish_date_gteq: Time.zone.today }.to_json \
+                          }}
+      = f.association :students,
+                      as: :autocomplete,
+                      collection: f.object.students,
+                      input_html: { \
+                        multiple: true,
+                        data: {models: 'students', mainquery: 'name_or_yomi_or_code_cont'} \
+                      }
+
+    .col-md-6
+      = f.input :start_time,
+        as: :datetime,
+        input_html: { data: { \
+          toggle: 'autofill_date',
+          autofill: { \
+            to: '#lecture_finish_time',
+            added_minutes: -9960,
+            date_format: 'YYYY/MM/DD HH:mm'\
+          } \
+        } }
+      - if @lecture.reserve.blank?
+        = f.input :finish_time, as: :datetime
+      - else
+        = f.input :finish_time, as: :datetime,
+        hint: '時間変更を行った場合、部屋の予約が解除されます'
+      = f.input :time_changeable
+      = f.input :tag_list,
+                as: :select,
+                collection: ActsAsTaggableOn::Tag.all.pluck(:name, :name),
+                input_html: { multiple: true }
+
+      = f.input :description
+
+  =<> render 'shared/form_submit', form: f

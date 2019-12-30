@@ -1,0 +1,45 @@
+- provide :title, t_iconed_model(:klass_template)
+
+- models = @klass_templates.decorate
+- q = @q
+
+= render 'shared/search_form', q: q
+
+.button-container
+  = render 'shared/action/new_button', path: KlassTemplate, options: { target: '_blank' }
+
+.pagination-container
+  = page_entries_info(@klass_templates)
+  = paginate @klass_templates
+
+table.table.table-sm.table-borderless.table-filterable.table-hover
+  thead
+    tr
+      th.filter-false.sorter-false.resizable-false
+      th.sorter-false
+        = sort_link q, :course_category, t_field(:klass_template, :course_category)
+      th.sorter-false
+        = sort_link q, :name, t_field(:klass_template, :name)
+      th.sorter-false
+        = sort_link q, :subjects, t_field(:klass_template, :subjects)
+      th
+        = t_field(:klass_template, :klasses)
+      th
+        = t_field(:klass_template, :total_hours)
+      th.sorter-false
+        = t_field(:klass_template, :description)
+
+  tbody
+    - models.each do |model|
+      tr[class="#{'bg-secondndary' if model.deleted?}"]
+        td.action-column
+          =<> render 'shared/action/show_button', path: model, options: { target: ['_blank'] }
+        td = link_object model.course_category
+        td = model.name
+        td = link_objects model.subjects
+        td = link_objects model.klasses
+        td = model.view_total_hours
+        td = truncated_text(model.description)
+
+.pagination-container
+  = paginate @klass_templates

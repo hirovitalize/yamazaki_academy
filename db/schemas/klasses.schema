@@ -1,0 +1,23 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+# old: classroom_info
+create_table "klasses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  t.string "name", null: false
+  t.string 'code', null: false, limit: 6 # 'WC0101' for lecture: 'TK19 B01 WC0101'
+  t.text "description"
+  t.references "klass_template", null: false
+  t.integer "lecture_num", null: true
+  t.integer "interval", null: true
+  t.date "start_date"
+  t.date "finish_date"
+  t.references "area", null: true
+  t.boolean "fixed", null: false, default: false
+  t.integer "creator_id"
+  t.integer "updater_id"
+  t.integer "deleter_id"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+  t.datetime "deleted_at", null: true
+
+  t.index ["code"], name: "code"
+end

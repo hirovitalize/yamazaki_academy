@@ -1,0 +1,14 @@
+.nested-fields
+  .row
+    .col-md-8.js-detail
+      = f.input :memo
+      = f.input :price
+
+      / 自動的に内部再計算させる
+      = f.hidden_field :unit_price, value: 0
+      = f.hidden_field :number, value: 1
+
+    .col-md-2
+      = link_to_remove_association f,
+        class: 'btn btn-sm btn-outline-danger js-children-delete'
+         => fa_icon 'minus-square'

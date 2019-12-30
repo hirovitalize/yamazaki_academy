@@ -1,0 +1,17 @@
+= render 'shared/validation_messages', model: model
+
+
+= simple_form_for(@student_mentor) do |f|
+  .row
+    .col-md-6
+      = f.association :staff, as: :hidden
+      = f.association :student,
+                      as: :autocomplete,
+                      collection: [f.object.student].compact,
+                                 input_html: { \
+                                  data: {models: 'students', mainquery: 'name_or_yomi_or_code_cont'} \
+                                 }
+
+      = f.input :staff_type, as: :radio_buttons
+
+  =<> render 'shared/form_submit', form: f

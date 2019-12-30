@@ -1,0 +1,38 @@
+---
+zh:
+  enums:
+    lecture:
+      canceled_status:
+        cancel: 那天之前取消
+        cancel_no_contact: 恕不另行取消
+        cancel_today_contact: 那天取消
+      confirmed:
+        approved: 准许
+        notyet: 未
+        unapproved: 否认
+    paper_trail:
+      version:
+        event:
+          create: 创建
+          destroy: 删除
+          update: 更新
+    student:
+      sex:
+        female: 女
+        male: 男
+        other: 其他
+      visa_type:
+        family: 家庭
+        other: 其他
+        permanent: 永久居留权
+        settlement: 结算方式
+        study_abroad: 出国留学
+    student_commission:
+      commission_type:
+        cache_back: 现金返还
+        referral_inflow: 企业介绍
+        referral_person: 个人介绍
+      referral_type:
+        cache_back: 还款
+        inflow: 公司
+        person: 个人

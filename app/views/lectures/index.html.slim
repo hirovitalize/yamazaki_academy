@@ -1,0 +1,115 @@
+- provide :title, t_iconed_model(:lecture)
+
+- models = @lectures.decorate
+- q = @q
+
+= render 'shared/search_form', q: q
+
+.button-container
+  = render 'shared/action/new_button', path: Lecture, options: { target: '_blank' }
+  =<> render 'button_create_first_vip_lecture'
+
+.pagination-container
+  = page_entries_info(@lectures)
+  = paginate @lectures
+
+table.table.table-sm.table-borderless.table-filterable.table-hover
+  thead
+    tr
+      th.filter-false.sorter-false.resizable-false
+      th.sorter-false
+        = sort_link q, :name, t_field(:lecture, :name)
+      th.sorter-false
+        = sort_link q, :subject, t_field(:lecture, :subject)
+      th.sorter-false
+        = sort_link q, :klass_subject, t_field(:lecture, :klass_subject)
+      th.sorter-false
+        = sort_link q, :staffs, t_field(:lecture, :staffs)
+      th.sorter-false
+        = sort_link q, :start_time, t_field(:lecture, :lecture_time)
+      th.sorter-false
+        = sort_link q, :reserve, t_field(:lecture, :reserve)
+      th.sorter-false.filter-select
+        = sort_link q, :cached_tag_list, t_field(:lecture, :tags)
+      th.sorter-false
+        = t_field(:lecture, :description)
+      th.sorter-false.filter-select
+        = sort_link q, :lecture_attend_log, t_field(:lecture, :lecture_attend_log)
+      th.sorter-false.filter-select
+        = sort_link q, :confirmed, t_field(:lecture, :confirmed)
+
+  tbody
+    - models.each do |model|
+      tr[class="#{'bg-secondndary' if model.deleted?}"]
+        td.action-column
+          =<> render 'shared/action/show_button', path: model, options: { target: ['_blank'] }
+
+        td = model.to_label
+        td = model.subject&.name
+        td = link_object model.klass_subject
+        td = link_objects model.staffs
+        td = model.view_time_range
+        td
+          - if model.reserve.present?
+            = link_object model.reserve, format: ->(reserve) { reserve.room&.name }
+          - elsif model.canceled_status.blank? && (model.start_time.to_date >= Time.zone.today)
+            =<> render 'shared/action/new_button',
+                model: :reserve,
+                path: reserve_by_lecture_lecture_path(model),
+                options: { \
+                  target: ['_blank'],
+                  icon: t_field(:reserve, :faicon),
+                  class: 'btn-warning btn-sm' \
+                }
+
+        td
+          - model.view_tags&.each do |tag|
+            =<> tag.html_safe
+        td = truncated_text(model.description)
+        td
+          - if model.lecture_attend_logs.present? && model.lecture_attend_logs&.last&.validation_note.present?
+            =<> fa_icon 'times'
+          - elsif model.lecture_attend_logs.present? && model.lecture_attend_logs&.last&.validation_note.blank?
+            =<> fa_icon 'circle-thin'
+          - else
+            =<> '-'
+        td
+          - if Time.zone.now >= model.finish_time
+            - model.view_tags_approved.each do |tag|
+              = tag.html_safe
+            - if policy? model, :approve
+              =<> render 'shared/action/delete_button',
+                  model: model,
+                  path: approve_lecture_path(model),
+                  options: { \
+                    method: :post,
+                    title: '承認',
+                    data: { confirm: t(".approval"), commit: '承認' },
+                    icon: 'thumbs-up',
+                    class: 'btn btn-outline-warning btn-sm' \
+                  }
+            - if policy? model, :unapprove
+              =<> render 'shared/action/delete_button',
+                  model: model,
+                  path: unapprove_lecture_path(model),
+                  options: { \
+                    method: :post,
+                    title: '否認',
+                    data: { confirm: t(".denial"), commit: '否認' },
+                    icon: 'thumbs-down',
+                    class: 'btn btn-outline-warning btn-sm' \
+                  }
+            - if policy? model, :back_confirmed
+              =<> render 'shared/action/delete_button',
+                  model: model,
+                  path: back_confirmed_lecture_path(model),
+                  options: { \
+                    method: :post,
+                    title: '差戻',
+                    data: { confirm: t(".passback"), commit: '差戻' },
+                    icon: 'undo',
+                    class: 'btn btn-outline-warning btn-sm' \
+                  }
+
+.pagination-container
+  = paginate @lectures

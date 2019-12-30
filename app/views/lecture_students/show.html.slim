@@ -1,0 +1,26 @@
+- model = @lecture_student
+- provide :title, t_iconed_model(model, :show)
+
+= render 'shared/validation_messages', model: model
+
+= simple_form_for model,
+  html: { class: 'form-horizontal' },
+  defaults: simple_form_display_defaults do |f|
+  .row
+    .col-md-6
+      .card
+        .card-body
+          table.table.table-striped.table-sm.table-borderless.m-0
+            tbody
+              = f.input :id
+              = f.input :lecture
+              = f.input :student
+              = f.input :confirmed_point, append: t(".time")
+
+.row
+  .col-md-6
+    = render 'shared/model/history', model: model
+
+.button-container
+  =<> render 'shared/action/index_button', path: model
+  =<> render 'shared/action/delete_button', path: model

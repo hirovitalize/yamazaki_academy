@@ -1,0 +1,57 @@
+- provide :title, t_iconed_model(:staff)
+
+- models = @staffs
+- q = @q
+
+= render 'shared/search_form', q: q
+
+.button-container
+  = render 'shared/action/new_button', path: Staff, options: { target: '_blank' }
+
+.pagination-container
+  = page_entries_info(@staffs)
+  = paginate @staffs
+
+table.table.table-sm.table-borderless.table-filterable.table-hover
+  thead
+    tr
+      th.filter-false.sorter-false.resizable-false
+      th.sorter-false
+        = sort_link q, :code, t_field(:staff, :code)
+      th.sorter-false
+        = sort_link q, :name, t_field(:staff, :name)
+      th.sorter-false
+        = sort_link q, :subjects, t_field(:staff, :subjects)
+      th.sorter-false
+        = sort_link q, :roles, t_field(:staff, :roles)
+      - if current_user.role?('STAFF_ADMIN')
+        th.sorter-false
+          = t_field(:staff, :tel)
+        th.sorter-false
+          = t_field(:staff, :email)
+        th.sorter-false
+          = t_field(:staff, :birthday)
+
+  tbody
+    - models.each do |model|
+      tr[class="#{'bg-secondndary' if model.deleted?}"]
+        td.action-column
+          =<> render 'shared/action/show_button', path: model, options: { target: ['_blank'] }
+        td = model.code
+        td = link_object model.user
+        td = link_objects model.subjects
+        td = model.roles.map(&:name).join(',')
+        - if current_user.role?('STAFF_ADMIN')
+          td
+            - if model.tel.present?
+              a[href="tel:#{model.tel}"]
+                =<> fa_icon :phone
+                = model.tel
+          td
+            a[href="mailto:#{model.user.email}" target="_blank"]
+              =<> fa_icon :envelope
+              = model.user.email
+          td = model.birthday
+
+.pagination-container
+  = paginate @staffs

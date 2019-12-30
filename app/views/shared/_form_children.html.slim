@@ -1,0 +1,30 @@
+ruby:
+  key ||= association
+  partial_name ||= "form_children_#{key.to_s.singularize}_fields"
+  target ||= "children-#{key}"
+  creatable = true if creatable.nil?
+  label = t_field(model, association) if label.nil?
+  wrapper_html ||= {}
+  locals_children ||= {}
+
+div[class="form-group #{f.object.class.to_s.underscore}-#{key}"]
+  - if creatable
+    = f.input association, label: label, wrapper_html: wrapper_html do
+      =<> link_to_add_association f, association,
+                                  class: 'pull-right btn btn-sm btn-outline-primary',
+                                  partial: partial_name,
+                                  data: { \
+                                    'association-insertion-method' => 'prepend',
+                                    'association-insertion-traversal' => 'nearest',
+                                    'association-insertion-node' => ".#{target}" \
+                                  },
+                                  render_options: { locals: locals_children }
+        => fa_icon 'plus-square'
+
+  div[class="#{target} cocoon-append-target"]
+    - if defined? object
+      = f.simple_fields_for association, object, default: { wrapper_html: wrapper_html } do |f_child|
+        = render partial: partial_name, locals: locals_children.merge(f: f_child)
+    - else
+      = f.simple_fields_for association, default: { wrapper_html: wrapper_html } do |f_child|
+        = render partial: partial_name, locals: locals_children.merge(f: f_child)

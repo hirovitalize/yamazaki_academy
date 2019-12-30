@@ -1,0 +1,6 @@
+one:
+  id: 1
+  student_billing_id: 1
+  price: 12345
+  item_id: 1
+  item_type: Vip

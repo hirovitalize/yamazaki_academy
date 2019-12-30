@@ -1,0 +1,6 @@
+= render 'shared/action/search_button'
+=<> button_tag '', type: 'reset', class: 'btn btn-secondary btn-xl',
+  data: { disabled_with: t(".processing") },
+  onClick: 'location.href = location.pathname;'
+  => fa_icon :eraser
+  | #{I18n.t 'helpers.button.clear'}

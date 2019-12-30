@@ -1,0 +1,28 @@
+one:
+  id: 1
+  email: 'admin@vitalize.co.jp'
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  auth_token: 'test_token'
+  confirmed_at: '2018-12-31 01:01'
+
+two:
+  id: 3
+  email: 'admin3@vitalize.co.jp'
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password2') %>
+  auth_token: 'test3_token'
+  confirmed_at: '2018-12-31 01:01'
+
+three:
+  id: 78
+  email: 'admin78@vitalize.co.jp'
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password2') %>
+  auth_token: 'test78_token'
+  confirmed_at: '2018-12-31 01:01'
+
+common:
+  id: 2 # User::COMMON
+  email: 'common@vitalize.co.jp'
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password2') %>
+  auth_token: 'test2_token'
+  confirmed_at: '2018-12-31 01:01'
+

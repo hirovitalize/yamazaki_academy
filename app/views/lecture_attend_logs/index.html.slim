@@ -1,0 +1,51 @@
+- provide :title, t_iconed_model(:lecture_attend_log)
+
+- models = @lecture_attend_logs
+- q = @q
+
+= render 'shared/search_form', q: q
+
+.button-container
+  = link_to 'QRクリア', build_clear_url_lecture_attend_logs_path, class: 'btn btn-outline-primary btn-sm'
+
+.pagination-container
+  = page_entries_info(@lecture_attend_logs)
+  = paginate @lecture_attend_logs
+
+table.table.table-sm.table-borderless.table-filterable.table-hover
+  thead
+    tr
+      th.filter-false.sorter-false.resizable-false
+      th.sorter-false
+        = sort_link q, :id, t_field(:lecture_attend_log, :id)
+      th.sorter-false
+        = sort_link q, :lecture_id, t_field(:lecture_attend_log, :lecture)
+      th.sorter-false
+        = sort_link q, :student_id, t_field(:lecture_attend_log, :student)
+      th.sorter-false
+        = t_field(:lecture_attend_log, :staff)
+      th.sorter-false
+        = sort_link q, :ua, t_field(:lecture_attend_log, :ua)
+      th.sorter-false
+        = sort_link q, :prev_cookie_student_id, t_field(:lecture_attend_log, :prev_cookie_student_ids)
+      th.sorter-false
+        = sort_link q, :validation_note, t_field(:lecture_attend_log, :validation_note)
+      th.sorter-false
+        = sort_link q, :qr_made_at, t_field(:lecture_attend_log, :qr_made_at)
+
+  tbody
+    - models.each do |model|
+      tr[class="#{'bg-secondndary' if model.deleted?}"]
+        td.action-column
+          =<> render 'shared/action/show_button', path: model, options: { target: ['_blank'] }
+        td = model.id
+        td = link_object model.lecture
+        td = link_object model.student
+        td = link_object model.lecture.lecture_staffs.map(&:staff).compact.map(&:name).join(',')
+        td = model.ua
+        td = link_object model.prev_cookie_student_ids
+        td = model.validation_note
+        td = model.qr_made_at
+
+.pagination-container
+  = paginate @lecture_attend_logs

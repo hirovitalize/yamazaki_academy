@@ -1,0 +1,101 @@
+- model = @klass.decorate
+- provide :title, t_iconed_model(model, :show)
+
+= render 'shared/validation_messages', model: model
+
+= simple_form_for model,
+  html: { class: 'form-horizontal' },
+  defaults: simple_form_display_defaults do |f|
+  .row
+    .col-md-6
+      .card
+        .card-body
+          table.table.table-striped.table-sm.table-borderless.m-0
+            tbody
+              = f.input :code do
+                = model.code_with_area_year
+              = f.input :name
+              = f.input :area do
+                = model.area&.name
+              = f.input :start_date
+              = f.input :finish_date
+              = f.input :hours do
+                = model.view_total_hours
+              = f.input :klass_template do
+                = model.klass_template.name
+              = f.input :description
+                =<> truncated_text(f.object.description)
+              = f.input :klass_subjects do
+                - if model.klass_subjects.count == 0
+                  =<> '  '
+                - elsif model.klass_subjects.map{|ks| ks.fixed}.all? && model.sharing_klass_subjects.map{|sks| sks.fixed}.all?
+                  =<> fa_icon 'check-square 2x', style: "color:#4dbd74;"
+                - else
+                  =<> fa_icon 'square-o 2x', style: "color:#4dbd74;"
+    .col-md-6
+      .card
+        .card-body
+          - if model.klass_subjects.blank?
+            = render 'shared/action/new_button',
+                   model: KlassSubject,
+                   path: bulk_klass_subjects_klass_path(model),
+                   label: "#{t_model(KlassSubject)}#{t(".bundle_addition")}",
+                   options: { method: :post }
+          - else
+            = render 'shared/action/new_button',
+                   model: KlassSubject,
+                   path: new_klass_subject_path(klass_subject: {klass_id: model.id}),
+                   label: "カリキュラム追加",
+                   options: { target: '_blank' }
+
+            = render 'shared/model/assoc',
+                     assoc: model.klass_subjects,
+                     path: klass_subjects_path(q: { klass_id_in: model.id }),
+                     max_count: 20,
+                     title: t_iconed_model(KlassSubject) do |rel|
+              td
+                - if rel.fixed == true
+                  = fa_icon 'check-square 1x', style: "color:#4dbd74;"
+                - else
+                  = fa_icon 'square-o 1x', style: "color:#4dbd74;"
+              td
+                = link_object rel
+
+            - if model.sharing_klass_subjects.present?
+              br
+              = render 'shared/model/assoc',
+                       assoc: model.sharing_klass_subjects,
+                       key: "_sharing_klass_subjects",
+                       path: klass_subjects_path(q: { sharing_klasses_id_in: model.id }),
+                       title: t_iconed_model(SharedKlassKlassSubject) do |rel|
+                td
+                  - if rel.fixed == true
+                    = fa_icon 'check-square 1x', style: "color:#4dbd74;"
+                  - else
+                    = fa_icon 'square-o 1x', style: "color:#4dbd74;"
+                td
+                  = link_object rel
+
+          br
+
+          = render 'shared/model/assoc',
+                   assoc: model.students,
+                   path: students_path(q: { courses_id_in: model.id }),
+                   title: t_iconed_model(Student)
+
+.row
+  .col-md-6
+    = render 'shared/model/history', model: model
+
+.button-container
+  =<> render 'shared/action/index_button', path: model
+  =<> render 'shared/action/edit_button', path: model
+  =<> render 'shared/action/new_button',
+             path: duplicate_klass_path(model),
+             model: model,
+             options: { icon: 'files-o fw', title: t(".copy") }
+  =<> render 'shared/action/index_button',
+             path: curriculum_klass_path(model),
+             model: model,
+             options: { icon: 'calendar fw', title: 'カレンダー' }
+  =<> render 'shared/action/delete_button', path: model

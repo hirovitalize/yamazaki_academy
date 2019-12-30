@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+  background-color: #e4e5e6;
+  line-height: 1.5;
+  font-weight: 400;
+  font-size: .875rem;
+  color: #23282c;
+  text-align: left;
+}
+
+.app {
+  display: flex;
+  min-height: 100vh;
+}

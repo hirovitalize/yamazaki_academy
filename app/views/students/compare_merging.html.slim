@@ -1,0 +1,52 @@
+- model = @student
+- master_model = @master_student
+- provide :title, t_iconed_model(model, :show)
+
+= render 'shared/validation_messages', model: model
+
+.row
+  .col-md-5
+    = simple_form_for model,
+      html: { class: 'form-horizontal' },
+      defaults: simple_form_display_defaults do |f|
+        .card
+          .card-header
+            = "未マージ学生"
+          .card-body
+            table.table.table-striped.table-sm.table-borderless.m-0
+              tbody
+                =<> render 'compare_students', model: model
+            .card-body
+              =<> render 'compare_students_small_datas', model: model
+              =<> render 'merge_billings_and_payments', model: model
+
+  .col-md-2
+    tbody[class="#{'bg-secondndary' if model.deleted?}"]
+      =<> render 'shared/action/delete_button',
+                  path: merge_student_path(model, target_student_id: master_model.id),
+                  options: { \
+                  title: 'マージ',
+                  class: 'btn btn-outline-danger d-block',
+                  icon: 'forward',
+                  method: :post,
+                  data: {confirm: '右の学生にマージしますか？', commit: 'はい' } \
+                  }
+
+  .col-md-5
+    = simple_form_for master_model,
+      html: { class: 'form-horizontal' },
+      defaults: simple_form_display_defaults do |f|
+        .card
+          .card-header
+            = "類似した学生"
+            =<> render 'shared/action/edit_button', path: master_model
+          .card-body
+            table.table.table-striped.table-sm.table-borderless.m-0
+              tbody
+                =<> render 'compare_students', model: master_model
+            .card-body
+              =<> render 'compare_students_small_datas', model: master_model
+              =<> render 'merge_billings_and_payments', model: master_model
+
+.button-container
+  =<> render 'shared/action/index_button', path: model

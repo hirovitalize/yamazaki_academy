@@ -1,0 +1,12 @@
+---
+ja:
+  flash:
+    actions:
+      create:
+        notice: "%{resource_name}が作成されました"
+      destroy:
+        alert: "%{resource_name}が削除できませんでした"
+        notice: "%{resource_name}が削除されました"
+      update:
+        notice: "%{resource_name}が更新されました"
+

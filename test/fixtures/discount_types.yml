@@ -1,0 +1,10 @@
+one:
+  id: 1
+  name: '优惠券3万'
+  price: 30000
+
+two:
+  id: 2
+  name: '合作校优惠(5%)'
+  rate: 5
+

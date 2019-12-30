@@ -1,0 +1,43 @@
+= render 'shared/validation_messages', model: model
+
+
+= simple_form_for(@student) do |f|
+  .row
+    .col-md-6
+      - if model.new_record?
+        = f.input :code, required: false
+      - else
+        = f.input :code, as: :display
+      = f.simple_fields_for :student_mycoach do |g|
+        = g.input :email
+      = f.input :name_sei
+      = f.input :name_mei
+      = f.input :yomi_sei
+      = f.input :yomi_mei
+      = f.association :area
+      = f.input :birthday
+      = f.input :sex, as: :radio_buttons
+
+      = f.input :tel
+      = f.input :qq
+      = f.input :wechat
+
+      = f.input :visa_type, as: :radio_buttons
+      = f.association :seller
+      = f.association :course_categories
+      = f.input :contracted_at
+
+      - if model.normalized == true && model.student_billings.map { |s_b| s_b.student_billing_details }.flatten.map(&:item_type).include?('Course')
+        = f.association :klasses,
+                        collection: f.object.classes_by_courses
+
+      .pull-right
+        = render 'shared/action/mine_button', options: { data: { staff_target: '#student_mentor_ids' } }
+      = f.association :mentors,
+                      as: :autocomplete,
+                      input_html: { \
+                        multiple: true,
+                        data: { placeholder: "氏名・コードを入力（1文字以上）", minimum_input_length: 1, limit: 20, models: 'staffs', mainquery: 'name_or_code_start' } \
+                      }
+
+  =<> render 'shared/form_submit', form: f, with_comment: true

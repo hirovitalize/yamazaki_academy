@@ -1,0 +1,42 @@
+ruby:
+  paymethods = Paymethod.all.without_deleted
+  rows = StudentPayment.where(pay_date: [30.days.until(Time.zone.today) .. Time.zone.now]).select(:pay_date, :price, :paymethod_id).group_by {|row| row.pay_date.to_date}
+
+  view_model = rows.each_with_object(Hash.new({})) do |(key, rows), hash|
+    result = Hash[paymethods.map { |pm| [pm.id.to_s, Hash.new(0)] }]
+    rows.each do |row|
+      next if row.paymethod_id.blank?
+      result[row.paymethod_id.to_s]['count'] = result[row.paymethod_id.to_s].fetch('count', 0) + 1
+      result[row.paymethod_id.to_s]['price_total'] = result[row.paymethod_id.to_s].fetch('price_total', 0) + row.price
+    end
+    hash[key] = result
+    hash
+  end
+  pay_dates = view_model.keys.sort.reverse
+
+  key = 'recent_counts_per_paymethod'
+  title = '最近の支払い方法別総額'
+
+div[id="accordion#{key}" role="tablist"]
+  .card
+    .card-header[id="search-heading#{key}" role="tab"]
+      a[data-toggle="collapse" href="#search#{key}" aria-expanded="true" aria-controls="search#{key}"]
+        =<> title
+    .collapse[id="search#{key}" role="tabpanel" aria-labelledby="search-heading#{key}" data-parent="#accordion#{key}"]
+      table.table.table-condensed.table-hover.table-filterable
+        thead
+          th
+          - paymethods.each do |paymethod|
+            th = paymethod.name
+        tbody
+          - pay_dates.each do |pay_date|
+            - counts = view_model[pay_date]
+            tr
+              th = l(pay_date)
+              - paymethods.each do |pm|
+                - count = counts.dig(pm.id.to_s, 'count')
+                td
+                  - if count.positive?
+                    = number_to_currency counts.dig(pm.id.to_s, 'price_total')
+                    = "(#{count}件)"
+

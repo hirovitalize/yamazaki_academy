@@ -1,0 +1,49 @@
+- model = @staff
+- provide :title, t_iconed_model(model, :show)
+
+= render 'shared/validation_messages', model: model
+
+= simple_form_for model,
+  html: { class: 'form-horizontal' },
+  defaults: simple_form_display_defaults do |f|
+  .row
+    .col-md-6
+      .card
+        .card-body
+          table.table.table-striped.table-sm.table-borderless.m-0
+            tbody
+              = f.input :code
+              = f.input :name
+              = f.input :subjects
+              = f.input :roles do
+               = model.roles.map(&:name).join(',')
+              - if current_user.role?('STAFF_ADMIN')
+                = f.input :tel do
+                  - if model.tel.present?
+                    a[href="tel:#{f.object.tel}"]
+                      =<> fa_icon :phone
+                      = f.object.tel
+                = f.simple_fields_for :user do |g|
+                  = g.input :email do
+                    a[href="mailto:#{g.object.email}" target="_blank"]
+                      =<> fa_icon :envelope
+                      = g.object.email
+                = f.input :birthday
+
+    .col-md-6
+      br
+      = render 'shared/model/assoc',
+               assoc: model.student_mentors,
+               path: students_path(q: { mentors_id_in: model.id }),
+               title: '担当学生' do |rel|
+        td
+          = link_object rel.student
+
+.row
+  .col-md-6
+    = render 'shared/model/history', model: model
+
+.button-container
+  =<> render 'shared/action/index_button', path: model
+  =<> render 'shared/action/edit_button', path: model
+  =<> render 'shared/action/delete_button', path: model

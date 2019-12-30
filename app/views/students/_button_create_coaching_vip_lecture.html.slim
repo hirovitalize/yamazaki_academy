@@ -1,0 +1,20 @@
+- label = "進学先端研究室予約"
+
+- path = new_lecture_path(lecture: { \
+  student_ids: [model.id],
+  subject_id: Subject::RESEARCH_PLAN_VIP,
+  lecture_staffs_attributes: { '1' => { staff_id: current_user&.staff&.id, work_kind_id: 1 } },
+  name: "進学先端研究室[#{model.name}]",
+  start_time: Time.zone.now.beginning_of_hour + 7.days,
+  finish_time: Time.zone.now.beginning_of_hour + 7.days + 1.hours,
+  time_changeable: false,
+  \
+  })
+=<> render 'shared/action/new_button',
+  path: path,
+  model: Lecture,
+  label: label,
+  options: { \
+    title: "進学先端研究室予約",
+    data: { toggle: :childwindow, url: path, reload_parent_on_close: true } \
+  }

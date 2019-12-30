@@ -1,0 +1,8 @@
+one:
+  id: 1
+  name: 数学3　東大
+  start_time: '2020/03/01 10:00'
+  finish_time: '2020/03/01 14:00'
+  confirmed: 0
+  subject_id: 1
+  klass_subject_id: 1

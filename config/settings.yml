@@ -1,0 +1,9 @@
+mail:
+  address:
+    info: info@example.com
+    reply_to:
+    default_from: info@example.com
+    test_to:
+  url:
+    in_confirmed:
+    out_confirmed:

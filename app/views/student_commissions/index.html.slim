@@ -1,0 +1,45 @@
+- provide :title, t_iconed_model(:student_commission)
+
+- models = @student_commissions
+- q = @q
+
+= render 'shared/search_form', q: q
+
+.button-container
+  = render 'shared/action/new_button', path: StudentCommission, options: { target: '_blank' }
+
+.pagination-container
+  = page_entries_info(@student_commissions)
+  = paginate @student_commissions
+
+table.table.table-condensed.table-filterable.table-hover
+  thead
+    tr
+      th.filter-false.sorter-false.resizable-false
+      th.sorter-false
+        = sort_link q, :student_id, t_field(:student_commission, :student)
+      th
+        = t_field(:student_commission, :referral)
+      th.sorter-false
+        = sort_link q, :price, t_field(:student_commission, :price)
+      th.sorter-false
+        = sort_link q, :payed_at, t_field(:student_commission, :payed_at)
+      th.sorter-false
+        = sort_link q, :description, t_field(:student_commission, :description)
+
+  tbody
+    - models.each do |model|
+      tr[class="#{'bg-secondndary' if model.deleted?}"]
+        td.action-column
+          =<> render 'shared/action/show_button', path: model, options: { target: ['_blank'] }
+        td = link_object model.student
+        td
+          = model.referral if model.commission_type_referral_person?
+          = link_object model.cache_back_type if model.commission_type_cache_back?
+          = link_object model.inflow_source if model.commission_type_referral_inflow?
+        td = model.price.to_s + "円"
+        td = model.payed_at
+        td = truncated_text(model.description)
+
+.pagination-container
+  = paginate @student_commissions

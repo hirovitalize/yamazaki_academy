@@ -1,0 +1,33 @@
+- provide :title, t_iconed_model(:lecture_student)
+
+- models = @lecture_students
+- q = @q
+
+= render 'shared/search_form', q: q
+
+.pagination-container
+  = page_entries_info(@lecture_students)
+  = paginate @lecture_students
+
+table.table.table-sm.table-borderless.table-filterable.table-hover
+  thead
+    tr
+      th.filter-false.sorter-false.resizable-false
+      th.sorter-false
+        = sort_link q, :lecture_id, t_field(:lecture_student, :lecture)
+      th.sorter-false
+        = sort_link q, :student_id, t_field(:lecture_student, :student)
+      th.sorter-false
+        = sort_link q, :confirmed_point, t_field(:lecture_student, :confirmed_point)
+
+  tbody
+    - models.each do |model|
+      tr[class="#{'bg-secondndary' if model.deleted?}"]
+        td.action-column
+          =<> render 'shared/action/show_button', path: model, options: { target: ['_blank'] }
+        td = link_object model.lecture
+        td = link_object model.student
+        td = model.lecture&.confirmed_i18n
+
+.pagination-container
+  = paginate @lecture_students

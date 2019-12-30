@@ -1,0 +1,30 @@
+- model = @lecture_attend_log
+- provide :title, t_iconed_model(model, :show)
+
+= render 'shared/validation_messages', model: model
+
+= simple_form_for model,
+  html: { class: 'form-horizontal' },
+  defaults: simple_form_display_defaults do |f|
+  .row
+    .col-md-6
+      .card
+        .card-body
+          table.table.table-striped.table-sm.table-borderless.m-0
+            tbody
+              = f.input :lecture
+              = f.input :student
+              = f.input :staff do
+                = model.lecture.lecture_staffs.map(&:staff).compact.map(&:name).join(',')
+              = f.input :ip
+              = f.input :ua
+              = f.input :prev_cookie_student_ids
+              = f.input :validation_note
+              = f.input :qr_made_at
+
+.row
+  .col-md-6
+    = render 'shared/model/history', model: model
+
+.button-container
+  =<> render 'shared/action/index_button', path: model

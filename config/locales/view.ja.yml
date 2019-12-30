@@ -1,0 +1,143 @@
+---
+ja:
+  users:
+    ical:
+      ical_title: あなたの授業スケジュール
+      ical_description: 外部のカレンダーアプリに講義情報を反映させるには、下記のURlを参照してください。
+    passwords:
+      edit:
+        title: パスワード再入力
+      new:
+        title: 初回のパスワードを設定される方 / パスワードを忘れた方
+    registrations:
+      edit:
+        title: ユーザー設定
+      new:
+        title: ユーザー登録
+    sessions:
+      destroy:
+        title: ログアウト
+      new:
+        title: ログイン
+    index:
+      unlock: ロック解除
+      lock: ロック
+      unlock_confirm: ロックを解除します。よろしいですか？
+      lock_confirm: ロックします。よろしいですか？
+      locked: ロック中
+    search:
+      locked: ロック中
+  student_mycoaches:
+    index:
+      unlock: ロック解除
+      lock: ロック
+      unlock_confirm: ロックを解除します。よろしいですか？
+      lock_confirm: ロックします。よろしいですか？
+      locked: ロック中
+  lectures:
+    button_create_first_vip_lecture:
+      reserve: 予約
+    index:
+      approval: 承認します。よろしいですか？
+      denial: 否認します。よろしいですか？
+      passback: 差戻します。よろしいですか？
+    show:
+      cancel: 予約を解除します。よろしいですか？
+      approval: 承認します。よろしいですか？
+      denial: 否認します。よろしいですか？
+      passback: 差戻します。よろしいですか？
+      copy: コピー
+      cancel_until_yesterday: 当日前キャンセル
+      cancel_today: 当日キャンセル
+      cancel_no_contact: 無断キャンセル
+      qr: QRコード
+    search:
+      absent: 担当不在
+      bundle: 一括
+      bundle_duplication_in_a_week: 翌週へ一括複製
+      double_checking: 重複
+      not_klass_subject_not_pesonal: 個人/クラスでない授業
+      notyet_reservation: 未予約
+      lecture_duration_time: 期間/時間
+  lecture_staffs:
+    show:
+      time: 時間
+    search:
+      output_csv: CSV出力
+      lecture_duration_time: 期間/時間
+  lecture_students:
+    show:
+      time: 分
+  reserves:
+    search:
+      duration_time: 期間/時間
+  rooms:
+    index:
+      seat: 席
+    search:
+      bundle: 一括
+    show:
+      seat: 席
+  students:
+    button_create_vip_lecture:
+      reserve: 予約
+    button_create_first_vip_lecture:
+      reserve: 予約
+    search:
+      not_vip_point: VIP残時間数不足
+  student_balances:
+    search:
+      output_csv: CSV出力
+  courses:
+    show:
+      addition: 追加
+    index:
+      person: 人
+  klasses:
+    search:
+      fixed: 未確定
+      in_action: 実施中
+    show:
+      copy: コピー
+      bundle_addition: 一括追加
+    curriculum:
+      klass_name: クラス名
+      katei: 課程
+      duration: 期間
+      number_of_class_hours: 時数
+      number_of_class: 回数
+      staff_in_charge: 担当講師
+      day_of_week: 曜日
+  shared:
+    model:
+      history:
+        update_history: 更新履歴
+        last_update: 最終更新
+        ago: 前
+      assoc:
+        total: 総件数：
+    action:
+      delete_button:
+        delete: 削除
+        are_you_sure: を削除します。よろしいですか？
+      edit_button:
+        edit: 編集
+      index_button:
+        index: 一覧
+      show_button:
+        show: 詳細
+      mine_button:
+        mine: 自分
+      new_button:
+        new: 追加
+    form_submit:
+      save: 保存
+    js_hidden_text:
+      reserve: 予約する
+      delete: 削除する
+      alert: 30分以上で作成してください
+      no_available_lecture: 選択可能な講義がありません
+      select_lecture: 講義を選択してください
+      confirm: 予約を削除しますか？
+      room_name: 教室名
+      capacity: 定員

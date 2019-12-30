@@ -1,0 +1,28 @@
+ruby:
+  options ||= {}
+  model ||= path if path.is_a? ActiveRecord::Base
+  default_options = {
+    method: :delete,
+    class: 'btn btn-outline-danger btn-sm',
+    title: t(".delete"),
+    data: {
+      toggle: 'tooltip',
+      confirm: (model.present? ? "「#{model.to_label}」": '') + t('.are_you_sure'),
+      disabled_with: '処理中...',
+      commit: '削除',
+      cancel: 'キャンセル'
+    }
+  }
+  label ||= false
+  options = default_options.merge(options)
+- if policy? model, :destroy
+  - if model.present? && model.respond_to?(:deleted?) && model.deleted?
+    a.btn.btn-outline-secondary.btn-sm[disabled="disabled"]
+      = fa_icon options[:icon] || 'trash fw'
+      - if label
+        = (label.is_a?(String) ? label : options[:title]) + '済'
+  - else
+    = link_to path, default_options.deep_merge(options)
+      = fa_icon options[:icon] || 'trash fw'
+      - if label
+        = label.is_a?(String) ? label : options[:title]

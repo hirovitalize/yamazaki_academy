@@ -1,0 +1,54 @@
+---
+en:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "%{errors}"
+        restrict_dependent_destroy:
+          has_many: Since %{record} exists, it can not be deleted
+          has_one: Since %{record} exists, it can not be deleted
+  errors:
+    format: "%{attribute}%{message}"
+    messages:
+      accepted: Please accept
+      after: Please specify after %{restriction}
+      before: Please specify before %{restriction}
+      blank: Please enter
+      confirmation: And input of %{attribute} do not match
+      empty: Please enter
+      equal_to: Please set it to %{count}
+      even: Please set it to an even number
+      exclusion: Is reserved
+      greater_than: Should be greater than %{count}
+      greater_than_or_equal_to: Must be greater than or equal to %{count}
+      inclusion: Is an invalid value
+      invalid: Is an invalid value
+      invalid_date: Please enter in the correct format
+      invalid_datetime: Please enter in the correct format
+      invalid_time: Please enter in the correct format
+      is_at: Must be %{restriction}
+      less_than: Should be smaller than %{count}
+      less_than_or_equal_to: Must be less than or equal to %{count}
+      model_invalid: 'Validation failed: %{errors}'
+      not_a_number: Please enter with a numeric value
+      not_an_integer: Please enter with an integer
+      odd: Please be odd
+      on_or_after: Please specify %{restriction} or later
+      on_or_before: Please specify  %{restriction} or earlier
+      other_than: Must be a value other than %{count}
+      present: Please do not enter
+      required: Please enter
+      taken: Already exists
+      too_long: Please enter within %{count} characters
+      too_short: Please enter with %{count} or more characters
+      wrong_length: Please enter with %{count} characters
+    template:
+      body: Please check the following items
+      header:
+        one: An error occurred in %{model}
+        other: "%{count} 1 error occurred in %{model}"
+  validates_timeliness:
+    error_value_formats:
+      date: "%Y /%m /%d"
+      datetime: "%Y /%m /%d %H:%M"
+      time: "%H:%M"

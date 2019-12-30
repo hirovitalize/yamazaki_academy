@@ -1,0 +1,30 @@
+/*
+ *= require_self
+ *= require font-awesome
+
+ * CoreUI
+ *= require @coreui/coreui/dist/css/coreui.min
+ *= require @coreui/icons/css/coreui-icons.min
+
+ * Date picker
+ *= require flatpickr/dist/flatpickr.min
+
+ * Full calendar
+ *= require fullcalendar/dist/fullcalendar.min
+ *= require fullcalendar-scheduler/dist/scheduler.min
+
+ * Select2
+ *= require select2/dist/css/select2.min
+ *= require select2-theme-bootstrap4/dist/select2-bootstrap.min
+
+ * Table sorter
+ *= require tablesorter/dist/css/theme.dropbox.min
+
+ * Color picker
+ *= require spectrum-colorpicker/spectrum
+
+ * Toastr
+ *= require toastr/build/toastr.min
+
+ *= require modules
+ */

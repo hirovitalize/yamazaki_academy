@@ -1,0 +1,21 @@
+/ @see /app/assets/javascripts/shared/assign_me.js
+ruby:
+  default_options = {
+    method: :delete,
+    class: 'btn btn-outline-primary btn-sm',
+    fa: 'chain',
+    title: t(".mine"),
+    data: {
+      toggle: 'assign_me',
+      user: current_user&.id,
+      staff: current_user&.staff&.id
+    }
+  }
+  label ||= true
+  options = default_options.deep_merge(options || {})
+= content_tag(:a, '', {\
+  class: options.delete(:class),
+  data: options.delete(:data)\
+  }) do
+  =<> fa_icon options.delete(:fa)
+  = options.delete(:title) if label.present?

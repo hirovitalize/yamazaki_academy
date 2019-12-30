@@ -1,0 +1,39 @@
+- provide :title, t_iconed_model(:subject_type)
+
+- models = @subject_types
+- q = @q
+
+= render 'shared/search_form', q: q
+
+.button-container
+  = render 'shared/action/new_button', path: SubjectType, options: { target: '_blank' }
+
+.pagination-container
+  = page_entries_info(@subject_types)
+  = paginate @subject_types
+
+table.table.table-sm.table-borderless.table-filterable.table-hover
+  thead
+    tr
+      th.filter-false.sorter-false.resizable-false
+      th.sorter-false
+        = sort_link q, :name, t_field(:subject_type, :name)
+      th.sorter-false
+        = t_field(:subject_type, :description)
+      th.sorter-false
+        = sort_link q, :available_room_groups, t_field(:subject_type, :room_groups)
+      th.sorter-false
+        = t_field(:subject_type, :color)
+
+  tbody
+    - models.each do |model|
+      tr[class="#{'bg-secondndary' if model.deleted?}"]
+        td.action-column
+          =<> render 'shared/action/show_button', path: model, options: { target: ['_blank'] }
+        td = model.name
+        td = truncated_text(model.description)
+        td = link_objects model.available_room_groups
+        td = model.color
+
+.pagination-container
+  = paginate @subject_types

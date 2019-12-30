@@ -1,0 +1,40 @@
+---
+zh:
+  controllers:
+    headers:
+      redirect_default(keyword):
+        flash:
+          alert: 没有找到员工/学生
+    klass_subjects:
+      fix:
+        flash:
+          alert: 确认失败。
+          notice: 已确认。
+    klasses:
+      bulk_klass_subjects:
+        flash:
+          alert: 无法生成
+    lectures:
+      approve:
+        flash:
+          alert: 授权失败。
+          notice: 它被批准。
+      back_confirmed:
+        flash:
+          alert: 无法发回。
+          notice: 我寄回去了。
+      cancel:
+        flash:
+          alert: 由于日期条件无法取消。
+          notice: 它被取消。
+      unapprove:
+        flash:
+          alert: 它没有否认。
+          notice: 我否认了。
+    users:
+      lock:
+        flash:
+          notice: 我锁定了它。
+      unlock:
+        flash:
+          notice: 的“VE解锁。

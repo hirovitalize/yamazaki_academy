@@ -1,0 +1,8 @@
+one:
+  id: 1
+  student_id: 1
+  referral: 'aaaaa'
+  price: 12345
+  cache_back_type_id:
+  inflow_source_id:
+  description: 'testtest'

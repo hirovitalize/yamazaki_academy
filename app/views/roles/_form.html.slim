@@ -1,0 +1,14 @@
+= render 'shared/validation_messages', model: model
+
+
+= simple_form_for(@role) do |f|
+  .row
+    .col-md-6
+      = f.input :code, input_html: { readonly: true }
+      = f.input :name
+      = f.input :description
+      = f.association :staffs,
+                      as: :autocomplete,
+                      collection: f.object.staffs,
+                      input_html: {multiple: true, data: {models: 'staffs', mainquery: 'name_or_code_start'}}
+  =<> render 'shared/form_submit', form: f

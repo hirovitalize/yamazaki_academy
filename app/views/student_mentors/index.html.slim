@@ -1,0 +1,37 @@
+- provide :title, t_iconed_model(:student_mentor)
+
+- models = @student_mentors
+- q = @q
+
+= render 'shared/search_form', q: q
+
+button-container
+  = render 'shared/action/new_button',
+  path: new_student_mentor_path(current_user: current_user.staff.id),
+  options: { target: '_blank' }
+
+.pagination-container
+  = page_entries_info(@student_mentors)
+  = paginate @student_mentors
+
+table.table.table-sm.table-borderless.table-filterable.table-hover
+  thead
+    tr
+      th.filter-false.sorter-false.resizable-false
+      th.sorter-false
+        = sort_link q, :staff_id, t_field(:student_mentor, :staff)
+      th.sorter-false
+        = sort_link q, :student_id, t_field(:student_mentor, :student)
+      th.sorter-false
+        = sort_link q, :staff_type, t_field(:student_mentor, :staff_type)
+  tbody
+    - models.each do |model|
+      tr[class="#{'bg-secondndary' if model.deleted?}"]
+        td.action-column
+          =<> render 'shared/action/show_button', path: model, options: { target: ['_blank'] }
+        td = link_object model.staff
+        td = link_object model.student
+        td = model.staff_type_i18n
+
+.pagination-container
+  = paginate @student_mentors

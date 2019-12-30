@@ -1,0 +1,13 @@
+Time::DATE_FORMATS[:default] = '%Y/%m/%d %H:%M'
+Time::DATE_FORMATS[:datetime] = '%Y/%m/%d %H:%M'
+Time::DATE_FORMATS[:date] = '%Y/%m/%d'
+Time::DATE_FORMATS[:date_without_year] = '%m/%d'
+Time::DATE_FORMATS[:month] = '%Y/%m'
+Time::DATE_FORMATS[:time] = '%H:%M'
+
+Date::DATE_FORMATS[:default] = '%Y/%m/%d'
+Date::DATE_FORMATS[:date] = '%Y/%m/%d'
+Date::DATE_FORMATS[:date_without_year] = '%m/%d'
+Date::DATE_FORMATS[:month] = '%Y/%m'
+Date::DATE_FORMATS[:day] = '%d'
+Date::DATE_FORMATS[:day_without_zero] = '%-d'

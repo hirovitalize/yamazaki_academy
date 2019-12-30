@@ -1,0 +1,33 @@
+- provide :title, t_iconed_model(:equipment)
+
+- models = @equipments
+- q = @q
+
+= render 'shared/search_form', q: q
+
+.button-container
+  = render 'shared/action/new_button', path: Equipment, options: { target: '_blank' }
+
+.pagination-container
+  = page_entries_info(@equipments)
+  = paginate @equipments
+
+table.table.table-sm.table-borderless.table-filterable.table-hover
+  thead
+    tr
+      th.filter-false.sorter-false.resizable-false
+      th.sorter-false
+        = sort_link q, :name, t_field(:equipment, :name)
+      th.sorter-false
+        = sort_link q, :description, t_field(:equipment, :description)
+
+  tbody
+    - models.each do |model|
+      tr[class="#{'bg-secondndary' if model.deleted?}"]
+        td.action-column
+          =<> render 'shared/action/show_button', path: model, options: { target: ['_blank'] }
+        td = model.name
+        td = truncated_text(model.description)
+
+.pagination-container
+  = paginate @equipments

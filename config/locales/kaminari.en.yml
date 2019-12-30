@@ -1,0 +1,18 @@
+---
+en:
+  helpers:
+    page_entries_info:
+      more_pages:
+        display_entries: "<p class= m-0 ><b>%{first} - %{last}</b> / <b> %{total} </b>件</p>"
+      one_page:
+        display_entries:
+          one: "<p class= m-0>全<b> %{count} </b>件</p>"
+          other: "<p class= m-0>全<b> %{count} </b>件</p>"
+          zero: "%{entry_name} could not be found"
+  views:
+    pagination:
+      first: "&laquo; first"
+      last: Last &raquo;
+      next: Next &rsaquo;
+      previous: "&lsaquo; front"
+      truncate: "&hellip;"

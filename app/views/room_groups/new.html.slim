@@ -1,0 +1,6 @@
+- provide :title, t_iconed_model(@room_group, :new)
+
+== render 'form', model: @room_group
+
+.button-container
+  = render 'shared/action/index_button', path: @room_group

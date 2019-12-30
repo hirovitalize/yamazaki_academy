@@ -1,0 +1,87 @@
+- provide :title, t_iconed_model(:room)
+
+- models = @rooms
+- q = @q
+
+= render 'shared/search_form', q: q
+
+.button-container
+  = render 'shared/action/new_button', path: Room, options: { target: '_blank' }
+
+.pagination-container
+  = page_entries_info(@rooms)
+  = paginate @rooms
+
+table.table.table-sm.table-borderless.table-filterable.table-hover
+  thead
+    tr
+      th.filter-false.sorter-false.resizable-false
+      th.sorter-false
+        = sort_link q, :name, t_field(:room, :name)
+      th.sorter-false
+        = sort_link q, :building, t_field(:room, :building)
+      th.sorter-false
+        = sort_link q, :seat_number, t_field(:room, :seat_number)
+      th.sorter-false
+        = sort_link q, :equipments, t_field(:room, :equipments)
+      th.sorter-false
+        = sort_link q, :room_groups, t_field(:room, :room_groups)
+      th.sorter-false
+        = t_field(:room, :description)
+      th.sorter-false
+        = t('date.abbr_day_names')[0]
+      th.sorter-false
+        = t('date.abbr_day_names')[1]
+      th.sorter-false
+        = t('date.abbr_day_names')[2]
+      th.sorter-false
+        = t('date.abbr_day_names')[3]
+      th.sorter-false
+        = t('date.abbr_day_names')[4]
+      th.sorter-false
+        = t('date.abbr_day_names')[5]
+      th.sorter-false
+        = t('date.abbr_day_names')[6]
+
+  tbody
+    - models.each do |model|
+      tr[class="#{'bg-secondndary' if model.deleted?}"]
+        td.action-column
+          =<> render 'shared/action/show_button', path: model, options: { target: ['_blank'] }
+        td = model.name
+        td = link_object model.building
+        td = model.seat_number.present? ? model.seat_number.to_s + t(".seat") : nil
+        td = link_objects model.equipments
+        td = link_objects model.room_groups
+        td = truncated_text(model.description)
+        td
+          = model.wday_0_open_time&.to_s(:time)
+          '-
+          = model.wday_0_close_time&.to_s(:time)
+        td
+          = model.wday_1_open_time&.to_s(:time)
+          '-
+          = model.wday_1_close_time&.to_s(:time)
+        td
+          = model.wday_2_open_time&.to_s(:time)
+          '-
+          = model.wday_2_close_time&.to_s(:time)
+        td
+          = model.wday_3_open_time&.to_s(:time)
+          '-
+          = model.wday_3_close_time&.to_s(:time)
+        td
+          = model.wday_4_open_time&.to_s(:time)
+          '-
+          = model.wday_4_close_time&.to_s(:time)
+        td
+          = model.wday_5_open_time&.to_s(:time)
+          '-
+          = model.wday_5_close_time&.to_s(:time)
+        td
+          = model.wday_6_open_time&.to_s(:time)
+          '-
+          = model.wday_6_close_time&.to_s(:time)
+
+.pagination-container
+  = paginate @rooms

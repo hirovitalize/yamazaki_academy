@@ -1,0 +1,37 @@
+- provide :title, t_iconed_model(:building)
+
+- models = @buildings
+- q = @q
+
+.button-container
+  = render 'shared/action/new_button', path: Building, options: { target: '_blank' }
+
+.pagination-container
+  = page_entries_info(@buildings)
+  = paginate @buildings
+
+table.table.table-sm.table-borderless.table-filterable.table-hover
+  thead
+    tr
+      th.filter-false.sorter-false.resizable-false
+      th.sorter-false
+        = sort_link q, :name, t_field(:building, :name)
+      th.sorter-false
+        = sort_link q, :area_id, t_field(:building, :area)
+      th.sorter-false
+        = sort_link q, :address, t_field(:building, :address)
+      th.sorter-false
+        = t_field(:building, :description)
+
+  tbody
+    - models.each do |model|
+      tr[class="#{'bg-secondndary' if model.deleted?}"]
+        td.action-column
+          =<> render 'shared/action/show_button', path: model, options: { target: ['_blank'] }
+        td = model.name
+        td = link_object model.area
+        td = model.address
+        td = truncated_text(model.description)
+
+.pagination-container
+  = paginate @buildings

@@ -1,0 +1,7 @@
+one:
+  id: 1
+  lecture_id: 1
+  staff_id: 1
+  work_kind_id: 1
+  start_time: '2020/03/01 10:00'
+  finish_time: '2020/03/01 14:00'

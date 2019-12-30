@@ -1,0 +1,4 @@
+one:
+  id: 1
+  code: CREATE_STAFF_USER
+  name: 'スタッフ登録'

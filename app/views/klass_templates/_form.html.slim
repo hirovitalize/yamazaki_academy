@@ -1,0 +1,18 @@
+= render 'shared/validation_messages', model: model
+
+
+= simple_form_for(model) do |f|
+  .row
+    .col-md-6
+      = f.input :name
+      = f.association :course_category
+      = f.association :courses,
+                      as: :autocomplete,
+                      collection: f.object.courses,
+                      input_html: {multiple: true, data: {models: 'courses'}}
+      = f.association :subjects
+      = f.input :lecture_num
+      = f.input :hours
+      = f.input :description
+
+  =<> render 'shared/form_submit', form: f

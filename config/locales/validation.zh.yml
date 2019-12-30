@@ -1,0 +1,54 @@
+---
+zh:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "%{errors}"
+        restrict_dependent_destroy:
+          has_many: 由于%{record}存在，因此无法删除
+          has_one: 由于%{record}存在，因此无法删除
+  errors:
+    format: "%{attribute}%{message}"
+    messages:
+      accepted: 必须是可被接受的
+      after: 必须%{restriction}之后指定
+      before: 必须%{restriction}之前指定
+      blank: 不能为空字符
+      confirmation: 与 %{attribute} 不匹配
+      empty: 不能留空
+      equal_to: 必须等于 %{count}
+      even: 必须为偶数
+      exclusion: 已被预约
+      greater_than: 必须大于 %{count}
+      greater_than_or_equal_to: 必须大于或等于 %{count}
+      inclusion: 不正确数值
+      invalid: 不正确数值
+      invalid_date: 请输入正确的形式
+      invalid_datetime: 请输入正确的形式
+      invalid_time: 请输入正确的形式
+      is_at: 必须是%{restriction}
+      less_than: 必须小于 %{count}
+      less_than_or_equal_to: 必须小于或等于 %{count}
+      model_invalid: '验证失败: %{errors}'
+      not_a_number: 请输入数字
+      not_an_integer: 请输入整数
+      odd: 必须为奇数
+      on_or_after: 必须%{restriction}之后指定
+      on_or_before: 必须%{restriction}之前指定
+      other_than: 长度非法（不可为 %{count} 个字符
+      present: 请不要输入
+      required: 请输入
+      taken: 已经存在
+      too_long: 过长（最长为 %{count} 个字符）
+      too_short: 过短（最短为 %{count} 个字符）
+      wrong_length: 长度非法（必须为 %{count} 个字符）
+    template:
+      body: 请检查以下项目
+      header:
+        one: "%{model}发生错误"
+        other: "%{count}在%{model}中发生1错误"
+  validates_timeliness:
+    error_value_formats:
+      date: "％Y /％m /％d"
+      datetime: "％Y /％m /％d％H：％M"
+      time: "％H：％M"

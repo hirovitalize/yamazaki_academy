@@ -1,0 +1,9 @@
+---
+en:
+  simple_form:
+    error_notification:
+      default_message: The following actions are required
+    'no': 'No'
+    required:
+      html: <span class="badge badge-danger ml-1">Required</span>
+    'yes': 'Yes'

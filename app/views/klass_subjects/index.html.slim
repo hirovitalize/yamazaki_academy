@@ -1,0 +1,52 @@
+- provide :title, t_iconed_model(:klass_subject)
+
+- models = @klass_subjects.decorate
+- q = @q
+
+= render 'shared/search_form', q: q
+
+.pagination-container
+  = page_entries_info(@klass_subjects)
+  = paginate @klass_subjects
+
+table.table.table-sm.table-borderless.table-filterable.table-hover
+  thead
+    tr
+      th.filter-false.sorter-false.resizable-false
+      th.sorter-false
+        = sort_link q, :code, t_field(:klass_subject, :code)
+      th.sorter-false
+        = sort_link q, :klass, t_field(:klass_subject, :klass)
+      th.sorter-false
+        = sort_link q, :subject, t_field(:klass_subject, :subject)
+      th.sorter-false
+        = sort_link q, :staff, t_field(:klass_subject, :staff)
+      th.sorter-false
+        = sort_link q, :start_time, t_field(:klass_subject, :hours)
+      th
+        = t_field(:klass_subject, :total_hours)
+      th.sorter-false
+        = sort_link q, :lecture_num, t_field(:klass_subject, :lecture_num)
+      th.sorter-false
+        = t_field(:klass_subject, :description)
+
+  tbody
+    - models.each do |model|
+      tr[class="#{'bg-secondndary' if model.deleted?}"]
+        td.action-column
+          =<> render 'shared/action/show_button', path: model, options: { target: ['_blank'] }
+        td = model.code
+        td
+          = link_object model.klass
+          - if model.sharing_klasses.present?
+            br
+            = link_objects model.sharing_klasses
+        td = model.subject.name
+        td = link_object model.staff
+        td = model.view_time_range
+        td = model.view_total_hours
+        td = model.view_lecture_numbers
+        td = truncated_text(model.description)
+
+.pagination-container
+  = paginate @klass_subjects

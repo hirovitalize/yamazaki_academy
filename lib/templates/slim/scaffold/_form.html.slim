@@ -1,0 +1,15 @@
+= render 'shared/validation_messages', model: model
+
+
+= simple_form_for(@<%= singular_table_name %>) do |f|
+  .row
+    .col-md-6
+<%- attributes.each do |attribute| -%>
+<% next if attribute.name.in? %w[id deleted_at created_at updated_at deleter_id creator_id updater_id] -%>
+<% if attribute.name.end_with? '_id' -%>
+      = f.association :<%= attribute.name.gsub(/_id$/, '') %>, as: :integer
+<% else -%>
+      = f.input :<%= attribute.name %>
+<% end -%>
+<%- end -%>
+  =<> render 'shared/form_submit', form: f

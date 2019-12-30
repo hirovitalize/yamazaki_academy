@@ -1,0 +1,20 @@
+/ @see /app/assets/javascripts/shared/select_all.js
+ruby:
+  default_options = {
+    method: :delete,
+    class: 'btn btn-outline-primary btn-sm',
+    fa: 'check',
+    title: '全選択/解除',
+    # title t(".select_unselect_all"),
+    data: {
+      toggle: 'select_unselect_all'
+    }
+  }
+  label ||= true
+  options = default_options.deep_merge(options || {})
+= content_tag(:a, '', {\
+  class: options.delete(:class),
+  data: options.delete(:data)\
+  }) do
+  =<> fa_icon options.delete(:fa)
+  = options.delete(:title) if label.present?

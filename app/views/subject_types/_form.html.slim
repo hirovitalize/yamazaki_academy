@@ -1,0 +1,11 @@
+= render 'shared/validation_messages', model: model
+
+
+= simple_form_for(@subject_type) do |f|
+  .row
+    .col-md-6
+      = f.input :name
+      = f.input :description
+      = f.input :color
+      = f.association :available_room_groups
+  =<> render 'shared/form_submit', form: f

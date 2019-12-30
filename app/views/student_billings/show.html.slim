@@ -1,0 +1,71 @@
+- model = @student_billing
+- provide :title, t_iconed_model(model, :show)
+
+= render 'shared/validation_messages', model: model
+
+= simple_form_for model,
+  html: { class: 'form-horizontal' },
+  defaults: simple_form_display_defaults do |f|
+  .row
+    .col-md-12
+      .card
+        .card-body
+          table.table.table-sm.table-striped.table-borderless.m-0
+            tbody
+              = f.input :student
+              = f.input :total, format: ->(me){ number_to_currency me }
+              = f.input :description
+                =<> truncated_text(f.object.description)
+
+      .card
+        .card-header
+          | 内訳
+        .card-body
+          table.table.table-sm.table-striped.table-borderless.m-0
+            tbody
+              - model.student_billing_details.each do |detail|
+                = f.simple_fields_for detail do |g|
+                  = g.input :name, label: detail.name do
+                    = number_to_currency(detail.price)
+                    - if detail.number != 1
+                      = " (" + number_to_currency(detail.unit_price)
+                      = " * #{detail.number} 個)"
+                    = "(#{detail.memo})" if detail.memo.present?
+                    - if detail.discount.present? && !detail.discount.price.zero?
+                      = " - #{number_to_currency detail.discount.price} (#{detail.discount.discount_type&.name})"
+
+
+.row
+  .col-md-6
+    = render 'shared/model/history', model: model
+
+    .card
+      .card-body
+        - url = new_student_payment_path(student_payment: { \
+            student_id: model.student_id,
+            paymethod_id: Paymethod::IN_CHINA,
+            pay_date: Time.zone.today,
+            settlement_price: model.total \
+          } )
+        = render 'shared/action/new_button',
+               model: StudentPayment,
+               label: '中国支付',
+               path: url,
+               options: { data: { toggle: 'childwindow', url: url, reload_parent_on_close: true } }
+
+        - url = new_student_payment_path(student_payment: { \
+            student_id: model.student_id,
+            paymethod_id: Paymethod::IN_JAPANESE_SCHOOL,
+            pay_date: Time.zone.today,
+            settlement_price: model.total \
+          } )
+        = render 'shared/action/new_button',
+               model: StudentPayment,
+               label: '日語学校支付',
+               path: url,
+               options: { data: { toggle: 'childwindow', url: url, reload_parent_on_close: true } }
+
+.button-container
+  =<> render 'shared/action/index_button', path: model
+  =<> render 'shared/action/edit_button', path: model
+  =<> render 'shared/action/delete_button', path: model

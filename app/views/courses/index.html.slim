@@ -1,0 +1,39 @@
+- provide :title, t_iconed_model(:course)
+
+- models = @courses
+- q = @q
+
+= render 'shared/search_form', q: q
+
+.button-container
+  = render 'shared/action/new_button', path: Course, options: { target: '_blank' }
+
+.pagination-container
+  = page_entries_info(@courses)
+  = paginate @courses
+
+table.table.table-sm.table-borderless.table-filterable.table-hover
+  thead
+    tr
+      th.filter-false.sorter-false.resizable-false
+      th.sorter-false
+        = sort_link q, :course_category, t_field(:course, :course_category)
+      th.sorter-false
+        = sort_link q, :name, t_field(:course, :name)
+      th.sorter-false
+        = sort_link q, :price, t_field(:course, :price)
+      th.sorter-false
+        = t_field(:course, :description)
+
+  tbody
+    - models.each do |model|
+      tr[class="#{'bg-secondndary' if model.deleted?}"]
+        td.action-column
+          =<> render 'shared/action/show_button', path: model, options: { target: ['_blank'] }
+        td = link_object model.course_category
+        td = model.name
+        td = number_to_currency model.price
+        td = truncated_text(model.description)
+
+.pagination-container
+  = paginate @courses

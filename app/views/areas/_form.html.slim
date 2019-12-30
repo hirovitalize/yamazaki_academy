@@ -1,0 +1,11 @@
+= render 'shared/validation_messages', model: model
+
+
+= simple_form_for(@area) do |f|
+  .row
+    .col-md-6
+      = f.input :code, placeholder: '例：01'
+      = f.input :name
+      = f.association :province
+      = f.input :description
+  =<> render 'shared/form_submit', form: f

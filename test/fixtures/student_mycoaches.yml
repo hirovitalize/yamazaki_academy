@@ -1,0 +1,10 @@
+one:
+  id: 1
+  student_id: 1
+  email: 'sosuke.yamazaki@vitalize.co.jp'
+  auth_token: 'test_token'
+two:
+  id: 2
+  student_id: 2
+  email: 'sosuke.yamazaki2@vitalize.co.jp'
+  auth_token: 'test2_token'

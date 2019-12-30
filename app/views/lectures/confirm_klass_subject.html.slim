@@ -1,0 +1,46 @@
+- provide :title, '複製確認画面'
+
+- models = @lectures
+- lectures_count = models.first.klass_subject.lectures.count
+- remain_lectures = models.first.klass_subject.lecture_num - lectures_count
+
+.button-container
+
+.row
+  .col-md-6
+    .card
+      .card-header
+        = link_object models.first
+      .card-body
+        - models.each.with_index(1) do |model, i|
+            .row
+              .col-md-4
+                = "#{i} 回目"
+              .col-md-4
+                = model.start_time
+                |-
+                = model.finish_time&.to_s(:time)
+              .col-md-4
+                - model.lecture_staffs.eager_load(:staff).map do |lecture_staff|
+                  = lecture_staff.staff.name
+
+      .card-header
+        = "下記以降は作成する授業"
+      .card-body
+        - (1..remain_lectures).step(models.count).each.with_index(1) do |remain_lecture, i|
+          - models.each_with_index do |model, j|
+            - break if (remain_lecture + j) > remain_lectures
+            .row
+              .col-md-4
+                = "#{lectures_count + remain_lecture + j} 回目"
+              .col-md-4
+                = (model.start_time + (i * 7).days)&.to_s(:date)
+              .col-md-4
+                - model.lecture_staffs.eager_load(:staff).map do |lecture_staff|
+                  = lecture_staff.staff.name
+
+    = form_tag duplicate_klass_subject_lectures_path, method: "post" do
+      = hidden_field_tag "lecture_ids", models.ids.join(",")
+      = hidden_field_tag "remain_lectures", remain_lectures
+      br
+      = submit_tag "実行する"

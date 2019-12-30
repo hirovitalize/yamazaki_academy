@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    = render 'layouts/head_meta'
+  body.app.flex-row.align-items-center
+    = render 'layouts/noscript'
+    .container
+      .row.justify-content-center
+        .col-md-6
+          .card.mx-4
+            .card-body.p-4
+              h1
+                = yield(:title)
+              = render 'shared/flash'
+              = yield

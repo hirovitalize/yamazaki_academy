@@ -1,0 +1,13 @@
+doctype html
+html
+  head
+    = render 'layouts/head_meta'
+  body.app.header-fixed.sidebar-hidden
+    .app-body
+      main.main
+        .container-fluid
+          = yield
+    - if path = controller_js_exists?
+      = javascript_include_tag path, async: false
+    - if path = action_js_exists?
+      = javascript_include_tag path, async: false

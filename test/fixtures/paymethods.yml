@@ -1,0 +1,9 @@
+one:
+  id: 1
+  name: '现金支付'
+
+
+two:
+  id: 2
+  name: '银联卡'
+

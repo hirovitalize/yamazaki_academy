@@ -1,0 +1,52 @@
+- provide :title, t_iconed_model(:student_payment)
+
+- models = @student_payments
+- q = @q
+
+= render 'shared/search_form', q: q
+
+.button-container
+  = render 'shared/action/new_button', path: StudentPayment, options: { target: '_blank' }
+
+= render 'recent_counts_per_paymethod'
+
+.pagination-container
+  = page_entries_info(@student_payments)
+  = paginate @student_payments
+
+table.table.table-condensed.table-filterable.table-hover
+  thead
+    tr
+      th.filter-false.sorter-false.resizable-false
+      th.sorter-false
+        = sort_link q, :student_id, t_field(:student_payment, :student)
+      th.sorter-false
+        = sort_link q, :paymethod_id, t_field(:student_payment, :paymethod)
+      th.sorter-false
+        = sort_link q, :pay_date, t_field(:student_payment, :pay_date)
+      th.sorter-false
+        = sort_link q, :receiver_id, t_field(:student_payment, :receiver)
+      th.sorter-false
+        = sort_link q, :settlement_price, t_field(:student_payment, :settlement_price)
+      th.sorter-false
+        = sort_link q, :price, t_field(:student_payment, :price)
+      th.sorter-false
+        = sort_link q, :description, t_field(:student_payment, :description)
+
+  tbody
+    - models.each do |model|
+      tr[class="#{'bg-secondndary' if model.deleted?}"]
+        td.action-column
+          =<> render 'shared/action/show_button', path: model, options: { target: ['_blank'] }
+        td = link_object model.student
+        td = link_object model.paymethod
+        td = model.pay_date
+        td = link_object model.receiver
+        td = number_to_currency(model.settlement_price)
+        td
+          = number_to_currency(model.price) unless model.price.zero?
+          = number_to_currency(model.gen).to_s.chop + "元" unless model.gen.zero?
+        td = truncated_text(model.description)
+
+.pagination-container
+  = paginate @student_payments

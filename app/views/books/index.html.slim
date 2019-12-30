@@ -1,0 +1,39 @@
+- provide :title, t_iconed_model(:book)
+
+- models = @books
+- q = @q
+
+= render 'shared/search_form', q: q
+
+.button-container
+  = render 'shared/action/new_button', path: Book, options: { target: '_blank' }
+
+.pagination-container
+  = page_entries_info(@books)
+  = paginate @books
+
+table.table.table-sm.table-borderless.table-filterable.table-hover
+  thead
+    tr
+      th.filter-false.sorter-false.resizable-false
+      th.sorter-false
+        = sort_link q, :name, t_field(:book, :name)
+      th.sorter-false
+        = sort_link q, :price, t_field(:book, :price)
+      th.sorter-false
+        = sort_link q, :isbn, t_field(:book, :isbn)
+      th.sorter-false
+        = sort_link q, :description, t_field(:book, :description)
+
+  tbody
+    - models.each do |model|
+      tr[class="#{'bg-secondndary' if model.deleted?}"]
+        td.action-column
+          =<> render 'shared/action/show_button', path: model, options: { target: ['_blank'] }
+        td = model.name
+        td = model.price
+        td = model.isbn
+        td = truncated_text(model.description)
+
+.pagination-container
+  = paginate @books

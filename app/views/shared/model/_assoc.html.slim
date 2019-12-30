@@ -1,0 +1,32 @@
+/ 関連するデータをテーブル表示するテーブル in card
+/ @param assoc: Association mandantry (モデルの関連。scopeでOK　例: assoc: model.students)
+/ @param path: URL optional (全件表示する際のURL)
+/ @param max_count: integer 表示件数 optional, default: 5
+/ @param block optional 各行データに対する、行表示。なければ link_objectを表示
+
+ruby:
+  max_count ||= 5
+  block = -> (r) { yield(r).presence || (content_tag(:td) { link_object r }) }
+  key ||= "_#{assoc.name.underscore}"
+  total_count = assoc.count
+
+div[id="accordion#{key}" role="tablist"]
+  .card
+    .card-header[id="search-heading#{key}" role="tab"]
+      a[data-toggle="collapse" href="#search#{key}" aria-expanded="true" aria-controls="search#{key}"]
+        =<> title
+      span.pull-right
+        - if path.present?
+          =<> link_to "#{t(".total")}#{total_count}", path, data: { toggle: :childwindow, url: path }
+        - else
+          =<> "#{t(".total")}#{total_count}"
+
+    .collapse[id="search#{key}" role="tabpanel" aria-labelledby="search-heading#{key}" data-parent="#accordion#{key}"]
+      .card-body
+        table.table.table-striped.table-sm.table-borderless.m-0
+          tbody
+            - assoc.limit(max_count).each do |rel|
+              tr
+                = block.call rel
+        - if total_count > max_count
+          = '...'

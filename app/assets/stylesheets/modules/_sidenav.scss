@@ -1,0 +1,15 @@
+.sidebar {
+  .nav-dropdown-items .nav-link {
+    padding-left: 1.5rem;
+    font-size: 95%;
+  }
+
+  .nav-dropdown-items .nav-dropdown-items .nav-link {
+    padding-left: 2rem;
+    font-size: 90%;
+  }
+
+  .nav-link.active {
+    background: rgba(32, 168, 216, .2);
+  }
+}

@@ -1,0 +1,27 @@
+- model = @student_point
+- provide :title, t_iconed_model(model, :show)
+
+= render 'shared/validation_messages', model: model
+
+= simple_form_for model,
+  html: { class: 'form-horizontal' },
+  defaults: simple_form_display_defaults do |f|
+  .row
+    .col-md-6
+      .card
+        .card-body
+          table.table.table-striped.table-sm.table-borderless.m-0
+            tbody
+              = f.input :student
+              = f.input :total_hours, append: 'h' ,label: t_field(:student_point, :total)
+              = f.input :paid_hours, append: 'h' ,label: t_field(:student_point, :paid)
+              = f.input :used_hours, append: 'h' ,label: t_field(:student_point, :used)
+              = f.input :reserved_hours, append: 'h' ,label: t_field(:student_point, :reserved)
+
+.row
+  .col-md-6
+    = render 'shared/model/history', model: model
+
+.button-container
+  =<> render 'shared/action/index_button', path: model
+

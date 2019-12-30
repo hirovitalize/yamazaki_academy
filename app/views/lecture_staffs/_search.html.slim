@@ -1,0 +1,47 @@
+.col-md-4
+  .pull-right
+    = render 'shared/action/mine_button', options: { data: { staff_target: '#q_staff_id_in' } }
+  = f.input :staff_id_in, label: t_field(LectureStaff, :staff),
+    as: :autocomplete,
+    collection: Staff.where(id: f.object.staff_id_in),
+    input_html: { multiple: true, data: { placeholder: '氏名・コードを入力（1文字以上）', minimum_input_length: 1, limit: 20, models: 'staffs', mainquery: 'name_or_code_start' }}
+  = f.input :start_time, label: t(".lecture_duration_time") do
+    .form-inline
+      = f.input :start_time_gteq, { \
+        as: :date,
+        wrapper: :inline_form,
+        input_html: { data: { toggle: 'autofill_date', autofill: { date_format: 'YYYY/MM/DD'} } } \
+      }
+      span.m-1 -
+      = f.input :finish_time_lteq, { \
+        as: :date,
+        wrapper: :inline_form,
+        input_html: { data: { toggle: 'autofill_date', autofill: { date_format: 'YYYY/MM/DD'} } } \
+      }
+  = f.input :lecture_confirmed_in, label: t_field(Lecture, :confirmed),
+    collection: ransack_enum_collection(Lecture, :confirmed),
+    input_html: { multiple: true }
+
+.col-md-4
+  .pull-right
+    = render 'shared/action/select_all_button', options: { data: { target: '#q_lecture_subject_subject_category_id_in' } }
+  = f.input :lecture_subject_subject_category_id_in, label: t_model(SubjectCategory),
+    as: :select,
+    collection: SubjectCategory.all,
+    input_html: { multiple: true }
+
+  = f.input :lecture_subject_id_in, label: t_field(Lecture, :subject),
+    as: :autocomplete,
+    collection: Subject.where(id: f.object.lecture_subject_id_in),
+    input_html: { multiple: true, data: { models: 'subjects' }}
+
+  = f.input :lecture_students_course_category_students_course_category_id_in, label: t_model(CourseCategory),
+    as: :select,
+    collection: CourseCategory.all,
+    input_html: { multiple: true }
+
+.col-md-4.d-flex.flex-column
+  .mt-auto
+    button.btn.btn-success.btn-rounded.pull-right.m-r-lg[type='submit' name='export_csv']
+      => fa_icon :file
+      | #{t(".output_csv")}

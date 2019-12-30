@@ -1,0 +1,9 @@
+- provide :title, 'QRクリア'
+
+.row
+  .col-md-6
+    .card.center-block
+      .card-header
+        = "こちらのQRコードを読み取ってください"
+      .card-body
+        canvas#js-url-lecture-attend-logs [data-url=@url]

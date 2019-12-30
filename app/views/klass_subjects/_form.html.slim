@@ -1,0 +1,31 @@
+= render 'shared/validation_messages', model: model
+
+
+= simple_form_for(@klass_subject) do |f|
+  .row
+    .col-md-6
+      = f.association :subject,
+                      as: :autocomplete,
+                      collection: [f.object.subject].compact,
+                      input_html: {data: {models: 'subjects'}}
+      .pull-right
+        = render 'shared/action/mine_button', options: { data: { staff_target: '#klass_subject_staff_id' } }
+      = f.association :staff,
+                      as: :autocomplete,
+                      collection: [f.object.staff].compact,
+                      input_html: { data: { placeholder: "氏名・コードを入力（1文字以上）", minimum_input_length: 1, limit: 20, models: 'staffs', mainquery: 'name_or_code_start'}}
+      = f.association :klass,
+                      as: :autocomplete,
+                      collection: [f.object.klass].compact,
+                      input_html: {data: {models: 'klasses'}}
+      = f.association :sharing_klasses,
+                      as: :autocomplete,
+                      input_html: {data: {models: 'klasses'}, multiple: true}
+                      / TODO: 同時期のクラスに限定する
+      = f.input :lecture_num
+      = f.input :hours
+      = f.input :start_time
+      = f.input :description
+      - unless model.new_record?
+        = f.input :code
+  =<> render 'shared/form_submit', form: f

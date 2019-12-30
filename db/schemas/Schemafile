@@ -1,0 +1,72 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+require 'sessions.schema'
+require 'delayed_jobs.schema'
+require 'taggings.schema'
+require 'tags.schema'
+require 'versions.schema'
+
+require 'provinces.schema'
+require 'areas.schema'
+require 'buildings.schema'
+require 'rooms.schema'
+require 'equipments.schema'
+require 'room_equipments.schema'
+require 'room_groups.schema'
+require 'room_room_groups.schema'
+
+require 'course_categories.schema'
+require 'course_category_students.schema'
+require 'courses.schema'
+require 'subject_categories.schema'
+require 'subjects.schema'
+require 'subject_types.schema'
+require 'subject_type_room_groups.schema'
+require 'course_klass_templates.schema'
+require 'klass_template_subjects.schema'
+require 'klass_templates.schema'
+require 'klasses.schema'
+require 'klass_subjects.schema'
+require 'shared_klass_klass_subjects.schema'
+
+require 'klass_students.schema'
+require 'lectures.schema'
+require 'lecture_students.schema'
+require 'lecture_staffs.schema'
+require 'staff_subjects.schema'
+require 'reserves.schema'
+require 'work_kinds.schema'
+
+require 'roles.schema'
+require 'staff_roles.schema'
+require 'staffs.schema'
+require 'users.schema'
+
+require 'students.schema'
+require 'student_points.schema'
+require 'student_point_logs.schema'
+require 'student_mentors.schema'
+
+# 売上・債権管理
+require 'vips.schema'
+require 'vip_prices.schema'
+require 'books.schema'
+require 'discount_types.schema'
+
+require 'student_billings.schema'
+require 'student_billing_details.schema'
+require 'student_billing_detail_discounts.schema'
+
+require 'student_payments.schema'
+require 'paymethods.schema'
+
+require 'student_commissions.schema'
+require 'cache_back_types.schema'
+require 'inflow_sources.schema'
+
+require 'student_balances.schema'
+
+require 'lecture_attend_logs.schema'
+
+#学生マイページ
+require 'student_mycoaches.schema'

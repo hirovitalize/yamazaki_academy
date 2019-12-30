@@ -1,0 +1,23 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+# old: Juko
+create_table 'student_billing_details', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC', force: :cascade do |t|
+  t.references 'student_billing', null: false
+
+  t.string 'item_type', null: true # course, vip, book, other
+  t.bigint 'item_id', null: true
+  t.string 'memo', null: true
+
+  t.integer 'unit_price', null: false, default: 0
+  t.decimal 'number', null: false, default: "1.0", scale: 2, precision: 5, unsigned: true
+  t.integer 'price', null: false, default: 0
+
+  t.integer 'creator_id'
+  t.integer 'updater_id'
+  t.integer 'deleter_id'
+  t.datetime 'created_at'
+  t.datetime 'updated_at'
+  t.datetime 'deleted_at', null: true
+
+  t.index ['item_id', 'item_type'], name: 'item'
+end

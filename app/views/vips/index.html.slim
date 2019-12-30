@@ -1,0 +1,34 @@
+- provide :title, t_iconed_model(:vip)
+
+- models = @vips
+- q = @q
+
+.button-container
+  = render 'shared/action/new_button', path: Vip, options: { target: '_blank' }
+
+.pagination-container
+  = page_entries_info(@vips)
+  = paginate @vips
+
+table.table.table-sm.table-borderless.table-filterable.table-hover
+  thead
+    tr
+      th.filter-false.sorter-false.resizable-false
+      th.sorter-false
+        = sort_link q, :name, t_field(:vip, :name)
+      th.sorter-false
+        = sort_link q, :course_category_id, t_field(:vip, :course_category)
+      th.sorter-false
+        = sort_link q, :description, t_field(:vip, :description)
+
+  tbody
+    - models.each do |model|
+      tr[class="#{'bg-secondndary' if model.deleted?}"]
+        td.action-column
+          =<> render 'shared/action/show_button', path: model, options: { target: ['_blank'] }
+        td = model.name
+        td = link_object model.course_category
+        td = truncated_text(model.description)
+
+.pagination-container
+  = paginate @vips

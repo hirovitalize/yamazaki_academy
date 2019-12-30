@@ -1,0 +1,14 @@
+ruby:
+  options ||= {}
+  default_options = {
+    class: 'btn btn-outline-primary btn-sm',
+    data: { toggle: 'tooltip' },
+    title: t(".edit")
+  }
+  label ||= false
+  model ||= path if path.is_a? ActiveRecord::Base
+- if policy? model, :edit
+  = link_to polymorphic_path(path, action: :edit), default_options.deep_merge(options)
+    = fa_icon options[:icon] || 'pencil fw'
+    - if label
+      = label.is_a?(String) ? label : default_options[:title]

@@ -1,0 +1,50 @@
+- provide :title, t_iconed_model(:<%= singular_table_name %>)
+
+- models = @<%= plural_table_name %>
+- q = @q
+
+.button-container
+  = render 'shared/action/new_button', path: <%= singular_table_name.camelize %>, options: { target: '_blank' }
+
+.pagination-container
+  = page_entries_info(@<%= plural_table_name %>)
+  = paginate @<%= plural_table_name %>
+
+<% clazz = name.camelize.constantize -%>
+table.table.table-sm.table-borderless.table-filterable.table-hover
+  thead
+    tr
+      th.filter-false.sorter-false.resizable-false
+<% attributes.each do |attribute| -%>
+<% next if attribute.name.in? %w[id deleter_id creator_id updater_id created_at updated_at deleted_at ] -%>
+<% if attribute.type == :boolean -%>
+      th.sorter-false.filter-select.resizable-false
+        = sort_link q, :<%= attribute.name %>, t_field(:<%= singular_table_name %>, :<%= attribute.name %>)
+<% elsif clazz.defined_enums.has_key?(attribute.name) -%>
+      th.sorter-false.filter-select.resizable-false
+          = sort_link q, :<%= attribute.name %>, t_field(:<%= singular_table_name %>, :<%= attribute.name %>)
+<% else -%>
+      th.sorter-false
+        = sort_link q, :<%= attribute.name %>, t_field(:<%= singular_table_name %>, :<%= attribute.name.gsub(/_id$/, '') %>)
+<% end -%>
+<% end -%>
+  tbody
+    - models.each do |model|
+      tr[class="#{'bg-secondndary' if model.deleted?}"]
+        td.action-column
+          =<> render 'shared/action/show_button', path: model, options: { target: ['_blank'] }
+<% attributes.each do |attribute| -%>
+<% next if attribute.name.in? %w[deleter_id creator_id updater_id created_at updated_at deleted_at ] -%>
+<% if clazz.defined_enums.has_key?(attribute.name) -%>
+        td = model.<%= attribute.name %>_i18n
+<% elsif attribute.name.end_with? '_id' -%>
+        td = link_object model.<%= attribute.name.gsub(/_id$/, '') %>
+<% elsif attribute.type == :boolean -%>
+        td = bool_icon_tag model.<%= attribute.name %>
+<% else -%>
+        td = model.<%= attribute.name %>
+<% end -%>
+<% end -%>
+
+.pagination-container
+  = paginate @<%= plural_table_name %>

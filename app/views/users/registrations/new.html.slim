@@ -1,0 +1,19 @@
+- provide :title, t('.title')
+
+.row
+  .col-md-6
+    = simple_form_for resource, as: resource_name, url: registration_path(resource_name) do |f|
+      = devise_error_messages!
+      = f.input :email,
+        required: true,
+        input_html: { \
+          autofocus: true \
+        }
+      = f.input :password,
+        required: true,
+        hint: "#{t_field(:user, :password)}#{t('errors.messages.too_short', count: @minimum_password_length)}",
+        input_html: { \
+          autocomplete: 'off' \
+        }
+      =<> render 'shared/form_submit', form: f,
+        options: { title: t('helpers.submit.sign_up') }

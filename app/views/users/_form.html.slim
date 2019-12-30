@@ -1,0 +1,8 @@
+= render 'shared/validation_messages', model: model
+
+
+= simple_form_for(@user) do |f|
+  .row
+    .col-md-6
+      = f.input :email
+  =<> render 'shared/form_submit', form: f, with_comment: true

@@ -1,0 +1,54 @@
+- model = @klass_template.decorate
+- provide :title, t_iconed_model(model, :show)
+
+= render 'shared/validation_messages', model: model
+
+= simple_form_for model,
+  html: { class: 'form-horizontal' },
+  defaults: simple_form_display_defaults do |f|
+  .row
+    .col-md-6
+      .card
+        .card-body
+          table.table.table-striped.table-sm.table-borderless.m-0
+            tbody
+              = f.input :course_category
+              = f.input :name
+              = f.input :courses
+              = f.input :description
+              = f.input :hours do
+                = model.view_total_hours
+                =<> truncated_text(f.object.description)
+
+    .col-md-6
+      .card
+        .card-body
+          table.table.table-striped.table-sm.table-borderless.m-0
+            tbody
+              = f.input :subjects
+
+              = f.input :klasses do
+                = link_objects model.klasses
+
+                .pull-right
+                  - path = new_klass_path(klass: { name: @klass_template.name,
+                                                   klass_template_id: @klass_template.id,
+                                                   lecture_num: @klass_template.lecture_num,
+                                                   interval: @klass_template.interval})
+                  =<> render 'shared/action/new_button',
+                             path: path,
+                             model: Klass,
+                             options: { \
+                              title:"#{t_model :klass}" + t(".addition"),
+                               data: { toggle: :childwindow, url: path, reload_parent_on_close: true } \
+                             }
+
+.row
+  .col-md-6
+    = render 'shared/model/history', model: model
+
+.button-container
+  =<> render 'shared/action/index_button', path: model
+  =<> render 'shared/action/edit_button', path: model
+  =<> render 'shared/action/delete_button', path: model
+

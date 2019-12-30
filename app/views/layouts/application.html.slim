@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    = render 'layouts/head_meta'
+  body.app.header-fixed.sidebar-fixed.aside-menu-fixed.sidebar-lg-show
+    = render 'layouts/noscript'
+    = render 'layouts/header'
+    .app-body
+      = render 'layouts/navigation'
+      main.main
+        .container-fluid
+          .animated.fadeIn
+            = render 'shared/flash'
+            = yield
+    - if path = controller_js_exists?
+      = javascript_include_tag path, async: false
+    - if path = action_js_exists?
+      = javascript_include_tag path, async: false

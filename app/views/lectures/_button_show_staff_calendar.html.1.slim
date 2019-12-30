@@ -1,0 +1,20 @@
+ruby:
+  queries = { r: {} }
+  queries[:start_date] = date  if defined?(date) && date.present?
+  // if defined?(room) && room.present?
+  //   queries[:r][:building_area_id_in] = room.building&.area&.id
+  //   queries[:r][:building_id_in] = room.building&.id
+  //   queries[:r][:id_in] = room.id
+  // end
+
+  title ||= t_model(:staff) + 'カレンダー'
+  url = staff_calendar_lectures_path(queries)
+  options = {
+    data: { toggle: :childwindow, url: url },
+    class: 'btn btn-outline-info btn-sm',
+    title: title \
+  }
+= link_to url, options
+  =<> fa_icon :calendar, class: 'fw'
+  = title
+

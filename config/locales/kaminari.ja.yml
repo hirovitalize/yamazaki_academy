@@ -1,0 +1,18 @@
+---
+ja:
+  helpers:
+    page_entries_info:
+      more_pages:
+        display_entries: "<p class= m-0 ><b>%{first} - %{last}</b> / <b> %{total} </b>件</p>"
+      one_page:
+        display_entries:
+          one: "<p class= m-0>全<b> %{count} </b>件</p>"
+          other: "<p class= m-0>全<b> %{count} </b>件</p>"
+          zero: "%{entry_name}が見つかりませんでした"
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: 最後 &raquo;
+      next: 次 &rsaquo;
+      previous: "&lsaquo; 前"
+      truncate: "&hellip;"

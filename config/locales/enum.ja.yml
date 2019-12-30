@@ -1,0 +1,38 @@
+---
+ja:
+  enums:
+    lecture:
+      confirmed:
+        approved: 承認
+        notyet: 未
+        unapproved: 否認
+      canceled_status:
+        cancel: 当日前キャンセル
+        cancel_today_contact: 当日キャンセル
+        cancel_no_contact: 無断キャンセル
+    paper_trail:
+      version:
+        event:
+          create: 作成
+          destroy: 削除
+          update: 更新
+    student:
+      visa_type:
+        study_abroad: 留学
+        family: 家族
+        permanent: 永住
+        settlement: 定住
+        other: その他
+      sex:
+        female: 女
+        male: 男
+        other: 他
+    student_mentor:
+      staff_type:
+        administration: 学生管理部
+        art: 美術
+    student_commission:
+      commission_type:
+        cache_back: キャッシュバック
+        referral_person: 個人紹介
+        referral_inflow: 法人紹介

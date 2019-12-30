@@ -1,0 +1,26 @@
+= render 'shared/validation_messages', model: model
+
+
+= simple_form_for(@reserve) do |f|
+  = f.input :lock_version, as: :hidden
+
+  .row
+    .col-md-6
+      - unless model.lecture.blank?
+        = f.association :lecture,
+                       as: :autocomplete,
+                       collection: [f.object.lecture].compact,
+                       input_html: {data: {models: 'lectures'}}
+      = f.association :room
+      = f.input :start_time,
+        input_html: { data: { \
+          toggle: 'autofill_date',
+          autofill: { \
+            to: '#reserve_finish_time',
+            added_minutes: -9960,
+            date_format: 'YYYY/MM/DD HH:mm'\
+          } \
+        } }
+      = f.input :finish_time
+      = f.input :comment
+  =<> render 'shared/form_submit', form: f

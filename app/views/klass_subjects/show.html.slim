@@ -1,0 +1,119 @@
+- model = @klass_subject.decorate
+- provide :title, t_iconed_model(model, :show)
+
+= render 'shared/validation_messages', model: model
+
+= simple_form_for model,
+  html: { class: 'form-horizontal' },
+  defaults: simple_form_display_defaults do |f|
+  .row
+    .col-md-6
+      .card
+        .card-body
+          table.table.table-striped.table-sm.table-borderless.m-0
+            tbody
+              = f.input :code
+              = f.input :subject do
+                = model.subject.name
+              = f.input :staff
+              = f.input :klass
+              = f.input :sharing_klasses
+              = f.input :start_time do
+                = model.view_time_range
+              = f.input :hours do
+                = model.view_total_hours
+              = f.input :lecture_num do
+                = model.view_lecture_numbers
+              = f.input :description
+                =<> truncated_text(f.object.description)
+              = f.input :fixed do
+                - if current_user.role? 'STUDENT_ADMIN'
+                  - if model.fixed == false
+                    =<> render 'shared/action/delete_button',
+                        path: fix_klass_subject_path,
+                        options: { \
+                          title: 'チェック完了',
+                           icon: t_field(:klass_subject, :fixed_icon),
+                          method: :post,
+                          data: { confirm: 'カリキュラムを確定してもよろしいですか？', commit: '確定する' },
+                          class: 'btn btn-outline-success btn-sm' \
+                        }
+                  - else
+                    =<> render 'shared/action/delete_button',
+                        path: unfix_klass_subject_path,
+                        options: { \
+                          title: '確定取り消し',
+                          icon: 'check-square 2x', style: "color:#4dbd74;",
+                          method: :post,
+                          data: { confirm: 'カリキュラムを確定解除してもよろしいですか？', commit: '確定解除する' },
+                          class: 'btn btn-sm' \
+                        }
+                -else
+                  - if model.fixed == true
+                    = fa_icon 'check-square 2x', style: "color:#4dbd74;"
+                  - else
+                    = fa_icon 'square-o 2x', style: "color:#4dbd74;"
+    .col-md-6
+      .card
+        .card-body
+          /  # irregular: コンバート元のクラスでは量が多すぎて、URLが死ぬ →　暫定で100件に制限
+          - lecture_params = { \
+              name: "#{model.klass&.name} #{model.subject&.name}",
+              subject_id: model.subject.id,
+              klass_subject_id: model.id,
+              time_changeable: model.subject.personal,
+              student_ids: model.klass&.students&.limit(100)&.map(&:id),
+              lecture_staffs_attributes: { '1' => { \
+                staff_id: model.staff_id,
+                work_kind_id: WorkKind::ID_TEACHER \
+              } } \
+            }
+          - url = new_lecture_path(lecture: lecture_params)
+          - if (current_user.role? 'STUDENT_ADMIN') || (model.fixed == false)
+            = render 'shared/action/new_button',
+                   model: Lecture,
+                   path: url,
+                   options: { data: { toggle: 'childwindow', url: url, reload_parent_on_close: true } }
+
+          - if model.lecture_num.present? && (0 < model.lecture_ids.count && model.lecture_ids.count <= 3)
+            = render 'shared/action/new_button',
+                   model: Lecture,
+                   label: '授業一括生成',
+                   path: confirm_klass_subject_lectures_path(lecture_ids: model.lecture_ids)
+
+          - if current_user.role? 'STUDENT_ADMIN'
+            - if model.lectures.present? && model.lectures.order(start_time: :desc).first&.start_time >= Time.zone.now
+              = render 'shared/action/delete_button',
+                     path: delete_lectures_klass_subjects_path(id: model.id),
+                     label: '未来分一括削除',
+                     options: { \
+                      title: '未来分一括削除',
+                       icon: 'trash fw',
+                       method: :post,
+                      data: {confirm: '未来分の授業を一括削除しますか？', commit: 'はい' } \
+                     }
+
+          = render 'shared/model/assoc',
+                 assoc: model.lectures.order(start_time: :asc),
+                 path: lectures_path(q: { klass_subject_id_in: model.id }),
+                 max_count: 20,
+                 title: t_iconed_model(Lecture) do |rel|
+            td
+              = link_object rel
+            td
+              - rel.lecture_staffs.eager_load(:staff).map do |lecture_staff|
+                = lecture_staff.staff.name
+                br
+            td
+              = rel.start_time
+              '-
+              = rel.finish_time&.to_s(:time)
+
+
+.row
+  .col-md-6
+    = render 'shared/model/history', model: model
+
+.button-container
+  =<> render 'shared/action/edit_button', path: model
+  =<> render 'shared/action/delete_button', path: model

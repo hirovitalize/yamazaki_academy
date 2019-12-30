@@ -1,0 +1,36 @@
+- provide :title, t_iconed_model(:role)
+
+- models = @roles
+- q = @q
+
+= render 'shared/search_form', q: q
+
+.pagination-container
+  = page_entries_info(@roles)
+  = paginate @roles
+
+table.table.table-sm.table-borderless.table-filterable.table-hover
+  thead
+    tr
+      th.filter-false.sorter-false.resizable-false
+      th.sorter-false
+        = sort_link q, :code, t_field(:role, :code)
+      th.sorter-false
+        = sort_link q, :name, t_field(:role, :name)
+      th
+        = t_field(:role, :staffs)
+      th.sorter-false
+        = sort_link q, :description, t_field(:role, :description)
+
+  tbody
+    - models.each do |model|
+      tr[class="#{'bg-secondndary' if model.deleted?}"]
+        td.action-column
+          =<> render 'shared/action/show_button', path: model, options: { target: ['_blank'] }
+        td = model.code
+        td = model.name
+        td = link_objects model.staffs
+        td = truncated_text(model.description)
+
+.pagination-container
+  = paginate @roles

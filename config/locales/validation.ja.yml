@@ -1,0 +1,54 @@
+---
+ja:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "%{errors}"
+        restrict_dependent_destroy:
+          has_many: "%{record}が存在しているので削除できません"
+          has_one: "%{record}が存在しているので削除できません"
+  errors:
+    format: "%{attribute}%{message}"
+    messages:
+      accepted: を受諾してください
+      after: は %{restriction} より後を指定してください
+      before: は %{restriction} より前を指定してください
+      blank: を入力してください
+      confirmation: と%{attribute}の入力が一致しません
+      empty: を入力してください
+      equal_to: は%{count}にしてください
+      even: は偶数にしてください
+      exclusion: は予約されています
+      greater_than: は%{count}より大きい値にしてください
+      greater_than_or_equal_to: は%{count}以上の値にしてください
+      inclusion: は不正な値です
+      invalid: は不正な値です
+      invalid_date: は正しい形式で入力してください
+      invalid_datetime: は正しい形式で入力してください
+      invalid_time: は正しい形式で入力してください
+      is_at: は %{restriction} である必要があります
+      less_than: は%{count}より小さい値にしてください
+      less_than_or_equal_to: は%{count}以下の値にしてください
+      model_invalid: 'バリデーションに失敗しました: %{errors}'
+      not_a_number: は数値で入力してください
+      not_an_integer: は整数で入力してください
+      odd: は奇数にしてください
+      on_or_after: は %{restriction} 以降を指定してください
+      on_or_before: は %{restriction} 以前を指定してください
+      other_than: は%{count}以外の値にしてください
+      present: は入力しないでください
+      required: を入力してください
+      taken: はすでに存在します
+      too_long: は%{count}文字以内で入力してください
+      too_short: は%{count}文字以上で入力してください
+      wrong_length: は%{count}文字で入力してください
+    template:
+      body: 次の項目を確認してください
+      header:
+        one: "%{model}にエラーが発生しました"
+        other: "%{model}に%{count}個のエラーが発生しました"
+  validates_timeliness:
+    error_value_formats:
+      date: "%Y/%m/%d"
+      datetime: "%Y/%m/%d %H:%M"
+      time: "%H:%M"

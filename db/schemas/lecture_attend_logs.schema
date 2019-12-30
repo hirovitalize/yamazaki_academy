@@ -1,0 +1,17 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+create_table 'lecture_attend_logs', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC', force: :cascade do |t|
+  t.references 'lecture', null: false
+  t.references 'student', null: true
+  t.string 'ip'
+  t.text 'ua'
+  t.string 'prev_cookie_student_ids'
+  t.string 'validation_note'
+  t.datetime 'qr_made_at'
+  t.integer 'creator_id'
+  t.integer 'updater_id'
+  t.integer 'deleter_id'
+  t.datetime 'created_at'
+  t.datetime 'updated_at'
+  t.datetime 'deleted_at', null: true
+end

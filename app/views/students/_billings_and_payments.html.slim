@@ -1,0 +1,64 @@
+.card
+  .card-header
+    = "#{t_model(StudentBilling)}・#{t_model(StudentPayment)}"
+    small.pull-right
+      span.badge.badge-warning
+        =<> link_object model.student_balance
+
+  .card-body
+    - url = new_student_billing_path(student_billing: { student_id: model.id} )
+    - unless model.normalized == false
+      = render 'shared/action/new_button',
+             model: StudentBilling,
+             path: url,
+             options: { data: { toggle: 'childwindow', url: url, reload_parent_on_close: true } }
+    = render('shared/model/assoc',
+             assoc: model.student_billings.order(id: :desc),
+             path: student_billings_path(q: { student_id_in: model.id }),
+             max_count: 20,
+             title: t_iconed_model(StudentBilling) + ' ' + number_to_currency(model.student_balance&.billings_total) \
+    ) do |rel|
+      td = link_object rel
+      td = link_objects rel.student_billing_details
+      td = number_to_currency(rel.total)
+      td = rel.created_at
+
+    - url = new_student_payment_path(student_payment: { student_id: model.id} )
+    - unless model.normalized == false
+      = render 'shared/action/new_button',
+             model: StudentPayment,
+             path: url,
+             options: { data: { toggle: 'childwindow', url: url, reload_parent_on_close: true } }
+    = render('shared/model/assoc',
+             assoc: model.student_payments.order(id: :desc),
+             path: student_payments_path(q: { student_id_in: model.id }),
+             max_count: 20,
+             title: t_iconed_model(StudentPayment) + ' ' + number_to_currency(model.student_balance&.payments_total) \
+    ) do |rel|
+      td = link_object rel
+      td = rel.paymethod.to_label
+      td = number_to_currency(rel.settlement_price)
+      td = rel.created_at
+
+.card
+  .card-header
+    = "#{t_model(StudentCommission)}"
+    - if model.student_commissions.present?
+      small.pull-right
+        span.badge.badge-danger
+          = "残" + number_to_currency(model.student_commissions.reject(&:payed_at).sum(&:price))
+
+  .card-body
+    - url = new_student_commission_path(student_commission: { student_id: model.id} )
+    - unless model.normalized == false
+      = render 'shared/action/new_button',
+             model: StudentCommission,
+             path: url,
+             options: { data: { toggle: 'childwindow', url: url, reload_parent_on_close: true } }
+    = render('shared/model/assoc',
+             assoc: model.student_commissions.order(id: :desc),
+             path: student_commissions_path(q: { student_id_in: model.id }),
+             title: t_iconed_model(StudentCommission)) do |rel|
+      td = link_object rel, format: :name
+      td = number_to_currency rel.price
+      td = rel.created_at

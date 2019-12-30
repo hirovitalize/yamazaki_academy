@@ -1,0 +1,48 @@
+- provide :title, t_iconed_model(:subject)
+
+- models = @subjects
+- q = @q
+
+= render 'shared/search_form', q: q
+
+.button-container
+  = render 'shared/action/new_button', path: Subject, options: { target: '_blank' }
+
+.pagination-container
+  = page_entries_info(@subjects)
+  = paginate @subjects
+
+table.table.table-sm.table-borderless.table-filterable.table-hover
+  thead
+    tr
+      th.filter-false.sorter-false.resizable-false
+      th.sorter-false
+        = sort_link q, :code, t_field(:subject, :code)
+      th.sorter-false
+        = sort_link q, :name, t_field(:subject, :name)
+      th.sorter-false
+        = sort_link q, :subject_category, t_field(:subject, :subject_category)
+      th.sorter-false
+        = sort_link q, :klass_templates, t_field(:subject, :klass_templates)
+      th.sorter-false
+        = sort_link q, :personal, t_field(:subject, :personal)
+      th.sorter-false
+        = sort_link q, :staffs, t_field(:subject, :staffs)
+      th.sorter-false
+        = t_field(:subject, :description)
+
+  tbody
+    - models.each do |model|
+      tr[class="#{'bg-secondndary' if model.deleted?}"]
+        td.action-column
+          =<> render 'shared/action/show_button', path: model, options: { target: ['_blank'] }
+        td = model.code
+        td = model.name
+        td = link_object model.subject_category
+        td = link_objects model.klass_templates
+        td = bool_icon_tag model.personal
+        td = link_objects model.staffs
+        td = truncated_text(model.description)
+
+.pagination-container
+  = paginate @subjects

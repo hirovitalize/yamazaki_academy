@@ -1,0 +1,19 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+create_table 'staffs', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC', force: :cascade do |t|
+  t.string 'code', null: true, limit: 10
+  t.references 'user', null: false
+  t.string 'name', null: false
+  t.string 'yomi', null: true
+  t.string 'tel', null: true, limit: 13
+  t.date 'birthday'
+  t.integer 'creator_id'
+  t.integer 'updater_id'
+  t.integer 'deleter_id'
+  t.datetime 'created_at'
+  t.datetime 'updated_at'
+  t.datetime 'deleted_at', null: true
+
+  t.index ['name', 'yomi'], name: 'name_yomi'
+  t.index ['code'], name: 'code', unique: true
+end

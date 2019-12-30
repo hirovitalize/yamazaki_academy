@@ -1,0 +1,17 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+# old: Juko
+create_table 'student_billing_detail_discounts', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC', force: :cascade do |t|
+  t.references 'student_billing_detail', null: false, index: { name: 'student_billing_detail_id' }
+
+  t.references 'discount_type', null: true
+  t.integer 'price', null: false, default: 0
+  t.string 'description', null: true
+
+  t.integer 'creator_id'
+  t.integer 'updater_id'
+  t.integer 'deleter_id'
+  t.datetime 'created_at'
+  t.datetime 'updated_at'
+  t.datetime 'deleted_at', null: true
+end

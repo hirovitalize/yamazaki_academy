@@ -1,0 +1,68 @@
+- provide :title, t_iconed_model(:user)
+
+- models = @users
+- q = @q
+
+= render 'shared/search_form', q: q
+
+.pagination-container
+  = page_entries_info(@users)
+  = paginate @users
+
+table.table.table-sm.table-borderless.table-filterable.table-hover
+  thead
+    tr
+      th.filter-false.sorter-false.resizable-false
+      th.sorter-false
+        = sort_link q, :id, t_field(:user, :id)
+      th.sorter-false
+        = sort_link q, :name, t_field(:user, :name)
+      th.sorter-false
+        = sort_link q, :email, t_field(:user, :email)
+      th.sorter-false
+        = sort_link q, :sign_in_count, t_field(:user, :sign_in_count)
+      th.sorter-false
+        = sort_link q, :failed_attempts, t_field(:user, :failed_attempts)
+      th.sorter-false
+        = sort_link q, :locked_at, t_field(:user, :locked_at)
+
+  tbody
+    - models.each do |model|
+      tr[class="#{'bg-secondndary' if model.deleted? || model.access_locked? }"]
+        td.action-column
+          =<> render 'shared/action/show_button', path: model, options: { target: ['_blank'] }
+
+          - if model.access_locked?
+            =<> render 'shared/action/delete_button',
+                       path: unlock_user_path(model),
+                       options: { \
+                         title: t('.unlock'),
+                         icon: :unlock,
+                         method: :post,
+                         data: {confirm: t('.unlock_confirm'), commit: 'ロック解除' } \
+                       }
+          - else
+            =<> render 'shared/action/delete_button',
+                       path: lock_user_path(model),
+                       options: { \
+                         title: t('.lock'),
+                         icon: :lock,
+                         method: :post,
+                         data: {confirm: t('.lock_confirm'), commit: 'ロック' }\
+                       }
+
+        td
+          = model.id
+          - if model.access_locked?
+            =<> t(".locked")
+        td = link_object model.staff
+        td
+          a[href="mailto:#{model.email}" target="_blank"]
+            =<> fa_icon :envelope
+            = model.email
+        td = model.sign_in_count
+        td = model.failed_attempts
+        td = model.locked_at
+
+.pagination-container
+  = paginate @users

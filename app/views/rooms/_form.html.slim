@@ -1,0 +1,42 @@
+= render 'shared/validation_messages', model: model
+
+
+= simple_form_for(@room) do |f|
+  .row
+    .col-md-6
+      = f.input :name
+      = f.association :building
+      = f.input :seat_number, input_html: { min: 0}
+
+    .col-md-6
+      = f.association :room_groups
+      = f.input :description
+
+  .row
+    .col-md-6
+      .card
+        .card-header
+        .card-body
+          = render 'shared/form_children', f: f, model: @room, association: :room_equipments
+
+    .col-md-6
+      .card
+        .card-header
+        .card-body.row
+          - %w[wday_0 wday_1 wday_2 wday_3 wday_4 wday_5 wday_6].each do |key|
+            .col-md-6
+              = f.input "#{key}_open_time",
+                as: :time,
+                input_html: { data: { \
+                  toggle: 'autofill_date',
+                  autofill: { \
+                    to: "#room_#{key}_close_time",
+                    added_minutes: 60 * 12,
+                    date_format: 'HH:mm'\
+                  } \
+                } }
+            .col-md-6
+              = f.input "#{key}_close_time",
+                as: :time
+
+  =<> render 'shared/form_submit', form: f

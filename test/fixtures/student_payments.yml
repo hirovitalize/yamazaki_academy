@@ -1,0 +1,8 @@
+one:
+  id: 1
+  student_id: 1
+  paymethod_id: 1
+  receiver_id: 1
+  pay_date: '2019-01-01'
+  price: 13000
+  gen: 0

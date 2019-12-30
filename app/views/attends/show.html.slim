@@ -1,0 +1,9 @@
+- provide :title, '授業: 出席確認'
+
+.row
+  .col-md-6
+    .card.center-block
+      .card-header
+        = "こちらのQRコードを読み取ってください"
+      .card-body
+        canvas#js-url-attends [data-url=@url]

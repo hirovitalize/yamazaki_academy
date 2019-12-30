@@ -1,0 +1,9 @@
+- provide :title, t_iconed_model(:klass) + 'カレンダー'
+
+= render 'shared/js_hidden_text'
+
+= render 'klass_calendar_search'
+
+.row
+  div.js-klass-calendar[data-klass_ids=@klass_ids]
+    #calendar

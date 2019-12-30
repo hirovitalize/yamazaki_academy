@@ -1,0 +1,18 @@
+.col-md-4
+  = f.input :code_in, label: t_field(Subject, :code)
+  = f.input :name_cont_all, label: t_field(Subject, :name)
+.col-md-4
+  = f.input :subject_category_id_in, label: t_field(Subject, :subject_category),
+    as: :select,
+    collection: SubjectCategory.all.pluck(:name, :id),
+    input_html: { multiple: true }
+  = f.input :klass_template_subjects_klass_template_id_in, label: t_field(Subject, :klass_templates),
+    as: :autocomplete,
+            collection: KlassTemplate.where(id: f.object.klass_templates_id_in),
+            input_html: { multiple: true, data: { models: 'klass_templates' }}
+  .pull-right
+    = render 'shared/action/mine_button', options: { data: { staff_target: '#q_staffs_id_in' } }
+  = f.input :staffs_id_in, label: t_field(Subject, :staffs),
+    as: :autocomplete,
+            collection: Staff.where(id: f.object.staffs_id_in),
+            input_html: { multiple: true, data: { placeholder: '氏名・コードを入力（1文字以上）', minimum_input_length: 1, limit: 20, models: 'staffs', mainquery: 'name_or_code_start' }}

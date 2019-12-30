@@ -1,0 +1,36 @@
+- provide :title, t_iconed_model(:room_group)
+
+- models = @room_groups
+- q = @q
+
+= render 'shared/search_form', q: q
+
+.button-container
+  = render 'shared/action/new_button', path: RoomGroup, options: { target: '_blank' }
+
+.pagination-container
+  = page_entries_info(@room_groups)
+  = paginate @room_groups
+
+table.table.table-sm.table-borderless.table-filterable.table-hover
+  thead
+    tr
+      th.filter-false.sorter-false.resizable-false
+      th.sorter-false
+        = sort_link q, :name, t_field(:room_group, :name)
+      th.sorter-false
+        = sort_link q, :description, t_field(:room_group, :description)
+      th.sorter-false
+        = sort_link q, :rules, t_field(:room_group, :rules)
+
+  tbody
+    - models.each do |model|
+      tr[class="#{'bg-secondndary' if model.deleted?}"]
+        td.action-column
+          =<> render 'shared/action/show_button', path: model, options: { target: ['_blank'] }
+        td = model.name
+        td = truncated_text(model.description)
+        td = truncated_text(model.rules)
+
+.pagination-container
+  = paginate @room_groups

@@ -1,0 +1,40 @@
+---
+en:
+  controllers:
+    headers:
+      redirect_default(keyword):
+        flash:
+          alert: No employees / students were found
+    klass_subjects:
+      fix:
+        flash:
+          alert: Confirmation failed.
+          notice: was decided.
+    klasses:
+      bulk_klass_subjects:
+        flash:
+          alert: Failed creating.
+    lectures:
+      approve:
+        flash:
+          alert: Failed approving.
+          notice: Approved.
+      back_confirmed:
+        flash:
+          alert: Failed sending back.
+          notice: Sent back.
+      cancel:
+        flash:
+          alert: Could not cancel due to date conditions.
+          notice: Canceled.
+      unapprove:
+        flash:
+          alert: Failed denying.
+          notice: Denied.
+    users:
+      lock:
+        flash:
+          notice: Locked.
+      unlock:
+        flash:
+          notice: Unlocked.

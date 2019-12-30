@@ -1,0 +1,11 @@
+- if flash[:alert]
+  .alert.alert-danger.alert-dismissible
+    = button_tag '×', type: 'button', class: 'close', 'data-dismiss': 'alert', 'aria-hidden': true
+    = fa_icon :ban, class: 'mr-1'
+    = flash[:alert].html_safe
+
+- if flash[:notice]
+  .alert.alert-success.alert-dismissible
+    = button_tag '×', type: 'button', class: 'close', 'data-dismiss': 'alert', 'aria-hidden': true
+    = fa_icon :check, class: 'mr-1'
+    = flash[:notice].html_safe

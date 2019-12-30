@@ -1,0 +1,39 @@
+- provide :title, t_iconed_model(:student_balance)
+
+- models = @student_balances
+- q = @q
+
+= render 'shared/search_form', q: q
+
+.pagination-container
+  = page_entries_info(@student_balances)
+  = paginate @student_balances
+
+table.table.table-sm.table-borderless.table-filterable.table-hover
+  thead
+    tr
+      th.filter-false.sorter-false.resizable-false
+      th
+        = t_model(:course_category)
+      th.sorter-false
+        = sort_link q, :student_id, t_field(:student_balance, :student)
+      th.sorter-false
+        = sort_link q, :billings_total, t_field(:student_balance, :billings_total)
+      th.sorter-false
+        = sort_link q, :payments_total, t_field(:student_balance, :payments_total)
+      th.sorter-false
+        = sort_link q, :price, t_field(:student_balance, :price)
+
+  tbody
+    - models.each do |model|
+      tr[class="#{'bg-secondndary' if model.deleted?}"]
+        td.action-column
+          =<> render 'shared/action/show_button', path: model, options: { target: ['_blank'] }
+        td = link_objects model.student.course_categories
+        td = link_object model.student
+        td = number_to_currency model.billings_total
+        td = number_to_currency model.payments_total
+        td = number_to_currency model.price
+
+.pagination-container
+  = paginate @student_balances

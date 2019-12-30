@@ -1,0 +1,6 @@
+- provide :title, t_iconed_model(:<%= singular_table_name %>, :new)
+
+== render 'form', model: @<%= singular_table_name %>
+
+.button-container
+  = render 'shared/action/index_button', path: @<%= singular_table_name %>

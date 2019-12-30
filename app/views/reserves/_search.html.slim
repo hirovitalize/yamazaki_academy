@@ -1,0 +1,42 @@
+.col-md-4
+  .pull-right
+    = render 'shared/action/select_all_button', options: { data: { target: '#q_room_building_id_in' } }
+  = f.input :room_building_id_in, label: t_field(Reserve, :building),
+    as: :select,
+    collection: Building.without_deleted.pluck(:name, :id),
+    input_html: { multiple: true }
+
+  .pull-right
+    = render 'shared/action/select_all_button', options: { data: { target: '#q_room_id_in' } }
+  = f.input :room_id_in, label: t_field(Reserve, :room),
+    as: :drilldown,
+    collection: Room.without_deleted.where(id: f.object.room_id_in).pluck(:name, :id),
+    input_html: { \
+      multiple: true,
+      data: { \
+        models: 'rooms',
+        mainquery: 'building_id_in',
+        parent: '#q_room_building_id_in' \
+      } \
+    }
+
+.col-md-4
+  .pull-right
+    = render 'shared/action/mine_button', options: { data: { user_target: '#q_creator_id_in' } }
+  = f.input :creator_id_in, label: t_field(Reserve, :creator),
+    collection: Staff.where(id: f.object.creator_id_in),
+    input_html: { multiple: true, data: { models: 'users' }}
+
+  = f.input :start_time, label: t(".duration_time") do
+    .form-inline
+      = f.input :start_time_gteq, { \
+        as: :datetime,
+        wrapper: :inline_form,
+        input_html: { data: { toggle: 'autofill_date', autofill: { to: '#q_finish_time_lteq', added_days: 1, date_format: 'YYYY/MM/DD HH:mm'} } } \
+      }
+      span.m-1 -
+      = f.input :finish_time_lteq, { \
+        as: :datetime,
+        wrapper: :inline_form,
+        input_html: { data: { toggle: 'autofill_date', autofill: { to: '#q_start_time_gteq', added_days: -1, date_format: 'YYYY/MM/DD HH:mm'} } } \
+      }

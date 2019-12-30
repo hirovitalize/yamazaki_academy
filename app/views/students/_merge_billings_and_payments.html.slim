@@ -1,0 +1,43 @@
+.card
+  .card-header
+    = "#{t_model(StudentBilling)}・#{t_model(StudentPayment)}"
+    small.pull-right
+      span.badge.badge-warning
+        =<> link_object model.student_balance
+
+  .card-body
+    = render('shared/model/assoc',
+             assoc: model.student_billings.order(id: :desc),
+             path: student_billings_path(q: { student_id_in: model.id }),
+             title: t_iconed_model(StudentBilling) + ' ' + number_to_currency(model.student_balance&.billings_total) \
+    ) do |rel|
+      td = link_object rel
+      td = number_to_currency(rel.total)
+      td = rel.created_at
+
+    = render('shared/model/assoc',
+             assoc: model.student_payments.order(id: :desc),
+             path: student_payments_path(q: { student_id_in: model.id }),
+             title: t_iconed_model(StudentPayment) + ' ' + number_to_currency(model.student_balance&.payments_total) \
+    ) do |rel|
+      td = link_object rel
+      td = rel.paymethod.to_label
+      td = number_to_currency(rel.settlement_price)
+      td = rel.created_at
+
+.card
+  .card-header
+    = "#{t_model(StudentCommission)}"
+    - if model.student_commissions.present?
+      small.pull-right
+        span.badge.badge-danger
+          = "残" + number_to_currency(model.student_commissions.reject(&:payed_at).sum(&:price))
+
+  .card-body
+    = render('shared/model/assoc',
+             assoc: model.student_commissions.order(id: :desc),
+             path: student_commissions_path(q: { student_id_in: model.id }),
+             title: t_iconed_model(StudentCommission)) do |rel|
+      td = link_object rel, format: :name
+      td = number_to_currency rel.price
+      td = rel.created_at

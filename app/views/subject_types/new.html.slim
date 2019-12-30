@@ -1,0 +1,6 @@
+- provide :title, t_iconed_model(@subject_type, :new)
+
+== render 'form', model: @subject_type
+
+.button-container
+  = render 'shared/action/index_button', path: @subject_type

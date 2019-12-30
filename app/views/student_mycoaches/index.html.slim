@@ -1,0 +1,62 @@
+- provide :title, t_iconed_model(:student_mycoach)
+
+- models = @student_mycoaches
+- q = @q
+
+= render 'shared/search_form', q: q
+
+.pagination-container
+  = page_entries_info(@student_mycoaches)
+  = paginate @student_mycoaches
+
+table.table.table-sm.table-borderless.table-filterable.table-hover
+  thead
+    tr
+      th.filter-false.sorter-false.resizable-false
+      th.sorter-false
+        = sort_link q, :id, t_field(:student_mycoach, :id)
+      th.sorter-false
+        = sort_link q, :name, t_field(:student_mycoach, :name)
+      th.sorter-false
+        = sort_link q, :email, t_field(:student_mycoach, :email)
+      th.sorter-false
+        = sort_link q, :sign_in_count, t_field(:student_mycoach, :sign_in_count)
+      th.sorter-false
+        = sort_link q, :updated_at, t_field(:student_mycoach, :updated_at)
+  tbody
+    - models.each do |model|
+      tr[class="#{'bg-secondndary' if model.deleted?}"]
+        td.action-column
+          =<> render 'shared/action/show_button', path: model, options: { target: ['_blank'] }
+
+          - if model.access_locked?
+            =<> render 'shared/action/delete_button',
+                       path: unlock_student_mycoach_path(model),
+                       options: { \
+                         title: t('.unlock'),
+                         icon: :unlock,
+                         method: :post,
+                         data: {confirm: t('.unlock_confirm'), commit: 'ロック解除' } \
+                       }
+          - else
+            =<> render 'shared/action/delete_button',
+                       path: lock_student_mycoach_path(model),
+                       options: { \
+                         title: t('.lock'),
+                         icon: :lock,
+                         method: :post,
+                         data: {confirm: t('.lock_confirm'), commit: 'ロック' }\
+                       }
+
+        td
+          = model.id
+          - if model.access_locked?
+            =<> t(".locked")
+
+        td = link_object model.student
+        td = model.email
+        td = model.sign_in_count
+        td = model.updated_at
+
+.pagination-container
+  = paginate @student_mycoaches

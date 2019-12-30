@@ -1,0 +1,22 @@
+= render 'shared/validation_messages', model: model
+
+
+= simple_form_for(@staff) do |f|
+  .row
+    .col-md-6
+      = f.input :code
+      = f.input :name
+      = f.input :tel
+      = f.simple_fields_for :user do |g|
+        = g.input :email
+      = f.input :birthday, as: :date
+      = f.association :mentees,
+                      as: :autocomplete,
+                      input_html: { \
+                        multiple: true,
+                        data: { placeholder: "氏名・コードを入力（1文字以上）", minimum_input_length: 1, limit: 20, models: 'students', mainquery: 'name_or_code_start' } \
+                      }
+
+      = f.association :subjects
+
+  =<> render 'shared/form_submit', form: f

@@ -1,0 +1,5 @@
+- if policy?(model, :index)
+  li.nav-item
+    = link_to send("#{model.to_s.pluralize}_path"), class: 'nav-link'
+      =<> t_icon model, 'fw'
+      =<> t_model model

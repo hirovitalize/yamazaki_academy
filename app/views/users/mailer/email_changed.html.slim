@@ -1,0 +1,17 @@
+p
+  = @resource.name
+  | 様
+  br
+  br
+  | 行知学園ITシステムです。
+  br
+- if @resource.try(:unconfirmed_email?)
+  p
+    | 以下のメールアドレスにアカウント認証メールを送付しました。ご確認ください。
+    br
+    br
+    = @resource.unconfirmed_email
+- else
+  p
+    | 以下のメールアドレスに変更しました。
+    = @resource.email

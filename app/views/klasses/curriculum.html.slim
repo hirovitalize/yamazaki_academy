@@ -1,0 +1,53 @@
+- klass = @klass
+- klass_subjects = @klass.klass_subjects.eager_load(:subject, lectures: {lecture_staffs: :staff} ) + \
+                   @klass.sharing_klass_subjects.eager_load(:subject, lectures: {lecture_staffs: :staff} )
+- raise 'Too Much KlassSubjects.' if klass_subjects.count > 15
+- raise 'Too Much Lectures.' if klass_subjects.map(&:lectures).sum(&:count) > 100
+
+- provide :title, klass.name
+
+.card
+  .card-header
+    = klass.name
+  .card-body
+    table.table.table-sm.table-bordered
+      thead
+        tr
+          th = t('.klass_name')
+          th = t('.katei')
+          th = t('.duration')
+          th = t('.number_of_class_hours')
+          th = t('.number_of_class')
+          th = t('.staff_in_charge')
+      tbody
+        - klass_subjects.each_with_index do |klass_subject, i|
+          tr
+            - if i.zero?
+              td[rowspan=klass_subjects.size]
+                = klass.code
+                br
+                = klass.name
+                br
+                = "#{klass&.area&.name}"
+            td
+              = klass_subject.subject.name
+              - unless klass_subject.klass_id == klass.id
+                = " [共同:#{klass_subject.klass.name}]"
+            - if i.zero?
+              td[rowspan=klass_subjects.size]
+                = "#{klass.start_date.to_s(:date)} - #{klass.finish_date.to_s(:date)}"
+                br
+                - wdays = (klass_subjects.map(&:lectures).map(&:to_a).flatten.map { |l| l.start_time.wday }).uniq.sort
+                = t('.day_of_week') + ':' + t('date.abbr_day_names').values_at(*wdays).join(', ')
+            td
+              = klass_subject.lectures.map(&:hours).uniq.join(', ')
+            td
+              = klass_subject.lecture_num
+            td
+              = (klass_subject.lectures.map { |l| l.lecture_staffs.map { |ls| ls.staff.name } }).flatten.uniq.join(', ')
+
+- months = [klass.start_date.beginning_of_month, klass.finish_date.beginning_of_month]
+- klass.start_date.beginning_of_month.upto(klass.finish_date).select {|d| d.day == 1}.each do |month|
+  .card[style="page-break-before:auto; page-break-inside: avoid;"]
+    .card-body
+      .calendar[data-klass_id="#{klass.id}" data-month="#{month.strftime('%Y-%m-%d')}"]

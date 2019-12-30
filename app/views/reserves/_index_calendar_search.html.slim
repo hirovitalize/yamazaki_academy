@@ -1,0 +1,86 @@
+#accordion[role="tablist"]
+  .card
+    #search-heading.card-header[role="tab"]
+      a[data-toggle="collapse" href="#search" aria-expanded="true" aria-controls="search"]
+        | #{I18n.t 'helpers.button.search'}
+    #search.collapse[role="tabpanel" aria-labelledby="search-heading" data-parent="#accordion"]
+      .card-body
+        = simple_form_for '',
+          method: :get,
+          url: index_calendar_reserves_path,
+          defaults: { required: false, input_html: { novalidate: true } }  do |f|
+          .row
+            .col-md-6
+              = f.input :start_date,
+                label: t_field(:klass, :start_date),
+                as: :date,
+                input_html: { \
+                  class: 'form-control', \
+                  data: { 'widget': 'datepicker','date-options': { defaultDate: @start_date } }, \
+                   autocomplete: 'off' \
+                }
+            .col-md-6
+              = '部屋検索'
+              .card
+                .card-body
+                  = f.simple_fields_for :r, @r do |r|
+                    = r.input :building_area_id_in,
+                      label: (t_model :area),
+                      as: :select,
+                      collection: Area.pluck(:name, :id),
+                      input_html: { multiple: true },
+                      include_hidden: false
+                    .pull-right
+                      = render 'shared/action/select_all_button', options: { data: { target: '#_r_building_id_in' } }
+                    = r.input :building_id_in,
+                      label: (t_model :building),
+                      as: :drilldown,
+                      collection: Building.where(id: r.object.building_id_in).pluck(:name, :id),
+                      input_html: { \
+                        multiple: true,
+                        data: { \
+                          toggle: 'select2-drilldown',
+                          models: 'buildings',
+                          mainquery: 'area_id_in',
+                          parent: '#_r_building_area_id_in' \
+                      } },
+                      include_hidden: false
+                    .pull-right
+                      = render 'shared/action/select_all_button', options: { data: { target: '#_r_id_in' } }
+                    = r.input :id_in,
+                      label: (t_model :room),
+                      as: :drilldown,
+                      collection: Room.where(id: r.object.id_in).pluck(:name, :id),
+                      input_html: { \
+                        multiple: true,
+                        data: { \
+                          toggle: 'select2-drilldown',
+                          models: 'rooms',
+                          mainquery: 'building_id_in',
+                          parent: '#_r_building_id_in' \
+                      } },
+                      include_hidden: false
+
+                    .pull-right
+                      = render 'shared/action/select_all_button', options: { data: { target: '#_r_room_equipments_equipment_id_in' } }
+                    = r.input :room_equipments_equipment_id_in,
+                      label: (t_model :equipment),
+                      as: :select,
+                      collection: Equipment.pluck(:name, :id),
+                      input_html: { multiple: true },
+                      include_hidden: false
+                    = r.input "seat_number", label: t_field(:room, :seat_number) do
+                      .form-inline
+                        = r.input :seat_number_gteq,
+                          label: t_field(:room, :seat_number_gteq),
+                          as: :integer,
+                          input_html: { min: 1, max: 199 },
+                          include_hidden: false
+                        span.m-1 -
+                        = r.input :seat_number_lteq,
+                          label: t_field(:room, :seat_number_lteq),
+                          as: :integer,
+                          input_html: { min: 2, max: 200 },
+                          include_hidden: false
+
+          = render 'shared/form_submit_search'

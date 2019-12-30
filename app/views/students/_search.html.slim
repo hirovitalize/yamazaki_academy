@@ -1,0 +1,73 @@
+.col-md-4
+  = f.input :code_in, label: t_field(Student, :code)
+  = f.input :name_or_yomi_cont_all, label: t_field(Student, :name)
+  = f.input :sex_in, label: t_field(Student, :sex),
+            collection: ransack_enum_collection(Student, :sex),
+            input_html: { multiple: true }
+  = f.input :birthday, label: t_field(:Student, :birthday), as: :date
+  = f.input :student_mycoach_email_in, label: t_field(Student, :email)
+
+.col-md-4
+  = f.input :tel_cont, label: t_field(Student, :tel)
+  = f.input :qq_cont, label: t_field(Student, :qq)
+  = f.input :wechat_cont, label: t_field(Student, :wechat)
+  = f.input :contracted_at, label: t_field(:Student, :contracted_at) do
+    .form-inline
+      = f.input :contracted_at_gteq, { \
+        as: :datetime,
+        wrapper: :inline_form,
+        input_html: { data: { target: '#q_created_at_gteq' } } \
+      }
+      span.m-1 -
+      =<> f.input :contracted_at_lteq, { \
+        as: :datetime,
+        wrapper: :inline_form,
+        input_html: { data: { target: '#q_created_at_lteq' } } \
+      }
+  = f.input :course_category_students_course_category_id_in, label: t_model(CourseCategory),
+     as: :select,
+     collection: CourseCategory.all,
+     input_html: { multiple: true }
+
+.col-md-4
+  .pull-right
+    = render 'shared/action/mine_button', options: { data: { staff_target: '#q_mentors_id_in' } }
+  = f.input :mentors_id_in, label: t_field(Student, :mentors),
+            as: :autocomplete,
+            collection: Staff.where(id: f.object.mentors_id_in),
+            input_html: { multiple: true, data: { placeholder: "氏名・コードを入力（1文字以上）", minimum_input_length: 1, limit: 20, models: 'staffs', mainquery: 'name_or_code_start' }}
+  .pull-right
+    = render 'shared/action/select_all_button', options: { data: { target: '#q_area_id_in' } }
+  = f.input :area_id_in, label: t_field(Student, :area),
+            as: :select,
+            collection: Area.pluck(:name, :id),
+            input_html: { multiple: true }
+  = f.input :klasses_id_in, label: t_field(Student, :klasses),
+            as: :autocomplete,
+            collection: Klass.where(id: f.object.klasses_id_in),
+            input_html: { multiple: true, data: { models: 'klasses' }}
+  = f.input :seller_id_in, label: t_field(Student, :seller),
+            as: :select,
+            collection: Staff.sales.pluck(:name, :id),
+            input_html: { multiple: true }
+  // lecture
+
+  = f.input :normalized_in, label: t_field(Student, :normalized),
+    as: :check_boxes, include_hidden: false,
+    collection: [["未", false]]
+
+  = f.input :not_vip_point, label: '',
+    as: :check_boxes, include_hidden: false,
+    collection: [[t(".not_vip_point"), true]]
+
+  - provide :search_delete do
+    - klass = 'btn btn-outline-secondary col-md-6'
+    = f.label :with_deleted, class: klass
+      = f.check_box :with_deleted, include_hidden: false
+      | 削除含む
+    = f.label :only_deleted, class: klass
+      = f.check_box :only_deleted, include_hidden: false
+      | 削除のみ
+  = f.input :delete, label: '削除',
+    as: :custom_content,
+    content: yield(:search_delete)

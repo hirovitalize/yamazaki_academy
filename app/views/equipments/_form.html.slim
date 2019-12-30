@@ -1,0 +1,9 @@
+= render 'shared/validation_messages', model: model
+
+
+= simple_form_for(@equipment) do |f|
+  .row
+    .col-md-6
+      = f.input :name
+      = f.input :description
+  =<> render 'shared/form_submit', form: f

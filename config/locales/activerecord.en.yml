@@ -1,0 +1,386 @@
+---
+en:
+  activerecord:
+    attributes:
+      area:
+        buildings: :activerecord.models.building
+        faicon: globe
+        klasses: :activerecord.models.klass
+        province: :activerecord.models.province
+      book:
+        course_category: :activerecord.models.course_category
+        faicon: book
+        price: Amount of money
+      building:
+        address: address
+        area: :activerecord.models.area
+        faicon: building
+      course:
+        course_category: :activerecord.models.course_category
+        faicon: code-fork
+        klass_templates: :activerecord.models.klass_template
+        price: price
+      course_category:
+        courses: :activerecord.models.course
+        faicon: folder-open
+      discount_type:
+        price: amount
+        rate: rate
+      equipment:
+        faicon: legal
+      equipment/room_equipment:
+        available: Available
+        equipment: :activerecord.models.equipment
+        room: :activerecord.models.room
+      klass:
+        area: :activerecord.models.area
+        faicon: users
+        finish_date: End date
+        hours: Lecture time
+        klass_subjects: :activerecord.models.klass_subject
+        klass_template: :activerecord.models.klass_template
+        lecture_num: Times
+        sharing_klass_subject: :activerecord.models.shared_klass_klass_subject
+        start_date: start date
+        students: :activerecord.models.student
+        total_hours: total time
+      klass_subject:
+        faicon: book
+        fixed: Confirm
+        fixed_icon: check
+        fixed_icon: check
+        hours: Lecture time
+        klass: :activerecord.models.klass
+        lecture_num: Times
+        sharing_klasses: :activerecord.models.shared_klass_klass_subject
+        staff: Principal assignment
+        start_time: Lecture start time
+        subject: :activerecord.models.subject
+        total_hours: total time
+      klass_template:
+        course: :activerecord.models.course
+        course_category: :activerecord.models.course_category
+        courses: :activerecord.models.course
+        faicon: id-card
+        hours: Lecture time
+        klasses: :activerecord.models.klass
+        lecture_num: Times
+        students: :activerecord.models.student
+        subjects: :activerecord.models.subject
+        total_hours: Total hours
+      lecture:
+        canceled_status: canceled_status
+        confirmed: Approval / denial
+        confirmer: Authorizer
+        faicon: graduation-cap
+        finish_time: End time
+        fix:
+          faicon: check
+        klass: :activerecord.models.klass
+        klass_subject: :activerecord.models.klass_subject
+        lecture_attend_log: :activerecord.models.lecture_attend_log
+        lecture_staffs: :activerecord.models.lecture_staff
+        lecture_students: :activerecord.models.lecture_student
+        lecture_time: class time
+        reserve: :activerecord.models.reserve
+        staffs: :activerecord.models.staff
+        start_time: Start time
+        student: :activerecord.models.student
+        students: :activerecord.models.student
+        subject: :activerecord.models.subject
+        subject_type: :activerecord.models.subject_type
+        tag_list: :activerecord.models.tag
+        tags: :activerecord.models.tag
+        time_changeable: Time changeable
+      lecture/lecture_staffs:
+        finish_time: :activerecord.attributes.lecture_staff.finish_time
+        staff: staff
+        start_time: :activerecord.attributes.lecture_staff.start_time
+        work_kind: :activerecord.models.work_kind
+      lecture/work_kind:
+        faicon: folder-open
+        name: Business type
+      lecture/work_kinds:
+        faicon: folder-open
+        name: Business type
+      lecture_attend_log:
+        faicon: database
+        ip: IP address
+        lecture: :activerecord.models.lecture
+        prev_cookie_student_ids: Last login student ID
+        qr_made_at: QR creation date
+        student: :activerecord.models.student
+        ua: Device information
+        validation_note: Log details
+      lecture_staff:
+        confirmed_salary: Salary (approved)
+        confirmed_staff_hours: Instructor hours (approved)
+        faicon: user-plus
+        finish_time: End time
+        lecture: :activerecord.models.lecture
+        lecture_day: Class day
+        staff: :activerecord.models.staff
+        start_time: Start time
+        work_kind: :activerecord.models.work_kind
+      lecture_student:
+        confirmed_point: VIPtime(used)
+        faicon: user
+        finished: Whether to terminate
+        lecture: :activerecord.models.lecture
+        mentor: Mentor
+        student: :activerecord.models.student
+      province:
+        faicon: globe
+      reserve:
+        building: :activerecord.models.building
+        comment: Overview
+        faicon: calendar
+        finish_time: End time
+        lecture: :activerecord.models.lecture
+        lecture_time: class time
+        room: :activerecord.models.room
+        start_time: Start time
+        time: Time
+      role:
+        code: code
+        faicon: lock
+        staffs: :activerecord.models.staff
+      room:
+        area: :activerecord.models.area
+        building: :activerecord.models.building
+        equipments: :activerecord.models.equipment
+        faicon: cube
+        room_equipments: Fixtures
+        room_groups: :activerecord.models.room_group
+        seat_number: Number of seats
+        seat_number_gteq: Lower limit number
+        seat_number_lteq: Upper limit number
+        wday_0_close_time: Sunday end time
+        wday_0_open_time: Sunday start time
+        wday_1_close_time: Monday end time
+        wday_1_open_time: Monday start time
+        wday_2_close_time: Tuesday end time
+        wday_2_open_time: Tuesday start time
+        wday_3_close_time: Wednesday end time
+        wday_3_open_time: Wednesday start time
+        wday_4_close_time: End time on Thursday
+        wday_4_open_time: Thursday start time
+        wday_5_close_time: Friday end time
+        wday_5_open_time: Friday start time
+        wday_6_close_time: Saturday end time
+        wday_6_open_time: Saturday start time
+      room/room_equipments:
+        equipment: :activerecord.attributes.room_equipment.equipment
+      room_equipment:
+        available: Available
+        equipment: :activerecord.models.equipment
+        room: :activerecord.models.room
+      room_group:
+        faicon: tag
+        rooms: :activerecord.models.room
+        rules: rule
+      shared_klass_klass_subject:
+        faicon: share-alt
+        klass: :activerecord.models.klass
+        klass_subject: :activerecord.models.klass_subject
+      staff:
+        birthday: Birthday
+        code: employee number
+        email: mail address
+        faicon: user-o
+        mentee: Person in charge
+        name: Name
+        roles: :activerecord.models.role
+        subjects: Department in charge
+        tel: phone number
+        user: :activerecord.models.user
+      student:
+        area: :activerecord.models.area
+        birthday: birthday
+        code: Student number
+        contracted_at: Contract date
+        courses: :activerecord.models.course
+        faicon: user
+        klasses: :activerecord.models.klass
+        lectures: :activerecord.models.lecture
+        mentor: Supervisor
+        mentors: :activerecord.models.student_mentor
+        name: Name
+        name_mei: Name
+        name_sei: Mr
+        normalized: Name collated
+        qq: QQ
+        seller: Sales staff
+        sex: sex
+        student_balance: :activerecord.models.student_balance
+        student_mentors: :activerecord.models.student_mentor
+        student_point: :activerecord.models.student_point
+        tel: phone number
+        visa_type: visa
+        wechat: Wechat
+        yomi: full name
+        yomi_mei: given name
+        yomi_sei: family name
+      student/student_mentor:
+        staff: :activerecord.models.staff
+      student_balance:
+        billings_total: Total amount billed
+        faicon: balance-scale
+        payments_total: Total to pay
+        price: Balance
+        student: :activerecord.models.student
+      student_billing:
+        faicon: shopping-cart
+        student: :activerecord.models.student
+        student_billing_details: :activerecord.models.student_billing_detail
+        total: Grand total
+      student_billing_detail:
+        discount: :activerecord.models.student_billing_detail_discount
+        final_price: Amount of money
+        item: Item
+        memo: Remarks
+        number: Quantity
+        price: Amount of money
+        student_billing: :activerecord.models.student_billing
+        student_billing_detail_discount: :activerecord.models.student_billing_detail_discount
+        unit_price: unit price
+      student_billing_detail_discount:
+        discount_memo: Other reasons
+        discount_type: :activerecord.models.discount_type
+        price: Discount amount
+        student_billing_detail: :activerecord.models.student_billing_detail
+      student_commission:
+        cache_back_type: :activerecord.models.cache_back_type
+        commission_type: Withdrawal type
+        faicon: gift
+        inflow_source: :activerecord.models.inflow_source
+        payed_at: Date of payment
+        price: Amount of money
+        referral: introducer
+        referral_fee: Referral fee
+        referral_type: Introduction type
+        student: :activerecord.models.student
+      student_mentor:
+        staff: :activerecord.models.student
+      student_payment:
+        faicon: credit-card
+        gen: Original
+        pay_date: Payment date
+        paymethod: :activerecord.models.paymethod
+        price: amount
+        receiver: Recipient
+        settlement_price: Settlement amount
+        student: :activerecord.models.student
+      student_point:
+        faicon: ticket
+        paid: paid
+        reserved: To be used
+        student: :activerecord.models.student
+        total: Grand total
+        used: Already used
+      subject:
+        faicon: book
+        klass_template: :activerecord.models.klass_template
+        klass_templates: :activerecord.models.klass_template
+        lectures: :activerecord.models.lecture
+        personal: Individual class
+        staffs: Instructor
+        subject_category: :activerecord.models.subject_category
+      subject_category:
+        faicon: folder-open
+      subject_type:
+        available_room_groups: Available room types
+        color: type
+        faicon: file
+        room_groups: :activerecord.models.subject_type_room_group
+      tag:
+        faicon: tag
+        severity: importance
+      user:
+        auth_token: Access token
+        current_sign_in_at: Last login date and time
+        current_sign_in_ip: Latest Login IP
+        encrypted_password: password
+        faicon: ban
+        failed_attempts: Number of failures
+        last_sign_in_at: Last login date and time
+        last_sign_in_ip: Last Login IP
+        locked_at: Lock date and time
+        remember_created_at: Creation time
+        reset_password_sent_at: Reset password time
+        reset_password_token: Reset password token
+        sign_in_count: Number of logins
+        staff: :activerecord.models.staff
+        unlock_token: Unlock token
+      vip:
+        course_category: :activerecord.models.course_category
+        faicon: star
+      vip_price:
+        hours_max: Maximum time
+        hours_min: Minimum time
+        unit_price: Hourly rate
+      work_kind:
+        faicon: folder-open
+        name: Business type
+    models:
+      area: Area
+      book: Book
+      building: Building
+      cache_back_type: Cash back type
+      course: Course
+      course_category: Course category
+      discount_type: Discount type
+      equipment: Fixtures
+      inflow_source: Inflow source
+      klass: Class
+      klass_subject: Course
+      klass_template: Class template
+      lecture: Lesson
+      lecture_attend_log: Attendance log
+      lecture_staff: Lecturer
+      lecture_student: Attendance
+      paymethod: Payment type
+      province: Space
+      reserve: Reservation
+      role: Authority
+      room: Room
+      room_equipment: Equipment
+      room_group: Room type
+      shared_klass_klass_subject: Joint curriculum
+      staff: Staff
+      staff_role: Staff authority
+      student: A student
+      student_balance: Unpaid
+      student_billing: Purchase
+      student_billing_detail: Details
+      student_billing_detail_discount: Discount
+      student_commission: Withdrawal
+      student_mentor: Person in charge
+      student_payment: Payment
+      student_point: Point
+      student_point_log: Point log
+      subject: Subject
+      subject_category: Subject category
+      subject_type: Course type
+      subject_type_room_group: Available room types
+      tag: tag
+      vip: VIP
+      vip_price: VIP unit price
+      work_kind: Business type
+  attributes:
+    code: code
+    created_at: Created date
+    creator: Author
+    creator_id: Author
+    deleted_at: Deleted date
+    deleter: Deleted person
+    deleter_id: Deleted person
+    description: Remarks
+    faicon: bolt
+    id: ID
+    isbn: ISBN
+    name: Name
+    updated_at: Update date
+    updater: changer
+    updater_id: changer
+    version_comment: Change intention

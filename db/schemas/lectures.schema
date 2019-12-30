@@ -1,0 +1,25 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+create_table 'lectures', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC', force: :cascade do |t|
+  t.string 'name', null: false
+  t.text 'description'
+  t.datetime 'start_time', null: false
+  t.datetime 'finish_time', null: false
+  t.references 'subject', null: false
+  t.references 'klass_subject', null: true
+  t.references 'confirmer'
+  t.integer 'confirmed', null: false, default: 0
+  t.datetime 'confirmed_at', null: true
+  t.string 'canceled_status'
+  t.boolean 'time_changeable', null: false, default: false
+  t.string 'cached_tag_list'
+  t.integer 'creator_id'
+  t.integer 'updater_id'
+  t.integer 'deleter_id'
+  t.datetime 'created_at'
+  t.datetime 'updated_at'
+  t.datetime 'deleted_at', null: true
+
+  t.index ['start_time','finish_time'], name: 'start_finish_time'
+  t.index ['cached_tag_list'], name: 'cached_tag_list'
+end

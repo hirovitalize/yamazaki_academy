@@ -1,0 +1,11 @@
+ .nested-fields
+   .row
+     .col-md-12
+       = f.association :equipment
+   .row
+     .col-md-10
+       = f.input :available
+     .col-md-2
+       = link_to_remove_association f,
+         class: 'btn btn-sm btn-outline-danger js-children-delete'
+         => fa_icon 'minus-square'

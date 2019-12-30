@@ -1,0 +1,134 @@
+---
+en:
+  courses:
+    index:
+      person: Man
+    show:
+      addition: add to
+  klasses:
+    curriculum:
+      day_of_week: Day of the week
+      duration: period
+      katei: Course
+      klass_name: name of the class
+      number_of_class: Times
+      number_of_class_hours: Hours
+      staff_in_charge: Instructor
+    search:
+      fixed: Unsettled
+      in_action: In action
+    show:
+      bundle_addition: Bulk addition
+      copy: copy
+  lecture_staffs:
+    search:
+      lecture_duration_time: Duration / hour
+      output_csv: CSV output
+    show:
+      time: time
+      yen: Circle
+  lecture_students:
+    show:
+      time: Min
+  lectures:
+    button_create_first_vip_lecture:
+      reserve: Reservation
+    button_create_vip_lecture:
+      addition: add to
+    index:
+      approval: approve. Is it OK?
+      denial: I refuse. Is it OK?
+      passback: Send back. Is it OK?
+    search:
+      absent: Not in charge
+      bundle: Bulk
+      bundle_duplication_in_a_week: Batch replication to the next week
+      double_checking: duplicated
+      lecture_duration_time: Duration / hour
+      notyet_reservation: Not reserved
+    show:
+      approval: approve. Is it OK?
+      cancel: Cancel your reservation. Is it OK?
+      cancel_no_contact: Cancel without notice
+      cancel_today: Cancel on the day
+      cancel_until_yesterday: Canceled the day before
+      copy: copy
+      denial: I refuse. Is it OK?
+      passback: Send back. Is it OK?
+      qr: QR
+  rooms:
+    index:
+      seat: seat
+    search:
+      bundle: Bulk
+    show:
+      seat: seat
+  shared:
+    action:
+      delete_button:
+        are_you_sure: Remove Is it OK?
+        delete: Delete
+      edit_button:
+        edit: Edit
+      index_button:
+        index: List
+      mine_button:
+        mine: myself
+      new_button:
+        new: add to
+      show_button:
+        show: Browse
+    form_submit:
+      save: Preservation
+    js_hidden_text:
+      alert: Please create in 30 minutes or more
+      capacity: Capacity
+      confirm: Do you want to delete the reservation?
+      delete: delete
+      no_available_lecture: There is no selectable lecture
+      reserve: Reserve
+      room_name: Class name
+      select_lecture: Please select a lecture
+    model:
+      assoc:
+        total: 'The total number of cases:'
+      history:
+        ago: Previous
+        last_update: Last updated
+        update_history: Change log
+  student_balances:
+    search:
+      output_csv: Output Csv
+  students:
+    button_create_first_vip_lecture:
+      reserve: Reservation
+    button_create_vip_lecture:
+      addition: add to
+      reserve: Reservation
+  users:
+    ical:
+      ical_description: To reflect the lecture information in the external calendar application, refer to URl below.
+      ical_title: Your class schedule
+    index:
+      lock: Lock
+      lock_confirm: Lock it Is it OK?
+      locked: Locked
+      unlock: unlock
+      unlock_confirm: Unlock it. Is it OK?
+    passwords:
+      edit:
+        title: Confirm new password
+      new:
+        title: Forgot your password?
+    registrations:
+      edit:
+        title: User settings
+      new:
+        title: Sign up
+    search:
+      locked: Locked
+    sessions:
+      destroy:
+        title: Logout
+      new:
+        title: Sign in

@@ -1,0 +1,6 @@
+one:
+  id: 1
+  name: 新宿
+  province_id: 1
+  code: '01'
+  description: 東大受験用

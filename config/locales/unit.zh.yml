@@ -1,0 +1,175 @@
+---
+zh:
+  credit_types:
+  - 签证
+  - 万事达卡
+  - 美国运通
+  - 食客
+  - JCB
+  - 独奏
+  - 开关
+  - 大师
+  - 银联
+  - Dankort
+  - Rupay
+  - Hipercard
+  - ELO
+  - 米尔
+  - 发现
+  date:
+    abbr_day_names:
+    - 周日
+    - 周一
+    - 周二
+    - 周三
+    - 周四
+    - 周五
+    - 周六
+    abbr_month_names:
+    - 
+    - 一月
+    - 二月
+    - 三月
+    - 四月
+    - 五月
+    - 六月
+    - 七月
+    - 八月
+    - 九月
+    - 十月
+    - 十一月
+    - 十二月
+    day_names:
+    - 星期天
+    - 星期一
+    - 星期二
+    - 星期三
+    - 星期四
+    - 星期五
+    - 星期六
+    formats:
+      default: "%Y /%m /%d（%a）"
+      long: "%Y年%月份%d天（%a）"
+      short: "%m /%d"
+    month_names:
+    - 
+    - 一月
+    - 二月
+    - 三月
+    - 四月
+    - 五月
+    - 六月
+    - 七月
+    - 八月
+    - 九月
+    - 十月
+    - 十一月
+    - 十二月
+    order:
+    - :year
+    - :month
+    - :day
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: 大约1个小时
+        other: 大约 %{count} 小时
+      about_x_months:
+        one: 大约1个月
+        other: 大约 %{count} 个月
+      about_x_years:
+        one: 大约1年
+        other: 大约 %{count} 年
+      almost_x_years:
+        one: 接近 1年
+        other: 接近 %{count} 年
+      half_a_minute: 半分钟
+      less_than_x_minutes:
+        one: 不到1分钟
+        other: 不到 %{count} 分钟
+      less_than_x_seconds:
+        one: 不到1秒
+        other: 不到 %{count} 秒
+      over_x_years:
+        one: 1超过年
+        other: "%{count} 年多"
+      x_days:
+        one: 1天
+        other: "%{count}天"
+      x_minutes:
+        one: 1分钟
+        other: "%{count} 分钟"
+      x_months:
+        one: 1个月
+        other: "%{count} 个月"
+      x_seconds:
+        one: 1秒
+        other: "%{count} 秒"
+      x_years:
+        one: 1年
+        other: "%{count} 年"
+    prompts:
+      day: 日
+      hour: 时
+      minute: 分
+      month: 月
+      second: 秒
+      year: 年
+  number:
+    currency:
+      format:
+        delimiter: "，"
+        format: "%n%u"
+        precision: 0
+        separator: "。"
+        significant: false
+        strip_insignificant_zeros: false
+        unit: 圈
+    format:
+      delimiter: "，"
+      precision: 3
+      separator: "。"
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: "%n %u"
+        units:
+          billion: 十亿
+          million: 百万
+          quadrillion: 千万亿
+          thousand: 一千
+          trillion: 兆
+          unit: 一个名字
+      format:
+        delimiter: ''
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: "%n%u"
+        units:
+          byte: 字节
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
+    percentage:
+      format:
+        delimiter: ''
+        format: "%n%"
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: "，"
+      two_words_connector: "，"
+      words_connector: "，"
+  time:
+    am: 上午
+    formats:
+      default: "%Y /%m /%d%H：%M：%S"
+      long: "%Y年%m月%d天（%a）%H小时%M分钟%S秒%z"
+      short: "%y /%m /%d%H：%M"
+    pm: 下午

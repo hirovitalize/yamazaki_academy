@@ -1,0 +1,9 @@
+  = render('shared/model/assoc',
+           assoc: model.lectures.order(start_time: :desc).includes(:lecture_staffs, :staffs, :confirmer),
+           path: lectures_path(q: { students_id_in: model.id }),
+           title: t_iconed_model(Lecture)) do |rel|
+    - rel = rel.decorate
+    td = link_object rel
+    td = rel.view_time_range
+    td = link_objects rel.staffs
+    td = rel.view_tags_approved.first&.html_safe

@@ -1,0 +1,14 @@
+#search-heading {
+  padding: 0;
+
+  > a {
+    display: block;
+    padding: 10px 15px;
+    transition: all .15s;
+
+    &:hover {
+      text-decoration: none;
+      background-color: #dfeff9;
+    }
+  }
+}

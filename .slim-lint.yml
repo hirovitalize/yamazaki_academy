@@ -1,0 +1,11 @@
+linters:
+  LineLength:
+    enabled: true
+    max: 120
+    
+  RuboCop:
+    Layout/SpaceAfterColon:
+      enabled: false
+  
+    Lint/AssignmentInCondition:
+      enabled: false

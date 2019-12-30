@@ -1,0 +1,11 @@
+---
+zh:
+  flash:
+    actions:
+      create:
+        notice: "%{resource_name}做好的"
+      destroy:
+        alert: 删除%{resource_name}失败
+        notice: "%{resource_name}已被删除"
+      update:
+        notice: "%{resource_name}已更新"

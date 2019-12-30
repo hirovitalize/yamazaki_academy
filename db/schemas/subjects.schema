@@ -1,0 +1,18 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+create_table "subjects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+  t.string "name", null: false
+  t.string 'code', null: false, limit: 3 # 'B01' for lecture: 'TK19 B01 WC0101'
+  t.text "description"
+  t.references "subject_type", null: true
+  t.references "subject_category"
+  t.boolean "personal", null: false, default: false
+  t.integer "creator_id"
+  t.integer "updater_id"
+  t.integer "deleter_id"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+  t.datetime "deleted_at", null: true
+
+  t.index ["code"], name: "code"
+end

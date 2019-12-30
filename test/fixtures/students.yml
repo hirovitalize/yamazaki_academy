@@ -1,0 +1,33 @@
+one:
+  id: 1
+  code: 'A1000001'
+  area_id: 1
+  name: 'とくえゆうき'
+  name_sei: 'とくえ'
+  name_mei: 'ゆうき'
+  yomi: 'tokueyuhki'
+  yomi_sei: 'tokue'
+  yomi_mei: 'yuhki'
+  sex: 1
+  tel: '09098561902'
+  qq: '19919971997'
+  wechat: 'tokue1997'
+  normalized: true
+  contracted_at: '2018/05/06'
+
+two:
+  id: 2
+  code: 'A1000002'
+  area_id: 1
+  name: 'やまざきそうすけ'
+  name_sei: 'そうすけ'
+  name_mei: 'やまざき'
+  yomi: 'yamazakisosuke'
+  yomi_sei: 'yamazaki'
+  yomi_mei: 'sosuke'
+  sex: 1
+  tel: '09098561902'
+  qq: '19919971997'
+  wechat: 'tokue1997'
+  normalized: true
+  contracted_at: '2018/05/06'

@@ -1,0 +1,29 @@
+#accordion[role="tablist"]
+  .card
+    #search-heading.card-header[role="tab"]
+      a[data-toggle="collapse" href="#search" aria-expanded="true" aria-controls="search"]
+        | #{I18n.t 'helpers.button.search'}
+    #search.collapse[role="tabpanel" aria-labelledby="search-heading" data-parent="#accordion"]
+      .card-body
+        = simple_form_for '',
+          method: :get,
+          url: staff_calendar_lectures_path,
+          defaults: { required: false, input_html: { novalidate: true } }  do |f|
+          .row
+            .col-md-4
+              = f.input :start_date,
+                label: '日付',
+                as: :date,
+                input_html: { \
+                  class: 'form-control', \
+                  data: { 'widget': 'datepicker','date-options': { defaultDate: @start_date } }, \
+                   autocomplete: 'off' \
+                }
+            .col-md-4
+              = f.simple_fields_for :r, @r do |r|
+                = r.input :id_in, label: t_field(Lecture, :staffs),
+                  as: :autocomplete,
+                  input_html: { multiple: true, data: { placeholder: '氏名・コードを入力（1文字以上）', minimum_input_length: 1, limit: 20, models: 'staffs', mainquery: 'name_or_code_start' }}
+
+
+          = render 'shared/form_submit_search'

@@ -1,0 +1,12 @@
+= render 'shared/validation_messages', model: model
+
+
+= simple_form_for(@building) do |f|
+  .row
+    .col-md-6
+      = f.input :name
+      = f.association :area
+      = f.input :address
+      = f.input :description
+        =<> truncated_text(f.object.description)
+  =<> render 'shared/form_submit', form: f

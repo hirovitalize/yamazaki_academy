@@ -1,0 +1,19 @@
+ruby:
+  partial_name ||= "search"
+  # q
+
+#accordion[role="tablist"]
+  .card
+    #search-heading.card-header[role="tab"]
+      a[data-toggle="collapse" href="#search" aria-expanded="true" aria-controls="search"]
+        =<> fa_icon :search
+        | #{I18n.t 'helpers.button.search'}
+    #search.collapse[role="tabpanel" aria-labelledby="search-heading" data-parent="#accordion"]
+      .card-body
+        = search_form_for q, defaults: { required: false, input_html: { novalidate: true } } do |f|
+          = hidden_field_tag :locale, params.fetch(:locale, 'ja')
+          .row
+            = render partial_name, f: f
+
+          .row.mx-auto
+            = render 'shared/form_submit_search'

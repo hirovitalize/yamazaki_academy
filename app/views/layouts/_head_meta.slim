@@ -1,0 +1,19 @@
+meta[charset="utf-8"]
+meta[name="viewport" content="width=device-width, initial-scale=1.0"]
+meta[http-equiv="X-UA-Compatible" content="IE=edge"]
+meta[name="robots" content="noindex,nofollow"]
+
+title = strip_tags(yield(:title).presence || '行知学園')
+
+= stylesheet_link_tag 'application', media: 'all'
+
+- if path = controller_css_exists?
+  = stylesheet_link_tag path, async: false, media: 'all'
+
+- if path = action_css_exists?
+  = stylesheet_link_tag path, async: false, media: 'all'
+
+= include_gon
+= javascript_include_tag 'application', 'data-turbolinks-track' => false
+
+= csrf_meta_tags

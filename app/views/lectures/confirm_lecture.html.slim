@@ -1,0 +1,47 @@
+- provide :title, t_iconed_model(:lecture) + '複製確認画面'
+
+- models = @lectures
+- days = params[:days].blank? ? 7 : params[:days]
+
+.button-container
+
+.row
+  .col-md-6
+    .card
+      .card-header
+        = "参照授業"
+      .card-body
+        - models.each do |model|
+            .row
+              .col-md-6
+                = link_object model
+              .col-md-6
+                = model.start_time
+                '-
+                = model.finish_time&.to_s(:time)
+
+  .col-md-6
+    .card
+      .card-header
+        = "複製授業(#{days}日後)"
+      .card-body
+        - models.each do |model|
+            .row
+              .col-md-6
+                = link_object model
+              .col-md-6
+                = model.start_time + days.to_i.days
+                '-
+                = model.finish_time&.to_s(:time)
+
+    = form_tag confirm_lecture_lectures_path, method: "get" do
+      = hidden_field_tag "lecture_ids", models.ids.join(",")
+      = number_field_tag 'days', days , min: 1, max: 30
+      = label_tag '日後に'
+      = submit_tag "変更"
+
+    = form_tag duplicate_all_lectures_path, method: "post" do
+      = hidden_field_tag "lecture_ids", models.ids.join(",")
+      = hidden_field_tag "days", days
+      br
+      = submit_tag "コピーする"

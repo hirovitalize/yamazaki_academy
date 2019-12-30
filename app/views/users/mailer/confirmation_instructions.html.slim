@@ -1,0 +1,20 @@
+p
+  = @resource.name
+  | 様
+  br
+  br
+  | 行知学園ITシステムです。
+  br
+  br
+  | ご本人様確認のため、下記URLへアクセスし、アカウントの認証を完了させて下さい。
+p
+  = link_to 'アカウントの認証', confirmation_url(@resource, confirmation_token: @token)
+  br
+  br
+  | このリンクは他の人に漏れないようにご注意ください。
+  br
+  br
+  | 当メール送信後、24時間を超過しますと、セキュリティ保持のため有効期限切れとなります。
+  br
+  br
+  | その場合は再度、最初からお手続きをお願い致します。

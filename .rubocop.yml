@@ -1,0 +1,41 @@
+require: rubocop-performance
+
+inherit_from: .rubocop_todo.yml
+
+Rails:
+  Enabled: true
+
+AllCops:
+  Exclude:
+    - 'db/schema.rb'
+    - 'config/**/*/'
+    - 'bin/**/*'
+    - 'script/**/*'
+    - 'vendor/gem-local/**/*'
+    - 'vendor/bundle/**/*'
+    - 'lib/templates/**/*'
+
+Style/Documentation:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
+
+Metrics/LineLength:
+  Max: 160
+
+Metrics/ClassLength:
+  Exclude:
+    - 'test/**/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'db/seeds/*'
+    - 'test/**/*'
+
+Metrics/ParameterLists:
+  Max: 10
+
+ClassLength:
+  CountComments: false  # count full line comments?

@@ -1,0 +1,27 @@
+- lecture = @lecture_staff.lecture
+- reserve = lecture.reserve
+
+  = @staff.name
+  |   様
+
+    行知学園教室予約システムです。
+
+    明日授業があります。
+
+    ===================================================
+
+    教室： #{reserve.try(:room).try(:name)}
+
+    授業： #{lecture.name}
+
+    時間： #{@lecture_staff.start_time.to_s} ~ #{@lecture_staff.finish_time.to_s}
+
+    説明： #{lecture.try(:description)}
+
+    申請人： #{lecture.try(:creator).try(:name)}
+
+    ===================================================
+
+    授業の詳細を確認するには、#{lecture_url(lecture)}をクリックしてください。
+
+    ※　当日部屋変更があるため、授業前に確認をよろしくお願いします。

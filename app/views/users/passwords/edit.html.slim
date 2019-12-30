@@ -1,0 +1,12 @@
+- provide :title, t('.title')
+
+= simple_form_for resource, as: resource_name, url: password_path(resource_name), method: :put do |f|
+  = devise_error_messages!
+  = f.hidden_field :reset_password_token
+  = f.input :password,
+    input_html: { \
+      autofocus: true, \
+      autocomplete: 'off' \
+    }
+  = f.button :submit, t('helpers.submit.send'), class: 'btn btn-primary btn-block'
+= render "users/shared/links"

@@ -1,0 +1,23 @@
+= render 'shared/validation_messages', model: model
+
+
+= simple_form_for(@student_commission) do |f|
+  .row
+    .col-md-6
+      - if model.student.present?
+        = f.association :student, as: :hidden
+      - else
+        = f.association :student,
+                        as: :autocomplete,
+                            collection: [f.object.student].compact,
+                        input_html: { \
+                          data: {models: 'students', mainquery: 'name_or_yomi_or_code_cont'} \
+                        }
+      = f.input :commission_type, as: :radio_buttons
+      = f.input :referral, required: true
+      = f.association :cache_back_type, required: true
+      = f.association :inflow_source, required: true
+      = f.input :price
+      = f.input :payed_at
+      = f.input :description
+  =<> render 'shared/form_submit', form: f, with_comment: true

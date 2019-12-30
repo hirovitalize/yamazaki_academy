@@ -1,0 +1,38 @@
+---
+en:
+  enums:
+    lecture:
+      canceled_status:
+        cancel: previous_cancel_contact
+        cancel_no_contact: cancel_no_contact
+        cancel_today_contact: cancel_today_contact
+      confirmed:
+        approved: Approval
+        notyet: Not yet
+        unapproved: Denial
+    paper_trail:
+      version:
+        event:
+          create: Create
+          destroy: Delete
+          update: update
+    student:
+      sex:
+        female: woman
+        male: Man
+        other: other
+      visa_type:
+        family: family
+        other: Other
+        permanent: permanent
+        settlement: Settlement
+        study_abroad: Study abroad
+    student_commission:
+      commission_type:
+        cache_back: Cash back
+        referral_inflow: Corporate introduction
+        referral_person: Personal introduction
+      referral_type:
+        cache_back: Refund
+        inflow: Corporation
+        person: Individual

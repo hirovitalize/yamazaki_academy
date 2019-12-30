@@ -1,0 +1,35 @@
+.col-md-4
+  = f.input :code_in, label: t_field(Klass, :code)
+  = f.input :name_cont_all, label: t_field(Klass, :name)
+
+.col-md-4
+  = f.input :klass_subjects_subject_subject_category_id_in, label: t_model(SubjectCategory),
+    as: :select,
+    collection: SubjectCategory.pluck(:name, :id),
+    input_html: { multiple: true }
+  = f.input :area_id_in, label: t_field(Klass, :area),
+    as: :select,
+    collection: Area.pluck(:name, :id),
+    input_html: { multiple: true }
+
+.col-md-4
+  = f.input :start_date, label: t_field(Klass, :start_date) do
+    .form-inline
+      = f.input :start_date_gteq, { \
+        as: :date,
+        wrapper: :inline_form,
+        input_html: { data: { target: '#q_start_date_gteq' } } \
+      }
+  = f.input :finish_date, label: t_field(Klass, :finish_date) do
+    .form-inline
+      = f.input :finish_date_lteq, { \
+        as: :date,
+        wrapper: :inline_form,
+        input_html: { data: { target: '#q_finish_date_lteq' } } \
+      }
+  = f.input :current, label: '',
+    as: :check_boxes, include_hidden: false,
+    collection: [[t(".in_action"), true]]
+  = f.input :klass_subjects_fixed_in, label: '',
+    as: :check_boxes, include_hidden: false,
+    collection: [[t(".fixed"), false]]

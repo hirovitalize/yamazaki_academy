@@ -1,0 +1,21 @@
+.form-control.is-invalid+.select2 {
+  .select2-selection {
+    border-color: #f86c6b;
+  }
+}
+
+.form-control.is-valid+.select2 {
+  .select2-selection {
+    border-color: #4dbd74;
+  }
+}
+
+/* select2 bug-fix: rendering width limited. */
+
+.select2-selection__rendered {
+  width: 100% !important;
+}
+
+span.select2-container {
+  width: 100% !important;
+}

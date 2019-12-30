@@ -1,0 +1,51 @@
+- provide :title, t_iconed_model(:klass)
+
+- models = @klasses.decorate
+- q = @q
+
+= render 'shared/search_form', q: q
+
+.pagination-container
+  = page_entries_info(@klasses)
+  = paginate @klasses
+
+table.table.table-sm.table-borderless.table-filterable.table-hover
+  thead
+    tr
+      th.filter-false.sorter-false.resizable-false
+      th.sorter-false.filter-select
+        = sort_link q, :fixed, t_field(:klass_subject, :fixed)
+      th.sorter-false
+        = sort_link q, :name, t_field(:klass, :name)
+      th.sorter-false
+        = sort_link q, :area, t_field(:klass, :area)
+      th.sorter-false
+        = sort_link q, :start_date, t_field(:klass, :start_date)
+      th.sorter-false
+        = sort_link q, :finish_date, t_field(:klass, :finish_date)
+      th.sorter-false
+        = t_field(:klass, :description)
+  tbody
+    - models.each do |model|
+      tr[class="#{'bg-secondndary' if model.deleted?}"]
+        td.action-column
+          =<> render 'shared/action/show_button', path: model, options: { target: ['_blank'] }
+          =<> render 'shared/action/index_button',
+             path: curriculum_klass_path(model),
+             model: model,
+             options: { icon: 'calendar fw', title: 'カレンダー' }
+        td
+          - if model.klass_subjects.count == 0
+            =<> '　'
+          - elsif model.klass_subjects.map(&:fixed).all?
+            =<> fa_icon 'check-square 2x', style: "color:#4dbd74;"
+          - else
+            =<> fa_icon 'square-o 2x', style: "color:#4dbd74;"
+        td = model.name
+        td = model.area&.name
+        td = model.start_date&.to_s(:date)
+        td = model.finish_date&.to_s(:date)
+        td = truncated_text(model.description)
+
+.pagination-container
+  = paginate @klasses

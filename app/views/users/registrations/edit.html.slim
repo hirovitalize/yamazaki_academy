@@ -1,0 +1,35 @@
+- provide :title, t('.title')
+
+.row
+  .col-md-6
+    = simple_form_for resource, as: resource_name, url: registration_path(resource_name), method: :put do |f|
+      = devise_error_messages!
+      = f.input :email,
+        required: true,
+        input_html: { \
+          autofocus: true \
+        }
+      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+        div
+          = t('devise.registrations.edit.currently_waiting_confirmation_for_email')
+          = resource.unconfirmed_email
+        br
+      = f.input :current_password,
+        required: true,
+        input_html: { \
+          autocomplete: 'off' \
+        }
+      br
+      .card
+        .card-header
+          = t('devise.passwords.edit.change_your_password')
+        .card-body
+          p.text-danger
+            strong
+              = t('devise.registrations.edit.unneed')
+          = f.input :password,
+            hint: "#{t_field(:user, :password)}は#{t('errors.messages.too_short', count: @minimum_password_length)}",
+            input_html: { \
+              autocomplete: 'off' \
+            }
+      =<> render 'shared/form_submit', form: f
