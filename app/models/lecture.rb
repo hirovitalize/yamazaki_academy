@@ -169,8 +169,6 @@ class Lecture < ApplicationRecord
   end
 
   def duplicate_after(days)
-    return unless klass_subject&.lecture_appendable?
-
     l = dup
     l.start_time = start_time + days
     l.finish_time = finish_time + days
