@@ -67,8 +67,6 @@ class Lecture < ApplicationRecord
   validates_associated :students
   validates_associated :lecture_staffs
 
-  accepts_nested_attributes_for :lecture_staffs, reject_if: :all_blank, allow_destroy: true
-
   after_initialize :default_values, if: :new_record?
   around_save :sync_points_and_salaries, if: :confirmed_changed?
   after_update :sync_student_point
