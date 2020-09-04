@@ -22,7 +22,7 @@
     "jquery-sticky": "^1.0.4",
     "jquery.hotkeys": "^0.1.0",
     "lodash": "^4.17.5",
-    "marked": "^0.6.1",
+    "marked": "^0.7.0",
     "moment": "^2.22.0",
     "moment-range": "^4.0.1",
     "moment-timezone": "^0.5.11",
